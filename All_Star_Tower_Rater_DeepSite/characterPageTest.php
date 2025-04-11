@@ -564,7 +564,7 @@ addModifiedData();
 const ctx = document.getElementById('myChart');
 let settingImportanceAoeType = 50; //ça sera une setting plus tard
 let settingMethode = 1; // 1 = log, 2 = linear
-let settingRankRatio = 70; //Immportance de du rank par rapport à l'importance de la valeur (ça sera une setting plus tard)
+let settingRankRatio = 0; //Immportance de du rank par rapport à l'importance de la valeur (ça sera une setting plus tard)
 
 function ratioGeneral(stat1, statRank1, rankNbr, maxValue1, minValue1, importance, stat2, statRank2, maxValue2, minValue2) {//Fonction pour les deux échelles
 

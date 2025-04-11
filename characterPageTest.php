@@ -49,7 +49,12 @@
             </aside>
         </div>
         <section class="character-star-diagram">
+            <div class="tooltip">
             <img src="image_file/diagram(2).png" alt="Change calculation method">
+            <div class="tooltiptext">
+            Change calculation method
+            </div>
+            </div>
             <canvas id="myChart"></canvas></section>
         <section class="recommandations">
             <h3>Quick Changes</h3>

@@ -559,7 +559,7 @@
         
         <div class="button-container">
             <a href="#" class="action-btn btn-comparator slide-up delay-2">
-                <i class="fas fa-balance-scale btn-icon"></i>
+                <i class="fas fa-balance-scale btn-icon" href="/All_Star_Tower_Rater/All_Star_Tower_Rater_Deepsite/comparator.html"></i>
                 Unit Comparator
             </a>
             <a href="#" class="action-btn btn-team slide-up delay-2">
