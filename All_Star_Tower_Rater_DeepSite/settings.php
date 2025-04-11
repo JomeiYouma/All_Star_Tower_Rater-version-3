@@ -6,20 +6,13 @@
     <title>All Star Tower Rater Hub</title>
     <link href="style.css" rel="stylesheet" />
     <link rel="icon" href="image_file/favicon.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
 </head>
 <body class="settingsBody">
     
-    <header>
-        <nav><ul class="nav">
-            <li><a href="http://localhost/All_Star_Tower_Rater/siteindex.html">Hub</a></li>
-            <li><a href="http://localhost/All_Star_Tower_Rater/engine.php">Advanced Research</a></li>
-            <li><a href="http://localhost/All_Star_Tower_Rater/comparator.html">Comparator</a></li>
-            <li><a href="http://localhost/All_Star_Tower_Rater/settings.html">Settings</a></li>
-            <a href="http://localhost/All_Star_Tower_Rater/characterpagetest.html">
-                <img src="image_file/fierce-man.png" alt="Character Card Exemple" />
-            </a>
-        </ul></nav>
-    </header>
+<?php include 'header.php'; ?>
 
 <main class="settingsMain">
     <div class="frame">
@@ -333,13 +326,7 @@
     </div>
 </main>
 
-<footer>
-        <ul>
-            <li>Data</li>
-            <li>Confidentialité</li>
-            <li>Commander un outil d'analyse</li>
-        </ul>
-</footer>
+<?php include 'footer.php'; ?>
 
 
 

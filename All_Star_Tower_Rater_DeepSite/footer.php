@@ -1,5 +1,5 @@
 <footer class="bg-gray-800 text-white py-8 mt-12">
-        <div class="container mx-auto px-4">
+        <div class="container bg-gray-800 mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div>
                     <h3 class="text-lg font-semibold mb-4">All Star Tower Rater</h3>

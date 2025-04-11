@@ -67,13 +67,14 @@ img{
 }
 /* ------------- CSS POUR FRONT PAGE */
 .hubBody{
-    overflow: hidden;
+    /* overflow: hidden; */
+    background-color:antiquewhite;
 }
 
 .settingsMain{
     display: flex;
     background-color:antiquewhite;
-    height: calc(4000px - 91.63px);
+    height: 300;
     /* justify-content: center; */
     flex-direction: column;
 }
