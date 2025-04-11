@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Star Tower Rater Comparator</title>
+    <link href="style.css" rel="stylesheet" />
+    <link rel="icon" href="image_file/favicon.ico">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="comparatorBody">
+    
+    <header>
+        <nav><ul class="nav">
+            <li><a href="http://localhost/All_Star_Tower_Rater/siteindex.html">Hub</a></li>
+            <li><a href="http://localhost/All_Star_Tower_Rater/engine.php">Advanced Research</a></li>
+            <li><a href="http://localhost/All_Star_Tower_Rater/comparator.html">Comparator</a></li>
+            <li><a href="http://localhost/All_Star_Tower_Rater/settings.html">Settings</a></li>
+            <a href="http://localhost/All_Star_Tower_Rater/characterpagetest.html">
+                <img src="image_file/fierce-man.png" alt="Character Card Exemple" />
+            </a>
+        </ul></nav>
+    </header>
+<main class="comparatorMain">
+    <section class="presentationSection">
+        <div class="firstPresentation blue">
+            <h1>The Founder</h1>
+            <p>Ymir Fritz - SNK</p>
+            <p>Holy</p>
+            <p>Nuker. Mobility Control. Summoner</p>
+        </div>
+        <div class="secondPresentation red">
+            <h1>4 Eye Sorcerer (Timer)</h1>
+            <p>Nanamin (Hot Fried Chicken)</p>
+            <p>Nature</p>
+            <p>Crowd Control</p>
+        </div>
+    </section>
+    
+    <section class="middleSecionComparator">
+        <h2>Abilities</h2>
+        <aside class="firstAbilities blue">
+            <div title="Abnormal Giant (Burns)
+            Upon activation ; it will 4x the unit's damage in burn to all enemies on her range. Summons a Titan with 110B."> 
+                <img src="image_file/attack_on_titan_309-1.webp" alt="Abnormal Giant (Burns)">
+            </div>
+            <div title="Armored Giant (Defense)
+            Summons a Titan with 234 ;66M hp.">
+                <img src="image_file/ArmoredGiant29.webp" alt="Armored Giant (Defense)">
+            </div>
+            <div title="Attack Giant (Rewinds)
+            Summons a Titan with 95M hp.">
+                <img src="image_file/AttackGiant29.webp" alt="Attack Giant (Rewinds)">
+            </div>
+            <div title="Cart Giant (Money)
+            Summons a titan with 18k hp.">
+                <img src="image_file/CartGiant29.webp" alt="Cart Giant (Money)">
+            </div>
+            <div title="Colossal Giant (Nuke)
+            Upon activation ; it will deal 3 ;5B damage to all enemies. Summons a Titan with 134B.">
+                <img src="image_file/ColossalGiant29.webp" alt="Colossal Giant (Nuke)">
+            </div>
+            <div title="Female Giant (Stops)
+            Upon activation ; it will ultimate time stop all enemies for 40 seconds. Summons a Titan with 30 ;7B hp.">
+                <img src="image_file/FemaleGiant29.webp" alt="Female Giant (Stops)">
+            </div>
+            <div title="Flying Giant
+            Summons a Titan with 20 ;7B hp that hit only airs.">
+                <img src="image_file/FlyingGiant.webp" alt="Flying Giant">
+            </div>
+            <div title="Jaw Giant (Bleeds)
+            Upon activation ; it will apply bleed to all enemies on her range. Summons a Titan with 2 ;4M hp.">
+                <img src="image_file/Jaw_Titan_29_character_image_29.webp" alt="Jaw Giant (Bleeds)">
+            </div>
+        </div>
+        <div title="Warhammer Giant (Bleeds)
+        Upon activation ; it will apply 1 ;5x the unit's damage in rupture to all enemies on her range. Summons a Titan with 126B.">
+            <img src="image_file/Lara_Tybur_29_character_image_29.webp" alt="Warhammer Giant (Bleeds)">
+        </div>
+        </aside>
+        <aside class="secondAbilities red">
+            <div title="Critical C
+            Every 3 attacks ; the unit does an attack which deals 3x his base damage."> 
+                <img src="image_file/targeting.png" alt="Critical C">
+            </div>
+            <div title="Raging Nanami
+            Gains an additionnal 108 000 damage for 11 waves. (1 118 000)">
+                <img src="image_file/mighty-force.png" alt="Raging Nanami">
+            </div>
+        </aside>
+        <section class="comparativeStar">
+            <br>
+            <canvas id="myChart"></canvas>
+        </section>
+    </section>
+    <h2>Stats</h2>
+    <section class="infoComparator">
+        <div class="firstInfo blue">
+            <div class="stat-box">
+                <img src="image_file/three-friends.png" alt="" class="stat-icon">
+                <span class="stat-name">Maximum Placement</span>
+                <span class="stat-value">1</span>
+            </div>
+            <div class="stat-box">
+                <img src="image_file/elements.png" alt="" class="stat-icon">
+                <span class="stat-name">Enchant Type</span>
+                <span class="stat-value">Holy</span>
+            </div>
+            <div class="stat-box">
+                <img src="image_file/eye-target.png" alt="" class="stat-icon">
+                <span class="stat-name">Target</span>
+                <span class="stat-value">Hybrid</span>
+            </div>
+            <div class="stat-box">
+                <img src="image_file/summonning.png" alt="" class="stat-icon">
+                <span class="stat-name">Farming Difficulty</span>
+                <span class="stat-value">A-</span>
+            </div>
+            <div class="stat-box">
+                <img src="image_file/upgrading.png" alt="" class="stat-icon">
+                <span class="stat-name">Upgrade Progression</span>
+                <span class="stat-value">E-</span>
+            </div>
+            <div class="stat-box">
+                <img src="image_file/aoe.png" alt="" class="stat-icon">
+                <span class="stat-name">Area of Effect Type</span>
+                <span class="stat-value">Circle (Large)</span>
+            </div>
+            <div class="stat-box">
+                <img src="image_file/range.png" alt="" class="stat-icon">
+                <span class="stat-name">Hitting Range</span>
+                <span class="stat-value">100</span>
+            </div>
+            <div class="stat-box">
+                <img src="image_file/fierce-man.png" alt="" class="stat-icon">
+                <span class="stat-name">Damage / seconds</span>
+                <span class="stat-value">2900000</span>
+            </div>
+            <div class="stat-box">
+                <img src="image_file/bleeding_heart.png" alt="" class="stat-icon">
+                <span class="stat-name">DPS from DoT</span>
+                <span class="stat-value">0</span>
+            </div>
+            <div class="stat-box">
+                <img src="image_file/raw_damage.png" alt="" class="stat-icon">
+                <span class="stat-name">DPS from hits</span>
+                <span class="stat-value">2900000</span>
+            </div>
+            <div class="stat-box">
+                <img src="image_file/magic_damage.png" alt="" class="stat-icon">
+                <span class="stat-name">DPS from Abilities</span>
+                <span class="stat-value">0</span>
+            </div>
+            <div class="stat-box">
+                <img src="image_file/take-my-money.png" alt="" class="stat-icon">
+                <span class="stat-name">Cost</span>
+                <span class="stat-value">22000000</span>
+            </div>
+            <div class="stat-box">
+                <img src="image_file/buy-card.png" alt="" class="stat-icon">
+                <span class="stat-name">Worthiness</span>
+                <span class="stat-value">0.13</span>
+            </div>
+        </div>
+        <div class="secondInfo red">
+            <div class="stat-box">
+                <img src="image_file/three-friends.png" alt="" class="stat-icon">
+                <span class="stat-name">Maximum Placement</span>
+                <span class="stat-value">8</span>
+            </div>
+            <div class="stat-box">
+                <img src="image_file/elements.png" alt="" class="stat-icon">
+                <span class="stat-name">Enchant Type</span>
+                <span class="stat-value">Nature</span>
+            </div>
+            <div class="stat-box">
+                <img src="image_file/eye-target.png" alt="" class="stat-icon">
+                <span class="stat-name">Target</span>
+                <span class="stat-value">Hybrid</span>
+            </div>
+            <div class="stat-box">
+                <img src="image_file/summonning.png" alt="" class="stat-icon">
+                <span class="stat-name">Farming Difficulty</span>
+                <span class="stat-value">A-</span>
+            </div>
+            <div class="stat-box">
+                <img src="image_file/upgrading.png" alt="" class="stat-icon">
+                <span class="stat-name">Upgrade Progression</span>
+                <span class="stat-value">A+</span>
+            </div>
+            <div class="stat-box">
+                <img src="image_file/aoe.png" alt="" class="stat-icon">
+                <span class="stat-name">Area of Effect Type</span>
+                <span class="stat-value">Full</span>
+            </div>
+            <div class="stat-box">
+                <img src="image_file/range.png" alt="" class="stat-icon">
+                <span class="stat-name">Hitting Range</span>
+                <span class="stat-value">120</span>
+            </div>
+            <div class="stat-box">
+                <img src="image_file/fierce-man.png" alt="" class="stat-icon">
+                <span class="stat-name">Damage / seconds</span>
+                <span class="stat-value">732889</span>
+            </div>
+            <div class="stat-box">
+                <img src="image_file/bleeding_heart.png" alt="" class="stat-icon">
+                <span class="stat-name">DPS from DoT</span>
+                <span class="stat-value">0</span>
+            </div>
+            <div class="stat-box">
+                <img src="image_file/raw_damage.png" alt="" class="stat-icon">
+                <span class="stat-name">DPS from hits</span>
+                <span class="stat-value">732889</span>
+            </div>
+            <div class="stat-box">
+                <img src="image_file/magic_damage.png" alt="" class="stat-icon">
+                <span class="stat-name">DPS from Abilities</span>
+                <span class="stat-value">0</span>
+            </div>
+            <div class="stat-box">
+                <img src="image_file/take-my-money.png" alt="" class="stat-icon">
+                <span class="stat-name">Cost</span>
+                <span class="stat-value">2755000</span>
+            </div>
+            <div class="stat-box">
+                <img src="image_file/buy-card.png" alt="" class="stat-icon">
+                <span class="stat-name">Worthiness</span>
+                <span class="stat-value">0.7</span>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+        <ul>
+            <li>Data</li>
+            <li>Confidentialité</li>
+            <li>Commander un outil d'analyse</li>
+        </ul>
+</footer>
+
+
+
+</body>
+<script>
+    const ctx = document.getElementById('myChart');
+
+    const data = {
+        labels: [
+            'Worthiness',
+            'Cost',
+            'Attack',
+            'Farming Difficulty',
+            'Range',
+            'Progression',
+            'DPS'
+        ],
+        datasets: [{
+            label: 'The Founder',
+            data: [2, 93, 65, 97, 56, 12, 40],
+            fill: true,
+            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+            borderColor: 'rgb(255, 99, 132)',
+            pointBackgroundColor: 'rgb(255, 99, 132)',
+            pointBorderColor: '#fff',
+            pointHoverBackgroundColor: '#fff',
+            pointHoverBorderColor: 'rgb(255, 99, 132)'
+        }, {
+            label: '4 Eye Sorcerer (Timer)',
+            data: [28, 48, 54, 19, 96, 87, 70],
+            fill: true,
+            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+            borderColor: 'rgb(54, 162, 235)',
+            pointBackgroundColor: 'rgb(54, 162, 235)',
+            pointBorderColor: '#fff',
+            pointHoverBackgroundColor: '#fff',
+            pointHoverBorderColor: 'rgb(54, 162, 235)'
+        }]
+    };
+
+    new Chart(ctx, {
+        type: 'radar',
+        data: data,
+        options: {
+        }
+    });
+</script>

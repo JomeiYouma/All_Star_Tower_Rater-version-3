@@ -1,0 +1,315 @@
+/* -----------------CSS GENERAL------------ */
+*,*::after,*::before{
+    box-sizing: border-box;
+}
+body{
+    margin: 0;
+    font-family: normal;
+}
+
+header{
+    position: sticky;
+    top: 0;
+    width: 100%;  
+    z-index: 9999;
+}
+.hubHeader{
+    position: fixed;
+}
+
+ul{
+    list-style-type: none;
+}
+
+.nav {
+    color: rgb(255, 255, 255);
+    margin: 0;
+    /* background-color: #000000; */
+    display: flex;
+    justify-content:space-around;
+    height: 56.63px;
+    align-items: center;
+    gap: 15px;
+    padding-right: 15px;
+}
+
+a:visited{
+    color: white;
+}
+
+footer {
+        /* bottom: 35px; */
+        width: 100%;
+        height: 65px;
+        background-color: white; /* Assure-toi qu'il soit visible */
+        border-top: 1px solid #ddd; /* Ajoute une bordure pour bien le séparer du contenu */
+        /* display: flex; */
+        /* justify-content: center; */
+        /* align-items: center; */
+        z-index: 1000; /* Le met au-dessus des autres éléments */
+}
+
+footer ul{
+    display: flex;
+    height: 35px;
+    justify-content: space-around;
+    align-items: center;  
+}
+
+a{
+    text-decoration: none;
+}
+
+
+header img{
+    width: 50px;
+}
+
+@font-face {
+    font-family:"star";
+    src: url(/All_Star_Tower_Rater/assets/fonts/Starborn.ttf);
+}
+
+@font-face {
+    font-family:"normal";
+    src: url(/All_Star_Tower_Rater/assets/fonts/TT\ Lakes\ Neue\ Trial\ Medium.ttf);
+}
+/* -----------------CHARACTER SOLO PAGE------- */
+/* style_character_page.css - Adaptation visuelle style Tailwind */
+
+body.characterPageBody {
+    margin: 0;
+    font-family: normal,'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f9fafb;
+    color: #1f2937;
+  }
+  
+  header {
+    background-color: #3730a3;
+    padding: 1rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  .nav {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .nav a {
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    transition: all 0.3s;
+  }
+  
+  .nav a:hover {
+    background-color: #4f46e5;
+  }
+  
+  .characterPageMain {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+  }
+  
+  .top-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 2rem;
+    background: white;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  }
+  
+  .character-name h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+  
+  .character-illu img {
+    max-height: 250px;
+    object-fit: contain;
+    border-radius: 1rem;
+  }
+  
+  .middle-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .abilities-container {
+    flex: 1;
+    background: white;
+    padding: 1rem;
+    border-radius: 1rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  }
+  
+  .character-abilities {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+  
+  .character-abilities img {
+    width: 50px;
+    height: 50px;
+    background: #eff6ff;
+    border-radius: 0.5rem;
+    padding: 0.25rem;
+    transition: transform 0.3s;
+  }
+  
+  .character-abilities img:hover {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 6px rgba(59,130,246,0.3));
+  }
+  
+  .character-star-diagram {
+    flex: 2;
+    background: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  }
+
+.character-star-diagram img{
+ position:absolute;  
+ width: 50px; 
+}
+  
+  .recommandations {
+    flex: 1;
+    background: white;
+    padding: 1rem;
+    border-radius: 1rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  }
+  
+  .recommandations label,
+  .recommandations input,
+  .recommandations select {
+    display: block;
+    width: 100%;
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+  }
+  
+  .fastSubmit {
+    background: #4f46e5;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .character-stats {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+  .character-stats h2{
+    margin: auto;
+  }
+  
+  .stat-box {
+    background: white;
+    padding: 1rem;
+    text-align: center;
+    border: 1px solid #e5e7eb;
+    border-radius: 1rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    transition: transform 0.3s;
+    display:  flex;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+
+  
+  .stat-box:hover {
+    transform: translateY(-3px);
+  }
+  
+  .stat-icon {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    margin-bottom: 0.5rem;
+    margin: auto;
+  }
+  
+  .stat-name {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #111827;
+    order: -1;
+    width: 100%;
+    
+  }
+  
+  .stat-value {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #2563eb;;
+    width: 100%;
+  }
+/*Tooltip */
+  .tooltip {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+  }
+  
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 280px;
+    background-color: #222;
+    color: #fff;
+    text-align: left;
+    border-radius: 6px;
+    padding: 8px;
+    position: absolute;
+    z-index: 100;
+    bottom: 125%; /* au-dessus de l'image */
+    left: 250%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    font-size: 0.85rem;
+    line-height: 1.4;
+    box-shadow: 0px 2px 10px rgba(0,0,0,0.4);
+  }
+  
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  .effect-text{
+    color: rgb(153, 153, 255);
+  }
+  .cd-text{
+    color: rgb(101, 101, 255);
+  }
+  .type-text{
+    color: rgb(55, 118, 255);
+  }
