@@ -73,17 +73,7 @@
 </head>
 <body class="searchBody">
     
-<header>
-        <nav><ul class="nav">
-            <li><a href="http://localhost/All_Star_Tower_Rater/siteindex.html">Hub</a></li>
-            <li><a href="http://localhost/All_Star_Tower_Rater/engine.php">Advanced Research</a></li>
-            <li><a href="http://localhost/All_Star_Tower_Rater/comparator.html">Comparator</a></li>
-            <li><a href="http://localhost/All_Star_Tower_Rater/settings.html">Settings</a></li>
-            <a href="http://localhost/All_Star_Tower_Rater/characterpagetest.html">
-                <img src="image_file/fierce-man.png" alt="Character Card Exemple"/>
-            </a>
-        </ul></nav>
-    </header>
+<?php include "header.php"?>
 
 <main class="settingsMain">
     <div class="frame">
@@ -261,13 +251,7 @@
         <div id="personnages" class="personnages"></div>
     </div>
 </main>
-<footer>
-        <ul>
-            <li>Data</li>
-            <li>Confidentialité</li>
-            <li>Commander un outil d'analyse</li>
-        </ul>
-</footer>
+<?php include "footer.php"?>
 
 <script src="script.js"></script>
 

@@ -10,17 +10,7 @@
 </head>
 <body class="characterPageBody">
     
-    <header>
-        <nav><ul class="nav">
-            <li><a href="http://localhost/All_Star_Tower_Rater/siteindex.html">Hub</a></li>
-            <li><a href="http://localhost/All_Star_Tower_Rater/engine.php">Advanced Research</a></li>
-            <li><a href="http://localhost/All_Star_Tower_Rater/comparator.html">Comparator</a></li>
-            <li><a href="http://localhost/All_Star_Tower_Rater/settings.html">Settings</a></li>
-            <a href="http://localhost/All_Star_Tower_Rater/characterpagetest.html">
-                <img src="image_file/fierce-man.png" alt="Character Card Exemple" />
-            </a>
-        </ul></nav>
-    </header>
+<?php include "header.php"?>
 
 <main class="characterPageMain">
 
@@ -156,49 +146,11 @@
 </main>
 
 
-<footer>
-        <ul>
-            <li>Data</li>
-            <li>Confidentialité</li>
-            <li>Commander un outil d'analyse</li>
-        </ul>
-</footer>
+<?php include "footer.php"?>
 
-
+<script src="function-import-data.js"></script>
+<script src="function-format.js"></script>
 <script>
-async function importJson() {
-    let unitsData = JSON.parse(sessionStorage.getItem("units_data"));
-    let settingsData = JSON.parse(sessionStorage.getItem("settings_data"));
-    if (!unitsData) { // Si "units_data" n'existe pas, on fetch
-        console.log("No units data, fetching unit data...");
-        try {
-            const response = await fetch('sqlToJson_units.php');
-            unitsData = await response.json();
-            sessionStorage.setItem("units_data", JSON.stringify(unitsData));
-            console.log("Units data fetched and saved:", unitsData);
-        } catch (error) {
-            console.error('Erreur:', error);
-        }
-    } else {
-        console.log("Units data loaded, open to actions.", unitsData);
-    }
-
-    if (!settingsData) { // Si "settings_data" n'existe pas, on fetch
-        console.log("No settings data, fetching settings data...");
-        try {
-            const response = await fetch('sqlToJson_settings.php');
-            settingsData = await response.json();
-            sessionStorage.setItem("settings_data", JSON.stringify(settingsData));
-            console.log("Settings fetched and saved:", settingsData);
-        } catch (error) {
-            console.error('Erreur:', error);
-        }
-    } else {
-        console.log("Settings data loaded, open to actions.", settingsData);
-    }
-
-}
-
 document.addEventListener('DOMContentLoaded', async () => {
 await importJson(); // Attendre que les données soient chargées
     console.log("Données récupérées depuis sessionStorage:");
@@ -237,93 +189,7 @@ let buffFast = document.querySelector(".buffFast span");
     let daElement = document.querySelector(".da");
     let coElement = document.querySelector(".co");
     let wtElement = document.querySelector(".wt");
-
-// Fonction pour calculer les DPS
-function calculateDpsHit(unitId, gamemode, settingsData, mp) {
-    const dps_hit = unitsData[unitId][`dps_${gamemode}_unit`] *
-                    (1 + settingsData[0].buff / 100) *
-                    mp *
-                    (1 + settingsData[0].idol / 100) *
-                    (1 + settingsData[0].fear / 100) *
-                    (1 + settingsData[0].typebane / 100) *
-                    (1 + settingsData[0].enchant_str / 100) *
-                    (1 + settingsData[0].enchant_wkn / 100) *
-                    (1 + settingsData[0].leader / 100) *
-                    (1 + settingsData[0].leader_special / 100);
-    return dps_hit;
-}
-
-// Fonction pour calculer les DPS DOT
-function calculateDpsDot(unitId, gamemode, settingsData) {
-    const dps_dot = unitsData[unitId][`dps_${gamemode}_dot`] *
-                    (1 + settingsData[0].enchant_str / 100) *
-                    (1 + settingsData[0].enchant_wkn / 100) *
-                    (1 + settingsData[0].leader / 100) *
-                    (1 + settingsData[0].leader_special / 100) *
-                    (1 + settingsData[0].stroke / 100) *
-                    (1 + settingsData[0].buff / 100) *
-                    (1 + settingsData[0].idol / 100) *
-                    (1 + settingsData[0].fear / 100) *
-                    (1 + settingsData[0].bloodmoon / 100) *
-                    (1 + settingsData[0].typebane / 100);
-    return dps_dot;
-}
-
-// Fonction pour calculer le DPS ABILITY
-function calculateDpsAbility(unitId, gamemode, settingsData, mp) {
-    const dps_placement = unitsData[unitId][`dps_${gamemode}_placement`] * mp * (1 + settingsData[0].idol / 100) * (1 + settingsData[0].fear / 100);
-    const dps_fix_placement = unitsData[unitId][`dps_${gamemode}_fix_placement`] * (1 + settingsData[0].idol / 100) * (1 + settingsData[0].fear / 100);
-    const dps_buffable = unitsData[unitId][`dps_${gamemode}_buffable`] *
-                         (1 + settingsData[0].enchant_str / 100) *
-                         (1 + settingsData[0].enchant_wkn / 100) *
-                         (1 + settingsData[0].leader / 100) *
-                         (1 + settingsData[0].leader_special / 100) *
-                         (1 + settingsData[0].typebane / 100) *
-                         (1 + settingsData[0].idol / 100) *
-                         (1 + settingsData[0].fear / 100);
-    const dps_not_buffable = unitsData[unitId][`dps_${gamemode}_not_buffable`] *
-                             (1 + settingsData[0].idol / 100) *
-                             (1 + settingsData[0].fear / 100) *
-                             (1 + settingsData[0].enchant_str / 100) *
-                             (1 + settingsData[0].enchant_wkn / 100);
-
-    return dps_placement + dps_fix_placement + dps_buffable + dps_not_buffable;
-}
-
-// Fonction pour calculer le DPS total
-function calculateDpsTotal(dps_hit, dps_dot, dps_ability) {
-    return dps_hit + dps_dot + dps_ability;
-}
-// Fonction pour calculer le coût
-function calculateCost(unitId, gamemode, settingsData, mp) {
-    return unitsData[unitId][`cost_${gamemode}`]*mp*(1 - settingsData[0].leader_cost / 100);
-}
-
-
-function parseFormattedNumber(numStr) {
-    if (typeof numStr !== "string") {
-        numStr = numStr.toString(); // Convertir en string si ce n'est pas déjà le cas
-    }
-    if (numStr.includes("M")) return parseFloat(numStr) * 1e6;
-    if (numStr.includes("k")) return parseFloat(numStr) * 1e3;
-    if (numStr.includes("B")) return parseFloat(numStr) * 1e9;
-    return parseFloat(numStr);
-}
-// Fonction pour calculer le ratio WT
-function calculateWt(ds, co) {
-    let dsValue = parseFormattedNumber(ds);
-    let coValue = parseFormattedNumber(co);
-    return dsValue / coValue;
-}
-/* function calculateWt(ds, co) { <= Ancienne version buggée pour les valeurs extrêmes 
-    return parseFloat(ds) / parseFloat(co);
-} */
-function formatNumber(num) {
-    if (num >= 1e9) return (num / 1e9).toFixed(2) + "B";
-    if (num >= 1e6) return (num / 1e6).toFixed(2) + "M";
-    if (num >= 1e3) return (num / 1e3).toFixed(2) + "k";
-    return num.toFixed(2);
-}
+<?php include "function-calculate-macro.js"?> //Calculs des stats qui apparaissent dans la page
 function addContent() {
     if (unitId && unitsData[unitId]) {
         // Assigner le nom de l'unit
@@ -583,7 +449,7 @@ addModifiedData();
 const ctx = document.getElementById('myChart');
 let settingImportanceAoeType = 50; //ça sera une setting plus tard
 let settingMethode = 1; // 1 = log, 2 = linear
-let settingRankRatio = 70; //Immportance de du rank par rapport à l'importance de la valeur (ça sera une setting plus tard)
+let settingRankRatio = 0; //Immportance de du rank par rapport à l'importance de la valeur (ça sera une setting plus tard)
 
 function ratioGeneral(stat1, statRank1, rankNbr, maxValue1, minValue1, importance, stat2, statRank2, maxValue2, minValue2) {//Fonction pour les deux échelles
 
