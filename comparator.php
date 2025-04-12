@@ -4,19 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>All Star Tower Rater Comparator</title>
-    <link href="style.css" rel="stylesheet" />
+    <link href="style_comparator.css" rel="stylesheet" />
     <link rel="icon" href="image_file/favicon.ico">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body class="comparatorBody">
-<?php include "header.php"?>
-<main class="empty-comparatorMain">
-
-</main>
-<main class="comparatorMain">
-
-</main>
-</div>
+<?php include "header.php"?><?php if (!isset($_GET['id2'])): ?>
+    <main class="empty-comparatorMain">
+        <?php include "comparator-empty.php"; ?>
+    </main>
+    <main class="comparatorMain" style="display: none;"></main>
+<?php else: ?>
+    <main class="empty-comparatorMain" style="display: none;"></main>
+    <main class="comparatorMain">
+        <?php include "comparator-full.php"; ?>
+    </main>
+<?php endif; ?>
 <?php include "footer.php"?>
 
 </body>
@@ -27,31 +30,18 @@
 <script>
 
 
-function startPage(id1,id2) {
-    if (!id2) {
-        document.querySelector(".comparatorMain").style.display = "none";
-        document.querySelector(".empty-comparatorMain").innerHTML=`<?php include "comparator-empty.php" ?>`;
-    } else {
-        document.querySelector(".empty-comparatorMain").style.display = "none";
-        document.querySelector(".comparatorMain").innerHTML=`<?php include "comparator-full.php" ?>`;
-
-    }
-    
-}
-
 document.addEventListener('DOMContentLoaded', async () => {
 await importJson(); // Attendre que les données soient chargées
     console.log("Données récupérées depuis sessionStorage:");
     console.log("Units Data:", JSON.parse(sessionStorage.getItem("units_data")));
     console.log("Settings Data:", JSON.parse(sessionStorage.getItem("settings_data")));
 
-//Récupération des paramètres de l'url 
+// Récupération des paramètres de l'url 
 // Récupérer l'ID depuis l'URL
 const urlParams = new URLSearchParams(window.location.search);
 const unitId1 = urlParams.get("id1");
 const unitId2 = urlParams.get("id2");
 console.log(unitId1,unitId2);
-startPage(unitId1,unitId2)//Load la bonne page
 });
 
 </script>
