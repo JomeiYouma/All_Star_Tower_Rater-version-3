@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Character Page All Star Tower Rater</title>
+    <link href="style_general.css" rel="stylesheet" />
     <link href="/All_Star_Tower_Rater/style_character_page.css" rel="stylesheet" />
     <link rel="icon" href="image_file/favicon.ico">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

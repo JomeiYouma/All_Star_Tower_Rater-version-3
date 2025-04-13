@@ -10,10 +10,17 @@ $searchValue = $_GET[$searchField] ?? '';
 ?>
 
 <!-- Formulaire -->
-<form method="get">
-    <label for="<?= $searchField ?>"><?= $label ?></label>
+<form method="get" class="search">
+<?php
+    foreach ($_GET as $key => $value) {
+        if ($key !== $searchField) {
+            echo '<input type="hidden" name="' . htmlspecialchars($key) . '" value="' . htmlspecialchars($value) . '">';
+        }
+    }
+    ?>
+   <!--  <label for="<?= $searchField ?>"><?= $label ?></label> -->
     <input type="text" name="<?= $searchField ?>" id="<?= $searchField ?>" value="<?= htmlspecialchars($searchValue) ?>">
-    <button type="submit">Rechercher</button>
+    <button type="submit"><img src="image_file/white-research.png" alt="Rechercher un personnage."></button>
 </form>
 
 <?php
@@ -31,14 +38,17 @@ if ($searchValue !== '') {
     $stmt->execute(['search' => '%' . $searchValue . '%']);
     $units = $stmt->fetchAll();
     if (count($units)) {
-        echo "<ul>";
+        echo "<ul class='results'>";
+        $i = 0;
         foreach ($units as $unit) {
+            if ($i >= 5) break;
             echo "<li>" . htmlspecialchars($unit['in_game_name']) . " (" . htmlspecialchars($unit['real_name']) . ")</li>";
-        } 
+            $i++;
+        }
         if (count($units)>5) { echo "<li>and more …</li>"; }
         echo "</ul>";
     } else {
-        echo "Aucun résultat trouvé.";
+        echo "<p>Aucun résultat trouvé.</p>";
     }
 }
 ?>

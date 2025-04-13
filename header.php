@@ -1,11 +1,18 @@
+<?php
+$currentPage = basename($_SERVER['PHP_SELF']);
+?>
+
 <header>
-        <nav><ul class="nav">
-            <li><a href="http://localhost/All_Star_Tower_Rater/siteindex.php">Hub</a></li>
-            <li><a href="http://localhost/All_Star_Tower_Rater/engine.php">Advanced Research</a></li>
-            <li><a href="http://localhost/All_Star_Tower_Rater/comparator.php">Comparator</a></li>
-            <li><a href="http://localhost/All_Star_Tower_Rater/settings.php">Settings</a></li>
-            <a href="http://localhost/All_Star_Tower_Rater/characterpagetest.php">
-                <img src="image_file/fierce-man.png" alt="" />
-            </a>
-        </ul></nav>
+    <nav>
+        <ul class="nav">
+            <li><a href="/All_Star_Tower_Rater/siteindex.php">Hub</a></li>
+            <li><a href="/All_Star_Tower_Rater/engine.php">Advanced Research</a></li>
+            <li><a href="/All_Star_Tower_Rater/comparator.php">Comparator</a></li>
+            <li><a href="/All_Star_Tower_Rater/settings.php">Settings</a></li>
+
+            <?php if ($currentPage !== 'engine.php'): ?>
+                <li class="search-li"><?php include 'search.php'; ?></li>
+            <?php endif; ?>
+        </ul>
+    </nav>
 </header>

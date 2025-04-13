@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>All Star Tower Rater Comparator</title>
+    <link href="style_general.css" rel="stylesheet" />
     <link href="style_comparator.css" rel="stylesheet" />
     <link rel="icon" href="image_file/favicon.ico">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
