@@ -13,13 +13,21 @@
     padding: 0;
     margin: 0;
   }
-  
-  a {
+ 
+  a{
     text-decoration: none;
+    color: #222;
+  }
+  a:visited{
+    text-decoration: none;
+    color: #222;
+  }
+
+  a:not(.search-link) {
     color: white;
   }
   
-  a:visited {
+  a:not(.search-link):visited {
     color: white;
   }
   
@@ -62,14 +70,14 @@
     padding-right: 15px;
   }
   
-  .nav a {
+  .nav a:not(.search-link) {
     font-weight: bold;
     padding: 0.5rem 1rem;
     border-radius: 0.5rem;
     transition: background-color 0.3s;
   }
   
-  .nav a:hover {
+  .nav a:not(.search-link):hover {
     background-color: #4f46e5;
   }
   

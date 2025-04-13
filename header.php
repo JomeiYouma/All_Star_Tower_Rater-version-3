@@ -11,7 +11,12 @@ $currentPage = basename($_SERVER['PHP_SELF']);
             <li><a href="/All_Star_Tower_Rater/settings.php">Settings</a></li>
 
             <?php if ($currentPage !== 'engine.php'): ?>
-                <li class="search-li"><?php include 'search.php'; ?></li>
+                <li class="search-li">
+                    <?php
+                        $linkPrefix = 'characterPageTest.php?id=';
+                        include 'search.php';
+                    ?>
+                </li>
             <?php endif; ?>
         </ul>
     </nav>

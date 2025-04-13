@@ -1,5 +1,6 @@
 <?php
 // Paramètres à fournir avant include
+$linkPrefix = $linkPrefix ?? 'characterPageTest.php?id='; // Pour pouvoir utiliser la searchbar pour plusieurs choses
 $searchField = $searchField ?? 'name'; // nom du champ GET (ex: 'name1', 'name2')
 $label = $label ?? 'Search';           // texte du label
 /* $title = $title ?? 'Résultats';    */
@@ -42,7 +43,9 @@ if ($searchValue !== '') {
         $i = 0;
         foreach ($units as $unit) {
             if ($i >= 5) break;
-            echo "<li>" . htmlspecialchars($unit['in_game_name']) . " (" . htmlspecialchars($unit['real_name']) . ")</li>";
+            echo "<li><a class='search-link' href='" . $linkPrefix . urlencode($unit['unit_id']) . "'>"
+            . htmlspecialchars($unit['in_game_name']) . " (" . htmlspecialchars($unit['real_name']) . ")"
+            . "</a></li>";
             $i++;
         }
         if (count($units)>5) { echo "<li>and more …</li>"; }
