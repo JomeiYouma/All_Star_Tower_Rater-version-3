@@ -23,11 +23,11 @@
     color: #222;
   }
 
-  a:not(.search-link) {
+  a:not(.search-link,.clear-the-selection) {
     color: white;
   }
   
-  a:not(.search-link):visited {
+  a:not(.search-link,.clear-the-selection):visited {
     color: white;
   }
   
@@ -70,14 +70,14 @@
     padding-right: 15px;
   }
   
-  .nav a:not(.search-link) {
+  .nav a:not(.search-link,.clear-the-selection) {
     font-weight: bold;
     padding: 0.5rem 1rem;
     border-radius: 0.5rem;
     transition: background-color 0.3s;
   }
   
-  .nav a:not(.search-link):hover {
+  .nav a:not(.search-link,.clear-the-selection):hover {
     background-color: #4f46e5;
   }
   
@@ -163,7 +163,8 @@
     border-bottom: none;
     font-style: italic;
     color: #666;
-    animation-delay: 0.3s; 
+    animation-delay: 0.3s;
+    /* width: 100%; Comment rendre la case cliquable ?*/
   }
   
   /* Message "aucun résultat" animé */

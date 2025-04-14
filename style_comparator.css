@@ -202,3 +202,76 @@ width: 50px;
     box-shadow: rgb(191, 74, 100)4px 4px 3px;
     border-radius: 10px;
 }
+
+.empty-search-space{
+    display: flex;
+    flex-direction: row ;
+    justify-content: space-around;
+    margin: 48px 0px 48px 0px;
+    
+}
+.search-part{
+    display: flex;
+    flex-direction: column;
+    max-width: 275px;
+}
+/* Demander à Gaëlle comment rendre ça ally (texte absent)*/
+.part-search-card{
+    position: relative;
+    margin: 24px 0px 24px 0px;
+    border: lightgray 1px solid;
+    background: white;  
+    border-radius: 1rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+.part-search-card *:not(img){
+    margin:16px 10px 16px 10px;
+}
+
+.part-search-card img{
+    width: 100%;
+    height: 70px;
+    object-fit: cover;
+    object-position: 50% 70%;
+    border-radius: 1rem;
+    
+}
+/* .part-search-card img::after { GNIEEE ça ne marche pas.
+    content: "";
+    position: absolute;
+    z-index: 100;
+    inset: 0;
+    box-shadow: inset 0 0 10px 10px black;
+  } */
+
+.part-search-nothing{
+    margin: 24px 0px 24px 0px;
+    display: flex;
+    width: 100%;
+    aspect-ratio: 1/1;
+    border: gray 2px dotted;
+    border-radius: 1rem;
+    color: gray;
+    align-items: center;
+    justify-content: center;
+}
+
+.clear-the-selection{
+    position: absolute;
+    color: red;
+    background-color: rgb(247, 236, 236);
+    border-radius: 5px;
+    max-width: 75px;
+    left: 65%;
+    top: 75%;
+    transition: all ease-in 0.2s;
+}
+
+.clear-the-selection:hover{
+transform: scale(1.1);
+}
+
+.clear-the-selection:visited{
+    color: red;
+}

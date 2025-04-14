@@ -1,4 +1,6 @@
+<div>
 <?php
+
 // Paramètres à fournir avant include
 $linkPrefix = $linkPrefix ?? 'characterPageTest.php?id='; // Pour pouvoir utiliser la searchbar pour plusieurs choses
 $searchField = $searchField ?? 'name'; // nom du champ GET (ex: 'name1', 'name2')
@@ -30,7 +32,7 @@ if ($searchValue !== '') {
     $conn = new PDO("mysql:host=localhost;dbname=all_star_tower_rater;charset=utf8", "root", "");
 /*LIMIT 6 pour ne pas charger plus d'units que necessaire mais quand même savoir quand il y en a trop*/
     $stmt = $conn->prepare("
-        SELECT in_game_name, real_name, unit_id FROM units 
+        SELECT in_game_name, real_name, unit_id, unit_file FROM units 
         WHERE in_game_name LIKE :search 
         OR real_name LIKE :search
         ORDER BY in_game_name
@@ -55,3 +57,4 @@ if ($searchValue !== '') {
     }
 }
 ?>
+</div>

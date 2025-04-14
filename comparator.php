@@ -10,7 +10,10 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body class="comparatorBody">
-<?php include "header.php"?><?php if (isset($_GET['id2']) && isset($_GET['id1'])): ?>
+<?php 
+    $id1 = $_GET['id1']?? null;
+    $id2 = $_GET['id2']?? null;
+    include "header.php"?><?php if (isset($id2) && isset($id1)): ?>
     <main class="empty-comparatorMain" style="display: none;"></main>
     <main class="comparatorMain">
         <?php include "comparator-full.php"; ?>

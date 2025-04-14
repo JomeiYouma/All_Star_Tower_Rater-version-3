@@ -16,10 +16,7 @@
 <main class="hubMain">
     <h1 class="titleBis">ASTRater</h1>
     <h1 class="title">All Star Tower Rater</h1>
-    <div class="searchBar">
-        <input id="search" type="text" placeholder="Search any unit !">
-        <ul class="drop"></ul>
-      </div>
+    <br><br>
     <div class="inLine">
         <a href="comparator.html" class="button-85" role="button">Comparator</a>
         <a href="/comparator.html" class="button-85" role="button">Team Rater</a>
