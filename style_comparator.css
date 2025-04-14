@@ -1,2 +1,204 @@
+/* ------------- CSS POUR COMPARATOR */
+img{
+width: 50px;
+}
+.stat-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(145deg, #2D2727, #413543);
+    border: 2px solid #70587C;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease-in-out;
+    min-height: 130px;
+}
 
-/* ------------- CSS POUR FRONT PAGE */
+/* Agrandissement au survol */
+.stat-box:hover {
+    transform: scale(1.05);
+}
+
+/* Icône de la statistique */
+.stat-icon {
+    width: 30px;
+    height: 30px;
+    margin-bottom: 5px;
+}
+
+/* Nom de la statistique */
+.stat-name {
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #F8C8DC;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Valeur de la statistique */
+.stat-value {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #FFD700;
+    background: #70587C;
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+/* .comparatorBody{
+    background-color:#2D2727;
+} */
+.comparatorMain {
+    background-color: antiquewhite;
+    max-width: 1515px;
+    margin:auto;
+}
+
+.presentationSection, .infoComparator {
+    display: flex;
+    flex-direction: row;
+    background-color: #70587C;
+    justify-content: space-between;
+}
+
+.comparativeStar{
+    background-color: antiquewhite;
+    aspect-ratio: 1/1;
+    max-width: 450px;
+    margin: auto;
+    margin-top:5px;
+}
+.firstAbilities, .secondAbilities {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 10px;
+}
+
+.middleSecionComparator{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background-color: antiquewhite;
+    align-items: flex-start;
+}
+@media (max-width: 800px) {
+    .comparativeStar{
+        width: 100%;
+
+    }
+    .middleSecionComparator h2{
+        width: 100%;
+    }
+
+    .firstAbilities, .secondAbilities {
+        width: 47%;
+}
+}
+
+@media (min-width: 800px) {
+    .middleSecionComparator h2{
+        width: 100%;
+    }
+    .firstAbilities, .secondAbilities {
+        order: 2;
+        width: 20%;
+    }
+    .comparativeStar{
+        order: 3;
+        width: 60%;
+    }
+    .secondAbilities {
+        order: 4;
+    }
+}
+
+
+
+.comparatorMain h2 {
+    color: white;
+    text-align: center;
+    background-color: #413543;
+    margin: 0;
+}
+
+.firstPresentation, .secondPresentation,
+.firstInfo, .secondInfo {
+    width: 48%;
+}
+
+.firstAbilities div, .secondAbilities div {
+    background-color: #70587C;
+    box-shadow: 6px 3px 3px #413543;
+    border-radius: 15px;
+    margin: 10px auto;
+    padding: 3px;
+    display: flex;
+}
+
+.firstAbilities div:hover, .secondAbilities div:hover {
+    transform: translate(6px, 3px);
+    box-shadow: 2px 1px 3px #1d181e;
+}
+
+.firstAbilities img, .secondAbilities img {
+    margin: auto;
+    aspect-ratio: 1 / 1;
+    border-radius: 15px;
+    min-width: 35px;
+}
+
+.firstInfo, .secondInfo {
+    display: flex;
+    flex-wrap: wrap;
+    padding-bottom: 75px;
+}
+
+.secondInfo { justify-content: flex-end; }
+
+.firstInfo .stat-box, .secondInfo .stat-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(145deg, #2D2727, #413543);
+    border: 2px solid #70587C;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease-in-out;
+    width: 180px;
+    height: 100px;
+}
+
+.firstInfo .stat-value, .secondInfo .stat-value {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #FFD700;
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.infoComparator .stat-name {
+    font-size: 0.6rem;
+    color: #F8C8DC;
+    letter-spacing: 1px;
+}
+
+.red{
+    background-color:rgba(54, 162, 235, 0.2) ;
+    border:rgb(54, 162, 235) solid 2px ;
+    box-shadow: rgb(37, 114, 165) -4px 4px 3px;
+    border-radius: 10px;
+}
+
+.blue{
+    background-color:rgba(255, 99, 132, 0.2);
+    border:rgb(255, 99, 132) solid 2px ;
+    box-shadow: rgb(191, 74, 100)4px 4px 3px;
+    border-radius: 10px;
+}

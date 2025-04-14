@@ -10,16 +10,16 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body class="comparatorBody">
-<?php include "header.php"?><?php if (!isset($_GET['id2'])): ?>
+<?php include "header.php"?><?php if (isset($_GET['id2']) && isset($_GET['id1'])): ?>
+    <main class="empty-comparatorMain" style="display: none;"></main>
+    <main class="comparatorMain">
+        <?php include "comparator-full.php"; ?>
+<?php else: ?>
+    </main>
     <main class="empty-comparatorMain">
         <?php include "comparator-empty.php"; ?>
     </main>
     <main class="comparatorMain" style="display: none;"></main>
-<?php else: ?>
-    <main class="empty-comparatorMain" style="display: none;"></main>
-    <main class="comparatorMain">
-        <?php include "comparator-full.php"; ?>
-    </main>
 <?php endif; ?>
 <?php include "footer.php"?>
 
