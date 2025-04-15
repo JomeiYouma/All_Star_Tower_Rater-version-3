@@ -30,7 +30,7 @@
                 /* var_dump($unit); */
             }else {
                 echo '
-                <div class="part-search-nothing">Select first unit</div>
+                <div class="part-search-nothing" id="first-box">Select first unit</div>
                 ';
             }
         ?>
@@ -65,12 +65,17 @@ if  (isset($id2)) {
     /* var_dump($unit); */
 }else {
     echo '
-        <div class="part-search-nothing">Select second unit</div>
+        <div class="part-search-nothing"  id="second-box">Select second unit</div>
     ';
 }
 ?>
 </section>
 </section>
 <script>
-
+  document.getElementById("first-box").addEventListener("click", function() {
+    document.getElementById("name1").focus();
+  });
+  document.getElementById("second-box").addEventListener("click", function() {
+    document.getElementById("name2").focus();
+  });
 </script>

@@ -22,7 +22,7 @@
             <p>Description ou sous-texte</p>
         </div>
         <div class="character-illu">
-            <img src="image_file/4-Eye_Sorcerer_29_29.webp" alt="">
+            <img src="image_file/blank_character.png" alt="">
         </div>
     </section>
 

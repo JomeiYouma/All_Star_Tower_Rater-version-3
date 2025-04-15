@@ -1,22 +1,24 @@
 
 <section class="presentationSection">
         <div class="firstPresentation blue">
-            <h1>The Founder</h1>
-            <p>Ymir Fritz - SNK</p>
-            <p>Holy</p>
-            <p>Nuker. Mobility Control. Summoner</p>
+            <h1 class="name1">The Founder</h1>
+            <p class="forname1">Ymir Fritz - SNK</p>
+            <p class="enchant1">Holy</p>
+            <p class="role1">Nuker. Mobility Control. Summoner</p>
+            <img  class="illu1" src="image_file/blank_character.png" alt="">
         </div>
         <div class="secondPresentation red">
-            <h1>4 Eye Sorcerer (Timer)</h1>
-            <p>Nanamin (Hot Fried Chicken)</p>
-            <p>Nature</p>
-            <p>Crowd Control</p>
+            <h1 class="name2">4 Eye Sorcerer (Timer)</h1>
+            <p class="forname2">Nanamin (Hot Fried Chicken)</p>
+            <p class="enchant2">Nature</p>
+            <p class="role2">Crowd Control</p>
+            <img  class="illu2" src="image_file/blank_character.png" alt="">
         </div>
     </section>
     
     <section class="middleSecionComparator">
         <h2>Abilities</h2>
-        <aside class="firstAbilities blue">
+        <aside class="firstAbilities blue" >
             <div title="Abnormal Giant (Burns)
             Upon activation ; it will 4x the unit's damage in burn to all enemies on her range. Summons a Titan with 110B."> 
                 <img src="image_file/attack_on_titan_309-1.webp" alt="Abnormal Giant (Burns)">
@@ -76,134 +78,134 @@
             <div class="stat-box">
                 <img src="image_file/three-friends.png" alt="" class="stat-icon">
                 <span class="stat-name">Maximum Placement</span>
-                <span class="stat-value">1</span>
+                <span class="stat-value mp1">1</span>
             </div>
             <div class="stat-box">
                 <img src="image_file/elements.png" alt="" class="stat-icon">
                 <span class="stat-name">Enchant Type</span>
-                <span class="stat-value">Holy</span>
+                <span class="stat-value ec1">Holy</span>
             </div>
             <div class="stat-box">
                 <img src="image_file/eye-target.png" alt="" class="stat-icon">
                 <span class="stat-name">Target</span>
-                <span class="stat-value">Hybrid</span>
+                <span class="stat-value ar1">Hybrid</span>
             </div>
             <div class="stat-box">
                 <img src="image_file/summonning.png" alt="" class="stat-icon">
                 <span class="stat-name">Farming Difficulty</span>
-                <span class="stat-value">A-</span>
+                <span class="stat-value fd1">A-</span>
             </div>
             <div class="stat-box">
                 <img src="image_file/upgrading.png" alt="" class="stat-icon">
                 <span class="stat-name">Upgrade Progression</span>
-                <span class="stat-value">E-</span>
+                <span class="stat-value up1">E-</span>
             </div>
             <div class="stat-box">
                 <img src="image_file/aoe.png" alt="" class="stat-icon">
                 <span class="stat-name">Area of Effect Type</span>
-                <span class="stat-value">Circle (Large)</span>
+                <span class="stat-value ae1">Circle (Large)</span>
             </div>
             <div class="stat-box">
                 <img src="image_file/range.png" alt="" class="stat-icon">
                 <span class="stat-name">Hitting Range</span>
-                <span class="stat-value">100</span>
+                <span class="stat-value hr1">100</span>
             </div>
             <div class="stat-box">
                 <img src="image_file/fierce-man.png" alt="" class="stat-icon">
                 <span class="stat-name">Damage / seconds</span>
-                <span class="stat-value">2900000</span>
+                <span class="stat-value ds1">2900000</span>
             </div>
             <div class="stat-box">
                 <img src="image_file/bleeding_heart.png" alt="" class="stat-icon">
                 <span class="stat-name">DPS from DoT</span>
-                <span class="stat-value">0</span>
+                <span class="stat-value dd1">0</span>
             </div>
             <div class="stat-box">
                 <img src="image_file/raw_damage.png" alt="" class="stat-icon">
                 <span class="stat-name">DPS from hits</span>
-                <span class="stat-value">2900000</span>
+                <span class="stat-value dh1">2900000</span>
             </div>
             <div class="stat-box">
                 <img src="image_file/magic_damage.png" alt="" class="stat-icon">
                 <span class="stat-name">DPS from Abilities</span>
-                <span class="stat-value">0</span>
+                <span class="stat-value da1">0</span>
             </div>
             <div class="stat-box">
                 <img src="image_file/take-my-money.png" alt="" class="stat-icon">
                 <span class="stat-name">Cost</span>
-                <span class="stat-value">22000000</span>
+                <span class="stat-value co1">22000000</span>
             </div>
             <div class="stat-box">
                 <img src="image_file/buy-card.png" alt="" class="stat-icon">
                 <span class="stat-name">Worthiness</span>
-                <span class="stat-value">0.13</span>
+                <span class="stat-value wt1">0.13</span>
             </div>
         </div>
         <div class="secondInfo red">
             <div class="stat-box">
                 <img src="image_file/three-friends.png" alt="" class="stat-icon">
                 <span class="stat-name">Maximum Placement</span>
-                <span class="stat-value">8</span>
+                <span class="stat-value mp2">8</span>
             </div>
             <div class="stat-box">
                 <img src="image_file/elements.png" alt="" class="stat-icon">
                 <span class="stat-name">Enchant Type</span>
-                <span class="stat-value">Nature</span>
+                <span class="stat-value ec2">Nature</span>
             </div>
             <div class="stat-box">
                 <img src="image_file/eye-target.png" alt="" class="stat-icon">
                 <span class="stat-name">Target</span>
-                <span class="stat-value">Hybrid</span>
+                <span class="stat-value ar2">Hybrid</span>
             </div>
             <div class="stat-box">
                 <img src="image_file/summonning.png" alt="" class="stat-icon">
                 <span class="stat-name">Farming Difficulty</span>
-                <span class="stat-value">A-</span>
+                <span class="stat-value fd2">A-</span>
             </div>
             <div class="stat-box">
                 <img src="image_file/upgrading.png" alt="" class="stat-icon">
                 <span class="stat-name">Upgrade Progression</span>
-                <span class="stat-value">A+</span>
+                <span class="stat-value up2">A+</span>
             </div>
             <div class="stat-box">
                 <img src="image_file/aoe.png" alt="" class="stat-icon">
                 <span class="stat-name">Area of Effect Type</span>
-                <span class="stat-value">Full</span>
+                <span class="stat-value ae2">Full</span>
             </div>
             <div class="stat-box">
                 <img src="image_file/range.png" alt="" class="stat-icon">
                 <span class="stat-name">Hitting Range</span>
-                <span class="stat-value">120</span>
+                <span class="stat-value hr2">120</span>
             </div>
             <div class="stat-box">
                 <img src="image_file/fierce-man.png" alt="" class="stat-icon">
                 <span class="stat-name">Damage / seconds</span>
-                <span class="stat-value">732889</span>
+                <span class="stat-value ds2">732889</span>
             </div>
             <div class="stat-box">
                 <img src="image_file/bleeding_heart.png" alt="" class="stat-icon">
                 <span class="stat-name">DPS from DoT</span>
-                <span class="stat-value">0</span>
+                <span class="stat-value dd2">0</span>
             </div>
             <div class="stat-box">
                 <img src="image_file/raw_damage.png" alt="" class="stat-icon">
                 <span class="stat-name">DPS from hits</span>
-                <span class="stat-value">732889</span>
+                <span class="stat-value dh2">732889</span>
             </div>
             <div class="stat-box">
                 <img src="image_file/magic_damage.png" alt="" class="stat-icon">
                 <span class="stat-name">DPS from Abilities</span>
-                <span class="stat-value">0</span>
+                <span class="stat-value da2">0</span>
             </div>
             <div class="stat-box">
                 <img src="image_file/take-my-money.png" alt="" class="stat-icon">
                 <span class="stat-name">Cost</span>
-                <span class="stat-value">2755000</span>
+                <span class="stat-value co2">2755000</span>
             </div>
             <div class="stat-box">
                 <img src="image_file/buy-card.png" alt="" class="stat-icon">
                 <span class="stat-name">Worthiness</span>
-                <span class="stat-value">0.7</span>
+                <span class="stat-value wt2">0.7</span>
             </div>
         </div>
     </section>
