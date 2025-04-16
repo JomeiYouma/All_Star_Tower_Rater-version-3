@@ -118,88 +118,13 @@ let wt2 = document.querySelector(".wt2");
 //Fast Settings
 let gmFast = document.querySelector(".gamemodeFast span");
 let buffFast = document.querySelector(".buffFast span");
+<?php include "function-add-content.js"?>
 
-function addContentForUnit(unitId, elements) {
-    const {
-        name, desc, img, capaContainer,
-        mpElement, ecElement, rlElement, arElement,
-        fdElement, upElement, aeElement, hrElement,
-        dsElement, ddElement, dhElement, daElement,
-        coElement, wtElement, gmFast
-    } = elements;
-
-    if (unitId && unitsData[unitId]) {
-        name.innerHTML = unitsData[unitId].in_game_name;
-        desc.innerHTML = unitsData[unitId].real_name;
-        img.innerHTML = `<img src="image_file/${unitsData[unitId].unit_file}" alt="">`;
-
-        capaContainer.innerHTML = "";
-
-        if (unitsData[unitId].gamemodes[gamemode]) {
-            let abilities = unitsData[unitId].gamemodes[gamemode].abilities;
-
-            if (abilities && typeof abilities === "object") {
-                capaContainer.innerHTML = "";
-                Object.values(abilities).forEach(ability => {
-                    const typeArray = ability.ability_types
-                        ? Object.values(ability.ability_types).map(typeObj => typeObj.ability_type_name)
-                        : [];
-
-                    capaContainer.innerHTML += `
-                        <div class="tooltip">
-                            <img src="image_file/${ability.ability_file}" alt='${ability.ability_name}'>
-                            <div class="tooltiptext">
-                                <strong class="effect-text">Effect :</strong> ${ability.ability_description}<br>
-                                <strong class="type-text">Ability type :</strong> ${typeArray.join(", ") || "N/A"}<br>
-                                <strong class="cd-text">Cooldown :</strong> ${ability.ability_cooldown}s
-                            </div>
-                        </div>`;
-                });
-            } else {
-                capaContainer.innerHTML = "<p>No ability found</p>";
-            }
-        }
-
-        let mp = gamemode === "raid"
-            ? unitsData[unitId].placement_raid || unitsData[unitId].placement
-            : gamemode === "start" ? 1 : unitsData[unitId].placement;
-
-        mpElement.innerHTML = mp;
-        ecElement.innerHTML = unitsData[unitId].enchant;
-        rlElement.innerHTML = unitsData[unitId][`role_${gamemode}`];
-        arElement.innerHTML = unitsData[unitId][`hit_air_${gamemode}`];
-        fdElement.innerHTML = unitsData[unitId].farming_difficulty;
-        upElement.innerHTML = unitsData[unitId].progression;
-        aeElement.innerHTML = unitsData[unitId][`aoe_${gamemode}`];
-        hrElement.innerHTML = unitsData[unitId][`rng_${gamemode}`] * (1 + settingsData[0].rng_buff / 100);
-
-        const dps_hit = calculateDpsHit(unitId, gamemode, settingsData, mp);
-        const dps_dot = calculateDpsDot(unitId, gamemode, settingsData);
-        const dps_ability = calculateDpsAbility(unitId, gamemode, settingsData, mp);
-
-        dhElement.innerHTML = formatNumber(calculateLevelBasedDps(dps_hit));
-        ddElement.innerHTML = formatNumber(calculateLevelBasedDps(dps_dot));
-        daElement.innerHTML = formatNumber(dps_ability);
-        dsElement.innerHTML = formatNumber(
-            calculateDpsTotal(
-                calculateLevelBasedDps(dps_hit),
-                calculateLevelBasedDps(dps_dot),
-                dps_ability
-            )
-        );
-
-        const cost = calculateCost(unitId, gamemode, settingsData, mp);
-        coElement.innerHTML = formatNumber(cost);
-        wtElement.innerHTML = formatNumber(calculateWt(dsElement.innerHTML, coElement.innerHTML));
-
-        /* gmFast.innerHTML = gamemode; */
-    }
-}
 addContentForUnit(unitId1, {
     name: name1,
     desc: forname1,
-    img: illu1,
-    capaContainer: capaContainer2,
+    illu: illu1,
+    capaContainer: capaContainer1,
     mpElement: mp1,
     ecElement: ec1,
     rlElement: role1,
@@ -214,13 +139,13 @@ addContentForUnit(unitId1, {
     daElement: da1,
     coElement: co1,
     wtElement: wt1,
-    gmFast: gmFast
+    /* gmFast: gmFast */
 });
 
 addContentForUnit(unitId2, {
     name: name2,
     desc: forname2,
-    img: illu2,
+    illu: illu2,
     capaContainer: capaContainer2,
     mpElement: mp2,
     ecElement: ec2,
@@ -236,7 +161,7 @@ addContentForUnit(unitId2, {
     daElement: da2,
     coElement: co2,
     wtElement: wt2,
-    gmFast: gmFast
+    /* gmFast: gmFast */
 });
 });
 </script>

@@ -190,89 +190,8 @@ let buffFast = document.querySelector(".buffFast span");
     let daElement = document.querySelector(".da");
     let coElement = document.querySelector(".co");
     let wtElement = document.querySelector(".wt");
-<?php include "function-calculate-macro.js"?> //Calculs des stats qui apparaissent dans la page
-function addContent() {
-    if (unitId && unitsData[unitId]) {
-        // Assigner le nom de l'unit
-        name.innerHTML = unitsData[unitId].in_game_name;
-        // Assigner la description de l'unit
-        desc.innerHTML = unitsData[unitId].real_name;
-        // Assigner l'image de l'unit
-        img.innerHTML = `<img src="image_file/${unitsData[unitId].unit_file}" alt="">`;
-
-        capaContainer.innerHTML = ""; //Vider le conteneur des capacités
-
-        if (unitsData[unitId].gamemodes[`${gamemode}`]) {
-    let abilities = unitsData[unitId].gamemodes[`${gamemode}`].abilities;
-
-    if (abilities && typeof abilities === "object") {
-        let abilitiesArray = Object.values(abilities);
-        capaContainer.innerHTML = "";
-
-        abilitiesArray.forEach(ability => {
-            // Récupération des types
-            let typeArray = [];
-            if (ability.ability_types && typeof ability.ability_types === "object") {
-                typeArray = Object.values(ability.ability_types).map(typeObj => typeObj.ability_type_name);
-            }
-
-            let typeList = typeArray.join(", ") || "N/A";
-
-            capaContainer.innerHTML += `
-                <div class="tooltip">
-                    <img src="image_file/${ability.ability_file}" alt='${ability.ability_name}'>
-                    <div class="tooltiptext">
-                        <strong class="effect-text">Effect :</strong> ${ability.ability_description}<br>
-                        <strong class="type-text">Ability type :</strong> ${typeList}<br>
-                        <strong class="cd-text">Cooldown :</strong> ${ability.ability_cooldown}s
-                    </div>
-                </div>`;
-        });
-    } else {
-        capaContainer.innerHTML = "<p>No ability found</p>";
-    }
-}
-
-        // Calcul des stats
-        let mp = 1;
-        switch (gamemode) {
-            case "raid":
-                mp = unitsData[unitId].placement_raid || unitsData[unitId].placement;
-                break;
-            case "start":
-                mp = 1;
-                break;
-            default:
-                mp = unitsData[unitId].placement;
-                break;
-        }
-
-        mpElement.innerHTML = mp;
-        ecElement.innerHTML = unitsData[unitId].enchant;
-        rlElement.innerHTML = unitsData[unitId][`role_${gamemode}`];
-        arElement.innerHTML = unitsData[unitId][`hit_air_${gamemode}`];
-        fdElement.innerHTML = unitsData[unitId].farming_difficulty;
-        upElement.innerHTML = unitsData[unitId].progression;
-        aeElement.innerHTML = unitsData[unitId][`aoe_${gamemode}`];
-        hrElement.innerHTML = unitsData[unitId][`rng_${gamemode}`] * (1 + settingsData[0].rng_buff / 100);
-
-        // Calcul du DPS Hit, DPS DOT et DPS Ability
-        let dps_hit = calculateDpsHit(unitId, gamemode, settingsData, mp);
-        let dps_dot = calculateDpsDot(unitId, gamemode, settingsData);
-        let dps_ability = calculateDpsAbility(unitId, gamemode, settingsData, mp);
-        // Affichage des DPS avec le calcul du level
-        dhElement.innerHTML = formatNumber(calculateLevelBasedDps(dps_hit));
-        ddElement.innerHTML = formatNumber(calculateLevelBasedDps(dps_dot));
-        daElement.innerHTML = formatNumber(dps_ability);
-        dsElement.innerHTML = formatNumber(calculateDpsTotal(calculateLevelBasedDps(dps_hit), calculateLevelBasedDps(dps_dot), dps_ability));
-
-        // Calcul du coût et du ratio WT
-        let cost = calculateCost(unitId, gamemode, settingsData, mp);
-        coElement.innerHTML = formatNumber(cost);
-        wtElement.innerHTML = formatNumber(calculateWt(dsElement.innerHTML, coElement.innerHTML));
-        gmFast.innerHTML = gamemode;
-    }
-}
+<?php include "function-calculate-macro.js";?> //Calculs des stats qui apparaissent dans la page
+<?php include "function-add-content.js";?>
 function calculateLevelBasedDps(dps) {
     let level = settingsData[0].level;
     switch (true) {
@@ -443,7 +362,26 @@ console.log('Min wt =',minWtValue);
 };
 //-------------------------------------------------------------------------------------------------------------------------------------
 // Appel de la fonction après le chargement des données
-addContent();
+addContentForUnit(unitId, {
+    name: name,
+    desc: desc,
+    illu: img,
+    capaContainer: capaContainer,
+    mpElement: mpElement,
+    ecElement: ecElement,
+    rlElement: rlElement,
+    arElement: arElement,
+    fdElement: fdElement,
+    upElement: upElement,
+    aeElement: aeElement,
+    hrElement: hrElement,
+    dsElement: dsElement,
+    ddElement: ddElement,
+    dhElement: dhElement,
+    daElement: daElement,
+    coElement: coElement,
+    wtElement: wtElement,
+});
 addModifiedData();
 /* console.log(unitsData[unitId].progression_points); */
 //--------------------------------------------------DIAGRAMME DE LA MORT QUI TUE-------------------------------------------

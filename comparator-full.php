@@ -5,14 +5,18 @@
             <p class="forname1">Ymir Fritz - SNK</p>
             <p class="enchant1">Holy</p>
             <p class="role1">Nuker. Mobility Control. Summoner</p>
-            <img  class="illu1" src="image_file/blank_character.png" alt="">
+            <div class="illu1">
+            <img src="image_file/blank_character.png" alt="">
+            </div>
         </div>
         <div class="secondPresentation red">
             <h1 class="name2">4 Eye Sorcerer (Timer)</h1>
             <p class="forname2">Nanamin (Hot Fried Chicken)</p>
             <p class="enchant2">Nature</p>
             <p class="role2">Crowd Control</p>
-            <img  class="illu2" src="image_file/blank_character.png" alt="">
+            <div class="illu2">
+            <img src="image_file/blank_character.png" alt="">
+            </div>
         </div>
     </section>
     
