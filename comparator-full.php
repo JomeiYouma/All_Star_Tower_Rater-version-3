@@ -1,4 +1,181 @@
+<section class="presentationSection">
+        <div class="firstPresentation blue fade-in" style="animation-delay: 0.1s">
+            <h1 class="name1">The Founder</h1>
+            <p class="forname1">Ymir Fritz - SNK</p>
+            <p class="enchant1">Holy</p>
+            <p class="role1">Nuker. Mobility Control. Summoner</p>
+            <div class="illu1">
+                <img src="image_file/blank_character.png" alt="">
+            </div>
+            <?php
+            $searchField = 'name2';
+            $label = 'Change the unit';           // texte du label (oui oui)
+            $linkPrefix = 'comparator.php?id2='.$id2.'&id1=';
+            include 'search.php';
+            ?>
+        </div>
+        <div class="secondPresentation red fade-in" style="animation-delay: 0.2s">
+            <div class="illu2">
+                <img src="image_file/blank_character.png" alt="">
+            </div>
+            <h1 class="name2">4 Eye Sorcerer (Timer)</h1>
+            <p class="forname2">Nanamin (Hot Fried Chicken)</p>
+            <p class="enchant2">Nature</p>
+            <p class="role2">Crowd Control</p>
+            <?php
+            $searchField = 'name2';
+            $label = 'Change the unit';           // texte du label (oui oui)
+            $linkPrefix = 'comparator.php?id1='.$id1.'&id2=';
+            include 'search.php';
+            ?>
+        </div>
+    </section>
 
+    <section class="middleSecionComparator fade-in" style="animation-delay: 0.3s">
+        <h2>Abilities</h2>
+        <aside class="firstAbilities blue">
+            <div title="Abnormal Giant (Burns)             Upon activation ; it will 4x the unit's damage in burn to all enemies on her range. Summons a Titan with 110B.">
+                <img src="image_file/attack_on_titan_309-1.webp" alt="Abnormal Giant (Burns)">
+            </div>
+            <div title="Armored Giant (Defense)             Summons a Titan with 234 ;66M hp.">
+                <img src="image_file/ArmoredGiant29.webp" alt="Armored Giant (Defense)">
+            </div>
+            <div title="Attack Giant (Rewinds)             Summons a Titan with 95M hp.">
+                <img src="image_file/AttackGiant29.webp" alt="Attack Giant (Rewinds)">
+            </div>
+            <div title="Cart Giant (Money)             Summons a titan with 18k hp.">
+                <img src="image_file/CartGiant29.webp" alt="Cart Giant (Money)">
+            </div>
+            <div title="Colossal Giant (Nuke)             Upon activation ; it will deal 3 ;5B damage to all enemies. Summons a Titan with 134B.">
+                <img src="image_file/ColossalGiant29.webp" alt="Colossal Giant (Nuke)">
+            </div>
+            <div title="Female Giant (Stops)             Upon activation ; it will ultimate time stop all enemies for 40 seconds. Summons a Titan with 30 ;7B hp.">
+                <img src="image_file/FemaleGiant29.webp" alt="Female Giant (Stops)">
+            </div>
+            <div title="Flying Giant             Summons a Titan with 20 ;7B hp that hit only airs.">
+                <img src="image_file/FlyingGiant.webp" alt="Flying Giant">
+            </div>
+            <div title="Jaw Giant (Bleeds)             Upon activation ; it will apply bleed to all enemies on her range. Summons a Titan with 2 ;4M hp.">
+                <img src="image_file/Jaw_Titan_29_character_image_29.webp" alt="Jaw Giant (Bleeds)">
+            </div>
+            <div title="Warhammer Giant (Bleeds)         Upon activation ; it will apply 1 ;5x the unit's damage in rupture to all enemies on her range. Summons a Titan with 126B.">
+                <img src="image_file/Lara_Tybur_29_character_image_29.webp" alt="Warhammer Giant (Bleeds)">
+            </div>
+        </aside>
+        <aside class="secondAbilities red">
+            <div title="Critical C             Every 3 attacks ; the unit does an attack which deals 3x his base damage.">
+                <img src="image_file/targeting.png" alt="Critical C">
+            </div>
+            <div title="Raging Nanami             Gains an additionnal 108 000 damage for 11 waves. (1 118 000)">
+                <img src="image_file/mighty-force.png" alt="Raging Nanami">
+            </div>
+        </aside>
+        <section class="comparativeStar fade-in" style="animation-delay: 0.4s">
+            <div class="tooltip">
+                <img src="image_file/diagram-lin-2.png" alt="Change calculation method">
+                <div class="tooltiptext">
+                    Change calculation method
+                </div>
+            </div>
+            <canvas id="myChart"></canvas>
+        </section>
+    </section>
+    
+    <h2>Stats</h2>
+    <section class="infoComparator fade-in" style="animation-delay: 0.5s">
+        <table class="stats-table">
+            <thead>
+                <tr>
+                    <th class="NUPES">Stat</th>
+                    <th>The Founder</th>
+                    <th>Comparison</th>
+                    <th>4 Eye Sorcerer</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="stat-name"><img src="image_file/three-friends.png" class="stat-icon">Maximum Placement</td>
+                    <td class="stat-value mp1">1</td>
+                    <td class="comparison-value mpC">1 vs 8</td>
+                    <td class="stat-value mp2">8</td>
+                </tr>
+                <tr>
+                    <td class="stat-name"><img src="image_file/elements.png" class="stat-icon">Enchant Type</td>
+                    <td class="stat-value ec1">Holy</td>
+                    <td class="comparison-value ecC">-</td>
+                    <td class="stat-value ec2">Nature</td>
+                </tr>
+                <tr>
+                    <td class="stat-name"><img src="image_file/eye-target.png" class="stat-icon">Target</td>
+                    <td class="stat-value ar1">Hybrid</td>
+                    <td class="comparison-value arC">Same</td>
+                    <td class="stat-value ar2">Hybrid</td>
+                </tr>
+                <tr>
+                    <td class="stat-name"><img src="image_file/summonning.png" class="stat-icon">Farming Difficulty</td>
+                    <td class="stat-value fd1">A-</td>
+                    <td class="comparison-value fdC">Same</td>
+                    <td class="stat-value fd2">A-</td>
+                </tr>
+                <tr>
+                    <td class="stat-name"><img src="image_file/upgrading.png" class="stat-icon">Upgrade Progression</td>
+                    <td class="stat-value up1">E-</td>
+                    <td class="comparison-value upC">E- vs A+</td>
+                    <td class="stat-value up2">A+</td>
+                </tr>
+                <tr>
+                    <td class="stat-name"><img src="image_file/aoe.png" class="stat-icon">Area of Effect Type</td>
+                    <td class="stat-value ae1">Circle (Large)</td>
+                    <td class="comparison-value aeC">-</td>
+                    <td class="stat-value ae2">Full</td>
+                </tr>
+                <tr>
+                    <td class="stat-name"><img src="image_file/range.png" class="stat-icon">Hitting Range</td>
+                    <td class="stat-value hr1">100</td>
+                    <td class="comparison-value hrC">100 vs 120</td>
+                    <td class="stat-value hr2">120</td>
+                </tr>
+                <tr>
+                    <td class="stat-name"><img src="image_file/fierce-man.png" class="stat-icon">Damage / seconds</td>
+                    <td class="stat-value ds1">2,900,000</td>
+                    <td class="comparison-value dsC">3.96x</td>
+                    <td class="stat-value ds2">732,889</td>
+                </tr>
+                <tr>
+                    <td class="stat-name"><img src="image_file/bleeding_heart.png" class="stat-icon">DPS from DoT</td>
+                    <td class="stat-value dd1">0</td>
+                    <td class="comparison-value ddC">Same</td>
+                    <td class="stat-value dd2">0</td>
+                </tr>
+                <tr>
+                    <td class="stat-name"><img src="image_file/raw_damage.png" class="stat-icon">DPS from hits</td>
+                    <td class="stat-value dh1">2,900,000</td>
+                    <td class="comparison-value dhC">3.96x</td>
+                    <td class="stat-value dh2">732,889</td>
+                </tr>
+                <tr>
+                    <td class="stat-name"><img src="image_file/magic_damage.png" class="stat-icon">DPS from Abilities</td>
+                    <td class="stat-value da1">0</td>
+                    <td class="comparison-value daC">Same</td>
+                    <td class="stat-value da2">0</td>
+                </tr>
+                <tr>
+                    <td class="stat-name"><img src="image_file/take-my-money.png" class="stat-icon">Cost</td>
+                    <td class="stat-value co1">22,000,000</td>
+                    <td class="comparison-value coC">7.98x</td>
+                    <td class="stat-value co2">2,755,000</td>
+                </tr>
+                <tr>
+                    <td class="stat-name"><img src="image_file/buy-card.png" class="stat-icon">Worthiness</td>
+                    <td class="stat-value wt1">0.13</td>
+                    <td class="comparison-value wtC">0.13 vs 0.7</td>
+                    <td class="stat-value wt2">0.7</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+<!-- 
 <section class="presentationSection">
         <div class="firstPresentation blue">
             <h1 class="name1">The Founder</h1>
@@ -73,6 +250,12 @@
         </aside>
         <section class="comparativeStar">
             <br>
+            <div class="tooltip">
+            <img src="image_file/diagram-lin-2.png" alt="Change calculation method">
+            <div class="tooltiptext">
+            Change calculation method
+            </div>
+            </div>
             <canvas id="myChart"></canvas>
         </section>
     </section>
@@ -212,4 +395,4 @@
                 <span class="stat-value wt2">0.7</span>
             </div>
         </div>
-    </section>
+    </section> -->

@@ -65,3 +65,20 @@ function calculateWt(ds, co) {
     let coValue = parseFormattedNumber(co);
     return dsValue / coValue;
 }
+
+//Fonction pour calculer le level modifier
+function calculateLevelBasedDps(dps) {
+    let level = settingsData[0].level;
+    switch (true) {
+        case (level === 1):
+            return dps;
+        case (level <= 81):
+            return dps * (1 + ((level - 1) / 100));
+        case (level <= 121):
+            return dps * (1 + ((0.2875 * level + 80) / 100));
+        case (level <= 151):
+            return dps * (1 + ((0.43666667 * level + 91.5) / 100));
+        case (level <= 175):
+            return dps * (1 + ((0.4 * level + 104.6) / 100));
+    }
+}

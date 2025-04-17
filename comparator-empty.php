@@ -4,7 +4,7 @@
         <?php
             // PREMIÈRE BARRE DE RECHERCHE
             $searchField = 'name1';
-            $label = 'Recherche en haut';
+            $label = 'Select first unit';
             $title = 'Résultats de la recherche du haut';
             if  (isset($id2)) {
                 $linkPrefix = 'comparator.php?id2='.$id2.'&id1=';
@@ -40,7 +40,7 @@
 <?php
 // DEUXIÈME BARRE DE RECHERCHE
 $searchField = 'name2';
-$label = 'Recherche en bas';
+$label = 'Select second unit';
 $title = 'Résultats de la recherche du bas';
 if  (isset($id1)) {
     $linkPrefix = 'comparator.php?id1='.$id1.'&id2=';

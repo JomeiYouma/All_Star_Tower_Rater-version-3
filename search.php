@@ -4,7 +4,7 @@
 // Paramètres à fournir avant include
 $linkPrefix = $linkPrefix ?? 'characterPageTest.php?id='; // Pour pouvoir utiliser la searchbar pour plusieurs choses
 $searchField = $searchField ?? 'name'; // nom du champ GET (ex: 'name1', 'name2')
-$label = $label ?? 'Search';           // texte du label
+$label = $label ?? 'Search a character';           // texte du label
 /* $title = $title ?? 'Résultats';    */
 
 // input actuelle
@@ -22,7 +22,7 @@ $searchValue = $_GET[$searchField] ?? '';
     }
     ?>
    <!--  <label for="<?= $searchField ?>"><?= $label ?></label> -->
-    <input type="text" name="<?= $searchField ?>" id="<?= $searchField ?>" value="<?= htmlspecialchars($searchValue) ?>">
+    <input  placeholder="<?= $label ?>" type="text" name="<?= $searchField ?>" id="<?= $searchField ?>" value="<?= htmlspecialchars($searchValue) ?>">
     <button type="submit"><img src="image_file/white-research.png" alt="Rechercher un personnage."></button>
 </form>
 

@@ -192,175 +192,8 @@ let buffFast = document.querySelector(".buffFast span");
     let wtElement = document.querySelector(".wt");
 <?php include "function-calculate-macro.js";?> //Calculs des stats qui apparaissent dans la page
 <?php include "function-add-content.js";?>
-function calculateLevelBasedDps(dps) {
-    let level = settingsData[0].level;
-    switch (true) {
-        case (level === 1):
-            return dps;
-        case (level <= 81):
-            return dps * (1 + ((level - 1) / 100));
-        case (level <= 121):
-            return dps * (1 + ((0.2875 * level + 80) / 100));
-        case (level <= 151):
-            return dps * (1 + ((0.43666667 * level + 91.5) / 100));
-        case (level <= 175):
-            return dps * (1 + ((0.4 * level + 104.6) / 100));
-    }
-}
-//-------------------------------------FONCTION POUR STOCKER DANS UN TAB TOUTES LES VALEURS MODIF POUR TOUTES LES UNITS
-const aoeTypeMap = { //Selon le nom d'affichage, donner l'équivalence nom du champs
-    "FULL": "pa_full",
-    "AOE FULL": "pa_full",
-    "MULTIPLE": "pa_multiple",
-    "CONE (HALF)": "pa_cone_half",
-    "HALF": "pa_cone_half",
-    "CONE (WIDE)": "pa_cone_wide",
-    "CONE (HUGE)": "pa_cone_wide",
-    "CONE (SQUARE)": "pa_cone_square",
-    "CONE (PYRAMID)": "pa_cone_pyramid",
-    "CONE": "pa_cone",
-    "CIRCLE (": "pa_circle",
-    "CONE (SPIKE)": "pa_cone_spike",
-    "CONE (NARROW)": "pa_cone_narrow",
-    "LINE": "pa_line",
-    "CIRCLE (FAT)": "pa_circle_fat",
-    "CIRCLE (HUGE)": "pa_circle_huge",
-    "CIRCLE (VERY LARGE)": "pa_circle_verylarge",
-    "CIRCLE (LARGE)": "pa_circle_large",
-    "CIRCLE": "pa_circle",
-    "CIRCLE (MEDIUM)": "pa_circle_medium",
-    "CIRCLE (LITTLE)": "pa_circle_little",
-    "CIRCLE (SMALL)": "pa_circle_little",
-    "CIRCLE (TINY)": "pa_circle_tiny",
-    "SINGLE": "pa_single",
-    "SINGLE (TRAP)": "pa_single_trap",
-    "SUMMON": "pa_summon",
-    "CONTROLLABLE": "pa_controllable",
-    "NONE": 0,
-    "NO": 0
-}; //Étape 1 : déclarer les variables min max value
-let modifiedData = [];
-let unitsNbr = 0;
-let minCostValue = 0;
-let maxCostValue = 0;
-let minAoeValue = 0;
-let maxAoeValue = 0;
-let minRngValue = 0;
-let maxRngValue = 0;
-let minDpsValue = 0;
-let maxDpsValue = 0;
-let minWtValue = 0;
-let maxWtValue = 0;
-function addModifiedData() {
-    modifiedData = [];
-
-    Object.entries(unitsData).forEach(([unitId, unit]) => {
-        let mp = unit.placement;
-        if (gamemode === "raid") {
-            mp = unit.placement_raid || unit.placement;
-        }
-
-        // Calcul des DPS
-        let dps_hit = calculateDpsHit(unitId, gamemode, settingsData, mp);
-        let dps_dot = calculateDpsDot(unitId, gamemode, settingsData);
-        let dps_ability = calculateDpsAbility(unitId, gamemode, settingsData, mp);
-        let dps_total = calculateDpsTotal(dps_hit, dps_dot, dps_ability);
-
-        // Calcul du coût
-        let cost = calculateCost(unitId, gamemode, settingsData, mp);
-
-        //Calcul des points accordés pour le type d'AOE
-        const aoeType = unit[`aoe_${gamemode}`].toUpperCase();
-        /* console.log(aoeType); */
-        const aoeKey = aoeTypeMap[aoeType];
-        const aoePoints = settingsData[0][aoeKey] ?? 0;
-        /* console.log("AOE",unit[`aoe_${gamemode}`],aoeType,aoeKey,aoePoints); */
-
-        // Calcul du ratio WT
-        let wt = calculateWt(dps_total, cost);
-
-        // Stockage des valeurs modifiées
-        modifiedData.push({
-            unitId: unitId,
-            in_game_name: unit.in_game_name,
-            real_name: unit.real_name,
-            placement: mp,
-            enchant: unit.enchant,
-            role: unit[`role_${gamemode}`],
-            hit_air: unit[`hit_air_${gamemode}`],
-            farming_difficulty: unit.farming_difficulty,
-            progression: unit.progression,
-            aoe: unit[`aoe_${gamemode}`],
-            aoe_points: aoePoints,
-            range: parseFloat(unit[`rng_${gamemode}`] * (1 + settingsData[0].rng_buff / 100)),
-            /* range_points: rangePoints, */
-            dps_hit: dps_hit,
-            dps_dot: dps_dot,
-            dps_ability: dps_ability,
-            dps_total: dps_total,
-            cost: cost,
-            wt: wt
-        });
-    });
-//Ordonner et ranker
-    unitsNbr = modifiedData.length;
-    console.log("Nombre d'units",unitsNbr);
-// COST RANK ###########################################################
-    modifiedData.sort((a, b) => parseFloat(a.cost) - parseFloat(b.cost));
-    maxCostValue = modifiedData[modifiedData.length - 1].cost;
-    minCostValue = modifiedData[0].cost;
-    modifiedData.forEach((unit, index) => { // Ajouter le rang dans modifiedData 1er = rang 1
-        unit.rank_cost = index + 1;
-    /* console.log("Cost",unit.cost , unit.unitId , unit.rank_cost , unit.in_game_name); */
-    });
-/* console.log('Max cost =',maxCostValue);
-console.log('Min cost =',minCostValue); */
-// AOE RANK ##########################################################
-    modifiedData.sort((a, b) => parseFloat(a.aoe_points) - parseFloat(b.aoe_points));
-    maxAoeValue = modifiedData[modifiedData.length - 1].aoe_points;
-    minAoeValue = modifiedData[0].aoe_points;
-    modifiedData.forEach((unit, index) => { // Ajouter le rang dans modifiedData 1er = rang 1
-        unit.rank_aoe = index + 1;
-/*     console.log("AOE",unit.aoe_points , unit.unitId , unit.rank_aoe , unit.in_game_name); */
-    });
-console.log('Max aoe =',maxAoeValue);
-console.log('Min aoe =',minAoeValue);
-// RANGE RANK ##########################################################
-modifiedData.sort((a, b) => parseFloat(a.range) - parseFloat(b.range));
-    if ((modifiedData[modifiedData.length - 1].range)<200) { //Évite de compter les range absurdes comme 1024, 200 = toute la map.
-        maxRngValue = modifiedData[modifiedData.length - 1].range;
-    } else {
-        maxRngValue = 160
-    }
-    minRangeValue = modifiedData[0].range;
-    modifiedData.forEach((unit, index) => { // Ajouter le rang dans modifiedData 1er = rang 1
-        unit.rank_range = index + 1;
-/*     console.log("Range",unit.range, unit.unitId , unit.rank_range , unit.in_game_name); */
-    });
-console.log('Max range =',maxRngValue);
-console.log('Min range =',minRngValue);
-// DPS RANK ##########################################################
-modifiedData.sort((a, b) => parseFloat(a.dps_total) - parseFloat(b.dps_total));
-    maxDpsValue = modifiedData[modifiedData.length - 1].dps_total;
-    minDpsValue = modifiedData[0].dps_total;
-    modifiedData.forEach((unit, index) => { // Ajouter le rang dans modifiedData 1er = rang 1
-        unit.rank_dps_total = index + 1;
-/*     console.log("DPS",unit.dps_total , unit.unitId , unit.rank_dps_total , unit.in_game_name); */
-    });
-console.log('Max dps =',maxDpsValue);
-console.log('Min dps =',minDpsValue);
-// WORTHINESS RANK ##########################################################
-modifiedData.sort((b, a) => parseFloat(b.wt) - parseFloat(a.wt));
-    maxWtValue = modifiedData[modifiedData.length - 1].wt;
-    minWtValue = modifiedData[0].wt;
-    modifiedData.forEach((unit, index) => { // Ajouter le rang dans modifiedData 1er = rang 1
-        unit.rank_wt = index + 1;
-    /* console.log("Worthiness",unit.wt , unit.unitId , unit.rank_wt , unit.in_game_name); */
-    });
-console.log('Max wt =',maxWtValue);
-console.log('Min wt =',minWtValue);
-};
-//-------------------------------------------------------------------------------------------------------------------------------------
+<?php include "function-add-modified-data.js";?>
+//----------------------------------------------------------------------------
 // Appel de la fonction après le chargement des données
 addContentForUnit(unitId, {
     name: name,
@@ -383,120 +216,13 @@ addContentForUnit(unitId, {
     wtElement: wtElement,
 });
 addModifiedData();
-/* console.log(unitsData[unitId].progression_points); */
-//--------------------------------------------------DIAGRAMME DE LA MORT QUI TUE-------------------------------------------
+//----- PRÉPARATION DIAGRAMME ------
 const ctx = document.getElementById('myChart');
-let settingImportanceAoeType = 50; //ça sera une setting plus tard
-let settingMethode = 1; // 1 = log, 2 = linear
-let settingRankRatio = 0; //Immportance de du rank par rapport à l'importance de la valeur (ça sera une setting plus tard)
-
-function ratioGeneral(stat1, statRank1, rankNbr, maxValue1, minValue1, importance, stat2, statRank2, maxValue2, minValue2) {//Fonction pour les deux échelles
-
-console.log('-------------Infos générales-------------');
-console.log("rankNbr:", rankNbr);
-console.log("importance Stat 2 -> 1:", importance,' %');
-console.log("settingRankRatio:", settingRankRatio, ' %');
-console.log("settingMethode:", settingMethode, ' 0=linear');
-console.log('-------------Infos Stat 1 (ex : dps)-------------');
-console.log("stat1:", stat1);
-console.log("minValue1:", minValue1);
-console.log("maxValue1:", maxValue1);
-console.log("statRank1:", statRank1);
-console.log('Stat log',Math.log(1 + stat1))
-console.log('Min value log',Math.log(1 + minValue1))
-console.log('Max value log',Math.log(1 + maxValue1))
-console.log('Stat - MinStat log',Math.log(1 + stat1) - Math.log(1 + minValue1));
-console.log('Rank1 / MaRank * ratiorank',(statRank1 / rankNbr) * (settingRankRatio / 100))
-console.log('Calcul Stat - MinStat log / Max - Min log',(
-                        (Math.log(1 + stat1) - Math.log(1 + minValue1)) /
-                        (Math.log(1 + maxValue1) - Math.log(1 + minValue1))
-                    ));
-console.log('FirstCalc * 1-rankRatio%) + rank/maxRank * rankRatio%) * 1-importance',(
-            (
-                (
-                    (
-                        (Math.log(1 + stat1) - Math.log(1 + minValue1)) /
-                        (Math.log(1 + maxValue1) - Math.log(1 + minValue1))
-                    ) * (1 - settingRankRatio / 100)
-                ) +
-                (statRank1 / rankNbr) * (settingRankRatio / 100)
-            ) * (1 - importance / 100)
-        ));
-console.log('-------------Infos Stat 2 (ex : aoe)-------------');
-console.log("stat2:", stat2);
-console.log("minValue2:", minValue2);
-console.log("maxValue2:", maxValue2);
-console.log("statRank2:", statRank2);
-                    
-    /* console.log('Importance',100-importance); */
-
-console.log('Stat2 log', Math.log(1 + stat2));
-console.log('Min value 2 log', Math.log(1 + minValue2));
-console.log('Max value 2 log', Math.log(1 + maxValue2));
-console.log('Stat2-MinStat', Math.log(1 + stat2) - Math.log(1 + minValue2));
-console.log('Rank2 / MaRank * ratiorank',(statRank1 / rankNbr) * (settingRankRatio / 100))
-console.log('Calcul Stat - MinStat log / Max - Min log', (
-    (Math.log(1 + stat2) - Math.log(1 + minValue2)) /
-    (Math.log(1 + maxValue2) - Math.log(1 + minValue2))
-));
-console.log('FirstCalc * 1-rankRatio%) + rank/maxRank * rankRatio%) * importance', (
-    (
-        (
-            (Math.log(1 + stat2) - Math.log(1 + minValue2)) /
-            (Math.log(1 + maxValue2) - Math.log(1 + minValue2))
-        ) * (1 - (settingRankRatio / 100))
-    ) +
-    (statRank2 / rankNbr) * (settingRankRatio / 100)
-) * (importance / 100));
-
-    if (settingMethode === 0) {
-            return (
-                (((((stat1/maxValue1) * (1-settingRankRatio/100)) + ((statRank1/rankNbr) * (settingRankRatio/100))) * (1-(importance/100))) + (((stat2/maxValue2) * (1-settingRankRatio/100)) + ((statRank2/rankNbr) * (settingRankRatio/100))) * (importance/100))*100
-        )
-        } else {
-            
-            return (
-            ((
-                (
-                    (
-                        (Math.log(1 + stat1) - Math.log(1 + minValue1)) /
-                        (Math.log(1 + maxValue1) - Math.log(1 + minValue1))
-                    ) * (1 - settingRankRatio / 100)
-                ) +
-                (statRank1 / rankNbr) * (settingRankRatio / 100)
-            ) * (1 - importance / 100)
-        ) +
-        (
-            (
-                (
-                    (Math.log(1 + stat2) - Math.log(1 + minValue2)) /
-                    (Math.log(1 + maxValue2) - Math.log(1 + minValue2))
-                ) * (1 - settingRankRatio / 100)
-            ) +
-            (statRank2 / rankNbr) * (settingRankRatio / 100)
-        ) * (importance / 100)) * 100;
-
-    }; 
-};
-let currentUnit = modifiedData.find(unit => unit.unitId === unitId);
-/* console.log(currentUnit); */
-let costLogValue = 0;
-let worthinessLogValue =0;
-let dpsLogValue = 0;
-let rangeLogValue = 0;
-
-function applyMethod(){
-    costLogValue = ratioGeneral(currentUnit.cost, currentUnit.rank_cost, unitsNbr, maxCostValue, minCostValue, 0, 10, 140, 1000, 0); //À la place du 0, insérer la bonne stat d'importance quand il y en a besoin (différent pour chaque calcul).
-worthinessLogValue = ratioGeneral(currentUnit.wt, currentUnit.rank_wt, unitsNbr, maxWtValue, minWtValue, 0, 10, 140, 1000, 0);
-dpsLogValue = ratioGeneral(currentUnit.dps_total, currentUnit.rank_dps_total, unitsNbr, maxDpsValue, minDpsValue, 0, 10, 140, 1000, 0);
-rangeLogValue = ratioGeneral(currentUnit.range, currentUnit.rank_range, unitsNbr, maxRngValue, minRngValue, settingImportanceAoeType, currentUnit.aoe_points, currentUnit.rank_aoe, maxAoeValue, minAoeValue);
-console.log('Cost : ', costLogValue);
-console.log('Wt : ', worthinessLogValue);
-console.log('Dps : ', dpsLogValue);
-console.log('Rng : ', rangeLogValue);
-};
-applyMethod();
-
+<?php include "function-diagram-ratio.js"; ?> //Paramétrage
+let unitA = modifiedData.find(unit => unit.unitId === unitId); //Récupère l'ID
+let values1 = {}; //Se prépare à accueillir les values
+applyMethod(unitA, values1); 
+// ----- CONSTRUCTION DIAGRAMME ------
 const data = {
     labels: [
         'Worthiness',
@@ -509,12 +235,12 @@ const data = {
     datasets: [{
         label: name.innerHTML,
         data: [
-           /*Worthiness */ worthinessLogValue ,
-           /*Cost */ costLogValue,
+           /*Worthiness */ values1.wt ,
+           /*Cost */ values1.cost,
            /*Farming Difficulty */ unitsData[unitId].farming_difficulty_points,
-           /*Range */ /* hrElement.innerHTML */rangeLogValue ,
+           /*Range */ /* hrElement.innerHTML */values1.range ,
            /*Progression */unitsData[unitId].progression_points ,
-           /*DPS */ dpsLogValue,
+           /*DPS */ values1.dps,
         ],
         fill: true,
         backgroundColor: 'rgba(255, 99, 132, 0.2)',
@@ -556,18 +282,18 @@ diagramImg.addEventListener("click", () => {
         methodColor = '113,193,255'; 
     }
 
-    applyMethod(); // Recalcule les données en fonction de la méthode
+    applyMethod(unitA, values1); // Recalcule les données en fonction de la méthode
 
     // Actualisation du diagramme avec les couleurs dynamiques
     myChart.data.datasets = [{
         label: name.innerHTML,
         data: [
-           /*Worthiness */ worthinessLogValue ,
-           /*Cost */ costLogValue,
+           /*Worthiness */ values1.wt ,
+           /*Cost */ values1.cost,
            /*Farming Difficulty */ unitsData[unitId].farming_difficulty_points,
-           /*Range */ /* hrElement.innerHTML */ rangeLogValue ,
-           /*Progression */ unitsData[unitId].progression_points ,
-           /*DPS */ dpsLogValue,
+           /*Range */ /* hrElement.innerHTML */values1.range ,
+           /*Progression */unitsData[unitId].progression_points ,
+           /*DPS */ values1.dps,
         ],
         fill: true,
         backgroundColor: `rgba(${methodColor}, 0.2)`, 

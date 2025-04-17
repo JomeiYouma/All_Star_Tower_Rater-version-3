@@ -17,8 +17,8 @@
     <main class="empty-comparatorMain" style="display: none;"></main>
     <main class="comparatorMain">
         <?php include "comparator-full.php"; ?>
-<?php else: ?>
     </main>
+<?php else: ?>
     <main class="empty-comparatorMain">
         <?php include "comparator-empty.php"; ?>
     </main>
@@ -119,7 +119,9 @@ let wt2 = document.querySelector(".wt2");
 let gmFast = document.querySelector(".gamemodeFast span");
 let buffFast = document.querySelector(".buffFast span");
 <?php include "function-add-content.js"?>
-
+<?php include "function-add-modified-data.js";?>
+//----------------------------------------------------------------------------
+// Appel de la fonction après le chargement des données
 addContentForUnit(unitId1, {
     name: name1,
     desc: forname1,
@@ -139,7 +141,6 @@ addContentForUnit(unitId1, {
     daElement: da1,
     coElement: co1,
     wtElement: wt1,
-    /* gmFast: gmFast */
 });
 
 addContentForUnit(unitId2, {
@@ -161,8 +162,147 @@ addContentForUnit(unitId2, {
     daElement: da2,
     coElement: co2,
     wtElement: wt2,
-    /* gmFast: gmFast */
 });
+addModifiedData();
+//----- PRÉPARATION DIAGRAMME ------
+const ctx = document.getElementById('myChart');
+<?php include "function-diagram-ratio.js"; ?> //Paramétrage
+let unitA = modifiedData.find(unit => unit.unitId === unitId1); //Récupère l'ID
+let unitB = modifiedData.find(unit => unit.unitId === unitId2); 
+let values1 = {}; //Se prépare à accueillir les values
+let values2 = {}; 
+applyMethod(unitA, values1); 
+applyMethod(unitB, values2); 
+// ----- CONSTRUCTION DIAGRAMME ------
+const data = {
+    labels: [
+        'Worthiness',
+        'Cost',
+        'Farming Difficulty',
+        'Range',
+        'Progression',
+        'DPS'
+    ],
+    datasets: [{
+        label: name1.innerHTML,
+        data: [
+           /*Worthiness */ values1.wt ,
+           /*Cost */ values1.cost,
+           /*Farming Difficulty */ unitsData[unitId1].farming_difficulty_points,
+           /*Range */ /* hrElement.innerHTML */values1.range ,
+           /*Progression */unitsData[unitId1].progression_points ,
+           /*DPS */ values1.dps,
+        ],
+        fill: true,
+        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+        borderColor: 'rgb(255, 99, 132)',
+        pointBackgroundColor: 'rgb(255, 99, 132)',
+        pointBorderColor: '#fff',
+        pointHoverBackgroundColor: '#fff',
+        pointHoverBorderColor: 'rgb(255, 99, 132)'
+    },{
+        label: name2.innerHTML,
+        data: [
+           /*Worthiness */ values2.wt ,
+           /*Cost */ values2.cost,
+           /*Farming Difficulty */ unitsData[unitId2].farming_difficulty_points,
+           /*Range */ /* hrElement.innerHTML */values2.range ,
+           /*Progression */unitsData[unitId2].progression_points ,
+           /*DPS */ values2.dps,
+        ],
+        fill: true,
+        backgroundColor: 'rgba(113,193,255, 0.2)',
+        borderColor: 'rgb(113,193,255)',
+        pointBackgroundColor: 'rgb(113,193,255)',
+        pointBorderColor: '#fff',
+        pointHoverBackgroundColor: '#fff',
+        pointHoverBorderColor: 'rgb(113,193,255)'
+    }]
+};
+
+let myChart = new Chart(ctx, {
+    type: 'radar',
+    data: data,
+    options: {
+        animations: {
+            tension: {
+                duration: 0,
+                easing: 'ease in out',
+                from: 0,
+                to: 0,
+                loop: true
+            }
+        },
+        scales: {
+            r: {
+                min: 0,
+                max: 100
+            }
+        }
+    }
+});
+//Clic diagram//
+const diagramImg = document.querySelector(".comparativeStar img");
+
+diagramImg.addEventListener("click", () => {
+    let methodColor1; 
+    let methodColor2;
+    if (settingMethode === 1) {
+        settingMethode = 0;
+        diagramImg.src = "image_file/diagram-lin-2.png";
+        diagramImg.alt = "Change calculation method to logarithmic";
+        methodColor1 = '255,204,113';
+        methodColor2 = '143,113,255';
+    } else {
+        settingMethode = 1;
+        diagramImg.src = "image_file/diagram-log-2.png";
+        diagramImg.alt = "Change calculation method to linear";
+        methodColor1 = '255,99,132';
+        methodColor2 = '113,193,255'; 
+    }
+
+    applyMethod(unitA, values1); // Recalcule les données en fonction de la méthode
+    applyMethod(unitB, values2);
+
+    // Actualisation du diagramme avec les couleurs dynamiques
+    myChart.data.datasets = [{
+        label: name1.innerHTML,
+        data: [
+           /*Worthiness */ values1.wt ,
+           /*Cost */ values1.cost,
+           /*Farming Difficulty */ unitsData[unitId1].farming_difficulty_points,
+           /*Range */ /* hrElement.innerHTML */values1.range ,
+           /*Progression */unitsData[unitId1].progression_points ,
+           /*DPS */ values1.dps,
+        ],
+        fill: true,
+        backgroundColor: `rgba(${methodColor1}, 0.2)`, 
+        borderColor: `rgb(${methodColor1})`,        
+        pointBackgroundColor: `rgb(${methodColor1})`, 
+        pointBorderColor: '#fff',
+        pointHoverBackgroundColor: '#fff',
+        pointHoverBorderColor: `rgb(${methodColor1})` 
+    },{
+        label: name2.innerHTML,
+        data: [
+           /*Worthiness */ values2.wt ,
+           /*Cost */ values2.cost,
+           /*Farming Difficulty */ unitsData[unitId2].farming_difficulty_points,
+           /*Range */ /* hrElement.innerHTML */values2.range ,
+           /*Progression */unitsData[unitId2].progression_points ,
+           /*DPS */ values2.dps,
+        ],
+        fill: true,
+        backgroundColor: `rgba(${methodColor2}, 0.2)`, 
+        borderColor: `rgb(${methodColor2})`,        
+        pointBackgroundColor: `rgb(${methodColor2})`, 
+        pointBorderColor: '#fff',
+        pointHoverBackgroundColor: '#fff',
+        pointHoverBorderColor: `rgb(${methodColor2})` 
+    }];
+    myChart.update();
+});
+/* <?php include "dubstep_canva.js";?> */
 });
 </script>
 <?php else: ?><!-- ##################SCRIPT EMPTY############# -->
@@ -176,47 +316,3 @@ document.getElementById("name2").focus();
 });
 </script>
 <?php endif; ?>
-
-<script>
-    const ctx = document.getElementById('myChart');
-
-    const data = {
-        labels: [
-            'Worthiness',
-            'Cost',
-            'Attack',
-            'Farming Difficulty',
-            'Range',
-            'Progression',
-            'DPS'
-        ],
-        datasets: [{
-            label: 'The Founder',
-            data: [2, 93, 65, 97, 56, 12, 40],
-            fill: true,
-            backgroundColor: 'rgba(255, 99, 132, 0.2)',
-            borderColor: 'rgb(255, 99, 132)',
-            pointBackgroundColor: 'rgb(255, 99, 132)',
-            pointBorderColor: '#fff',
-            pointHoverBackgroundColor: '#fff',
-            pointHoverBorderColor: 'rgb(255, 99, 132)'
-        }, {
-            label: '4 Eye Sorcerer (Timer)',
-            data: [28, 48, 54, 19, 96, 87, 70],
-            fill: true,
-            backgroundColor: 'rgba(54, 162, 235, 0.2)',
-            borderColor: 'rgb(54, 162, 235)',
-            pointBackgroundColor: 'rgb(54, 162, 235)',
-            pointBorderColor: '#fff',
-            pointHoverBackgroundColor: '#fff',
-            pointHoverBorderColor: 'rgb(54, 162, 235)'
-        }]
-    };
-
-    new Chart(ctx, {
-        type: 'radar',
-        data: data,
-        options: {
-        }
-    });
-</script>
