@@ -164,6 +164,58 @@ addContentForUnit(unitId2, {
     wtElement: wt2,
 });
 addModifiedData();
+//-----COMPARATOR ROW------------
+function cellAdjucement(cell) {
+    const rawText = cell.innerHTML.trim();
+    const value = parseFormattedNumber(rawText);
+    cell.innerHTML = formatNumberShort(value);
+
+    switch (true) {
+        case value < 0:
+            cell.style.color = 'darkred';
+            break;
+        case value > 0:
+            cell.style.color = 'green';
+            cell.innerHTML = '+ ' + cell.innerHTML;
+            break;
+        default:
+            cell.style.color = 'gray';
+            break;
+    }
+}
+//Sélection des cases de comparaison et calcul des différence, puis on applique un style selon. Désolé je n'ai pas priorisé la factorisation de cette partie.
+let fdC = document.querySelector('.fdC');
+fdC.innerHTML = modifiedData.find(obj => obj.unitId === unitId1).farming_difficulty_points - modifiedData.find(obj => obj.unitId === unitId2).farming_difficulty_points;
+cellAdjucement(fdC);
+let upC = document.querySelector('.upC');
+upC.innerHTML = modifiedData.find(obj => obj.unitId === unitId1).progression_points - modifiedData.find(obj => obj.unitId === unitId2).progression_points;
+cellAdjucement(upC);
+let aeC = document.querySelector('.aeC');
+aeC.innerHTML = modifiedData.find(obj => obj.unitId === unitId1).aoe_points - modifiedData.find(obj => obj.unitId === unitId2).aoe_points;
+cellAdjucement(aeC);
+let hrC = document.querySelector('.hrC');
+hrC.innerHTML = modifiedData.find(obj => obj.unitId === unitId1).range - modifiedData.find(obj => obj.unitId === unitId2).range;
+cellAdjucement(hrC);
+let dsC = document.querySelector('.dsC');
+dsC.innerHTML = modifiedData.find(obj => obj.unitId === unitId1).dps_total - modifiedData.find(obj => obj.unitId === unitId2).dps_total;
+cellAdjucement(dsC);
+let ddC = document.querySelector('.ddC');
+ddC.innerHTML = modifiedData.find(obj => obj.unitId === unitId1).dps_dot - modifiedData.find(obj => obj.unitId === unitId2).dps_dot;
+cellAdjucement(ddC);
+let dhC = document.querySelector('.dhC');
+dhC.innerHTML = modifiedData.find(obj => obj.unitId === unitId1).dps_hit - modifiedData.find(obj => obj.unitId === unitId2).dps_hit;
+cellAdjucement(dhC);
+let daC = document.querySelector('.daC');
+daC.innerHTML = modifiedData.find(obj => obj.unitId === unitId1).dps_ability - modifiedData.find(obj => obj.unitId === unitId2).dps_ability;
+cellAdjucement(daC);
+let ctC = document.querySelector('.coC');
+ctC.innerHTML = modifiedData.find(obj => obj.unitId === unitId1).cost - modifiedData.find(obj => obj.unitId === unitId2).cost;
+cellAdjucement(ctC);
+let wtC = document.querySelector('.wtC');
+wtC.innerHTML = wt1.innerHTML - wt2.innerHTML;
+cellAdjucement(wtC);
+
+
 //----- PRÉPARATION DIAGRAMME ------
 const ctx = document.getElementById('myChart');
 <?php include "function-diagram-ratio.js"; ?> //Paramétrage

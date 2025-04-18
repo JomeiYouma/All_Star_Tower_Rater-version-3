@@ -96,7 +96,7 @@
                 <tr>
                     <td class="stat-name"><img src="image_file/three-friends.png" class="stat-icon">Maximum Placement</td>
                     <td class="stat-value mp1">1</td>
-                    <td class="comparison-value mpC">1 vs 8</td>
+                    <td class="comparison-value mpC">-</td>
                     <td class="stat-value mp2">8</td>
                 </tr>
                 <tr>
@@ -108,7 +108,7 @@
                 <tr>
                     <td class="stat-name"><img src="image_file/eye-target.png" class="stat-icon">Target</td>
                     <td class="stat-value ar1">Hybrid</td>
-                    <td class="comparison-value arC">Same</td>
+                    <td class="comparison-value arC">-</td>
                     <td class="stat-value ar2">Hybrid</td>
                 </tr>
                 <tr>
