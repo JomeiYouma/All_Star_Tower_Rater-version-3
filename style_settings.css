@@ -1,0 +1,236 @@
+:root {
+    --primary-blue: #3498db;
+    --dark-blue: #2980b9;
+    --light-blue: #e1f0fa;
+    --white: #ffffff;
+    --light-gray: #f5f5f5;
+    --medium-gray: #e0e0e0;
+    --dark-gray: #333333;
+    --text-gray: #555555;
+    --green-dot: #2ecc71;
+    --red-dot: #e74c3c;
+}
+
+
+body {
+            background-color: var(--light-gray);
+            color: var(--dark-gray);
+            line-height: 1.6;
+        }
+
+        /* Main Container */
+        .settingsMain {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        /* Frames */
+        .frame {
+            background-color: var(--white);
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+
+        .frame h1 {
+            color: var(--dark-blue);
+            margin-bottom: 15px;
+            font-size: 24px;
+            border-bottom: 2px solid var(--medium-gray);
+            padding-bottom: 10px;
+        }
+
+        .frame p {
+            color: var(--text-gray);
+            margin-bottom: 20px;
+        }
+
+        /* Form Elements */
+        .settingsForm {
+            width: 100%;
+        }
+
+        .generalSettingsDetails {
+            margin-bottom: 20px;
+            border: 1px solid var(--medium-gray);
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .generalSettingsDetails summary {
+            background-color: var(--light-blue);
+            padding: 15px;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--dark-blue);
+            list-style: none;
+            transition: background-color 0.3s;
+        }
+
+        .generalSettingsDetails summary:hover {
+            background-color: #d4e6f5;
+        }
+
+        .generalSettingsDetails summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .generalSettingsDetails summary::after {
+            content: '+';
+            float: right;
+            font-size: 18px;
+            font-weight: bold;
+            transition: transform 0.3s;
+        }
+
+        .generalSettingsDetails[open] summary::after {
+            content: '-';
+        }
+
+        .form-title {
+            display: inline;
+            font-size: 18px;
+        }
+
+        .divi {
+            padding: 15px;
+            background-color: var(--white);
+        }
+
+        .param {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 10px;
+            background-color: var(--light-gray);
+            border-radius: 4px;
+        }
+
+        .param label {
+            flex: 1 1 200px;
+            font-weight: 500;
+            color: var(--dark-gray);
+            margin-right: 10px;
+        }
+
+        .param label span {
+            color: var(--primary-blue);
+            font-weight: normal;
+            margin-left: 5px;
+        }
+
+        .param input[type="number"],
+        .param input[type="text"],
+        .param input[type="password"],
+        .param select {
+            flex: 1 1 200px;
+            padding: 8px 12px;
+            border: 1px solid var(--medium-gray);
+            border-radius: 4px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+
+        .param input[type="number"]:focus,
+        .param input[type="text"]:focus,
+        .param input[type="password"]:focus,
+        .param select:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+        }
+
+        .param input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--primary-blue);
+        }
+
+        /* Dots for required fields */
+        .greenDot {
+            color: var(--green-dot);
+            font-weight: bold;
+        }
+
+        .redDot {
+            color: var(--red-dot);
+            font-weight: bold;
+        }
+
+        /* Warnings */
+        .littleWarning {
+            font-size: 13px;
+            color: var(--text-gray);
+            margin-top: 10px;
+            font-style: italic;
+        }
+
+        /* Separators */
+        .separator {
+            width: 100%;
+            height: 1px;
+            background-color: var(--medium-gray);
+            margin: 15px 0;
+        }
+
+        /* OR text */
+        .or {
+            text-align: center;
+            margin: 10px 0;
+            color: var(--text-gray);
+            font-weight: 500;
+        }
+
+        /* Buttons */
+        .button-85 {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .load {
+            background-color: var(--primary-blue);
+            color: white;
+            width: 100%;
+        }
+
+        .save {
+            background-color: var(--green-dot);
+            color: white;
+            width: 100%;
+        }
+
+        .load:hover {
+            background-color: var(--dark-blue);
+        }
+
+        .save:hover {
+            background-color: #27ae60;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .param {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .param label {
+                margin-bottom: 5px;
+            }
+
+            .param input,
+            .param select {
+                width: 100%;
+            }
+        }

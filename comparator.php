@@ -69,6 +69,7 @@ let gamemode = settingsData ? settingsData[0].preset_gamemode : "";
 //### Définir les différents endroits dans lesquels insérer la data
 //Infos
 let name1 = document.querySelector(".name1");
+let thName1 = document.querySelector(".thName1");
 let forname1 = document.querySelector(".forname1");
 let enchant1 = document.querySelector(".enchant1");
 let role1 = document.querySelector(".role1");
@@ -77,6 +78,7 @@ let illu1 = document.querySelector(".illu1");
 let capaContainer1 = document.querySelector(".firstAbilities");
 
 let name2 = document.querySelector(".name2");
+let thName2 = document.querySelector(".thName2");
 let forname2 = document.querySelector(".forname2");
 let enchant2 = document.querySelector(".enchant2");
 let role2 = document.querySelector(".role2");
@@ -214,6 +216,8 @@ cellAdjucement(ctC);
 let wtC = document.querySelector('.wtC');
 wtC.innerHTML = wt1.innerHTML - wt2.innerHTML;
 cellAdjucement(wtC);
+thName1.innerHTML = modifiedData.find(obj => obj.unitId === unitId1).in_game_name;
+thName2.innerHTML = modifiedData.find(obj => obj.unitId === unitId2).in_game_name;
 
 
 //----- PRÉPARATION DIAGRAMME ------

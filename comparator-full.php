@@ -87,9 +87,9 @@
             <thead>
                 <tr>
                     <th class="NUPES">Stat</th>
-                    <th>The Founder</th>
+                    <th class="thName1">The Founder</th>
                     <th>Comparison</th>
-                    <th>4 Eye Sorcerer</th>
+                    <th class="thName2">4 Eye Sorcerer</th>
                 </tr>
             </thead>
             <tbody>
