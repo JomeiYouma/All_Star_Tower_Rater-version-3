@@ -1,0 +1,6 @@
+preset_id,preset_ip,preset_name,permission,preset_gamemode,level,buff,rng_buff,stroke,idol,bloodmoon,fear,typebane,enchant_str,enchant_wkn,enemy_enchant,leader,leader_special,leader_cost,pa_full,pa_multiple,pa_cone_half,pa_cone_wide,pa_cone_square,pa_cone_pyramid,pa_cone,pa_cone_spike,pa_cone_narrow,pa_line,pa_circle_fat,pa_circle_huge,pa_circle_verylarge,pa_circle_large,pa_circle,pa_circle_medium,pa_circle_little,pa_circle_tiny,pa_single,pa_single_trap,pa_summon,pa_controllable,importance_aoetype,importance_range,importance_dps,importance_aoe,method,ranking_percentage
+0,0,actual preset,admin,max,175,0,0,0,0,0,0,0,0,0,none,0,0,0,100,95,91,90,85,70,60,50,30,10,85,80,75,70,55,50,25,20,1,30,35,60,50,80,80,45,1,50
+1,0,Neutral preset,admin,max,175,0,0,0,0,0,0,0,0,0,none,0,0,0,100,95,91,90,85,70,60,50,30,10,85,80,75,70,55,50,25,20,1,30,35,60,50,80,80,45,1,50
+2,0,Start preset,admin,start,175,0,0,0,0,0,0,0,0,0,none,0,0,0,90,95,91,80,75,60,50,40,20,10,100,97,95,90,65,60,25,20,1,30,35,60,50,80,80,45,1,50
+3,0,Raid preset,admin,raid,175,250,0,0,0,0,0,0,1,0,none,0,0,0,100,95,91,90,85,70,60,50,30,10,85,80,75,70,55,50,25,20,1,30,35,60,50,80,80,45,1,50
+4,0,Max preset,admin,max,175,300,30,0,0,0,0,0,0,0,none,0,0,0,100,95,91,90,85,70,60,50,30,10,85,80,75,70,55,50,25,20,1,30,35,60,50,80,80,45,1,50

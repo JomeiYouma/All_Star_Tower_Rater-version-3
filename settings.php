@@ -330,13 +330,12 @@ document.addEventListener('DOMContentLoaded', async () => {
 await importJson(); // Attendre que les données soient chargées
     console.log("Données récupérées depuis sessionStorage:");
     console.log("Settings Data:", JSON.parse(sessionStorage.getItem("settings_data")));
-
-    let paramsObj = {};
+//Fonction pour avoir les données présentes de base, les données des input avec leurs noms respectifs
+    let paramsObj = {}; //Pour l'utiliser en dehors
 
 function getVarsFromParams() {
   const params = document.querySelectorAll(".param");
-  paramsObj = {}; // reset
-
+  paramsObj = {};  //Reset
   params.forEach(param => {
     const input = param.querySelector("input, select, textarea");
     if (!input) return;

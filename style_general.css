@@ -180,7 +180,9 @@
     opacity: 0;
     animation: bloup 0.4s ease forwards;
   }
-
+  .search-link{
+    display: block;
+  }
   /* ----------------- ANIMATIONS ----------------- */
   @keyframes bloup {
     from {

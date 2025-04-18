@@ -358,7 +358,9 @@ diagramImg.addEventListener("click", () => {
     }];
     myChart.update();
 });
-/* <?php include "dubstep_canva.js";?> */
+if ((unitId1 == 175 && unitId2 == 96)||(unitId1 == 96 && unitId2 == 175)) {
+    <?php include "dubstep_canva.js";?>  
+}
 });
 </script>
 <?php else: ?><!-- ##################SCRIPT EMPTY############# -->
