@@ -1,13 +1,20 @@
+// Déclaration Hard-coded Modifiers
+let enchant_str = (settingsData[0].enchant_str*200);
+let enchant_wkn = (settingsData[0].enchant_wkn*-75);
+let fear = (settingsData[0].fear*5);
+let typebane = (settingsData[0].typebane*100);
+let stroke = (settingsData[0].stroke*15);
+let bloodmoon = (settingsData[0].bloodmoon*30);
 // Fonction pour calculer les DPS
 function calculateDpsHit(unitId, gamemode, settingsData, mp) {
     const dps_hit = unitsData[unitId][`dps_${gamemode}_unit`] *
                     (1 + settingsData[0].buff / 100) *
                     mp *
-                    (1 + settingsData[0].idol / 100) *
-                    (1 + settingsData[0].fear / 100) *
-                    (1 + settingsData[0].typebane / 100) *
-                    (1 + settingsData[0].enchant_str / 100) *
-                    (1 + settingsData[0].enchant_wkn / 100) *
+                    (1 + idol / 100) *
+                    (1 + fear / 100) *
+                    (1 + typebane / 100) *
+                    (1 + enchant_str / 100) *
+                    (1 + enchant_wkn / 100) *
                     (1 + settingsData[0].leader / 100) *
                     (1 + settingsData[0].leader_special / 100);
     return dps_hit;
@@ -16,16 +23,16 @@ function calculateDpsHit(unitId, gamemode, settingsData, mp) {
 // Fonction pour calculer les DPS DOT
 function calculateDpsDot(unitId, gamemode, settingsData) {
     const dps_dot = unitsData[unitId][`dps_${gamemode}_dot`] *
-                    (1 + settingsData[0].enchant_str / 100) *
-                    (1 + settingsData[0].enchant_wkn / 100) *
+                    (1 + enchant_str / 100) *
+                    (1 + enchant_wkn / 100) *
                     (1 + settingsData[0].leader / 100) *
                     (1 + settingsData[0].leader_special / 100) *
-                    (1 + settingsData[0].stroke / 100) *
+                    (1 + stroke / 100) *
                     (1 + settingsData[0].buff / 100) *
-                    (1 + settingsData[0].idol / 100) *
-                    (1 + settingsData[0].fear / 100) *
-                    (1 + settingsData[0].bloodmoon / 100) *
-                    (1 + settingsData[0].typebane / 100);
+                    (1 + idol / 100) *
+                    (1 + fear / 100) *
+                    (1 + bloodmoon / 100) *
+                    (1 + typebane / 100);
     return dps_dot;
 }
 
@@ -34,18 +41,18 @@ function calculateDpsAbility(unitId, gamemode, settingsData, mp) {
     const dps_placement = unitsData[unitId][`dps_${gamemode}_placement`] * mp * (1 + settingsData[0].idol / 100) * (1 + settingsData[0].fear / 100);
     const dps_fix_placement = unitsData[unitId][`dps_${gamemode}_fix_placement`] * (1 + settingsData[0].idol / 100) * (1 + settingsData[0].fear / 100);
     const dps_buffable = unitsData[unitId][`dps_${gamemode}_buffable`] *
-                         (1 + settingsData[0].enchant_str / 100) *
-                         (1 + settingsData[0].enchant_wkn / 100) *
+                         (1 + enchant_str / 100) *
+                         (1 + enchant_wkn / 100) *
                          (1 + settingsData[0].leader / 100) *
                          (1 + settingsData[0].leader_special / 100) *
-                         (1 + settingsData[0].typebane / 100) *
-                         (1 + settingsData[0].idol / 100) *
-                         (1 + settingsData[0].fear / 100);
+                         (1 + typebane / 100) *
+                         (1 + idol / 100) *
+                         (1 + fear / 100);
     const dps_not_buffable = unitsData[unitId][`dps_${gamemode}_not_buffable`] *
-                             (1 + settingsData[0].idol / 100) *
-                             (1 + settingsData[0].fear / 100) *
-                             (1 + settingsData[0].enchant_str / 100) *
-                             (1 + settingsData[0].enchant_wkn / 100);
+                             (1 + idol / 100) *
+                             (1 + fear / 100) *
+                             (1 + enchant_str / 100) *
+                             (1 + enchant_wkn / 100);
 
     return dps_placement + dps_fix_placement + dps_buffable + dps_not_buffable;
 }

@@ -278,7 +278,7 @@
         <form action="" class="settingsForm">
                     <details class="generalSettingsDetails">
                         <summary>
-                            <p class="form-title">Load Preset</p>
+                            <p class="form-title">Import Preset</p>
                         </summary>    
                         <div class="divi">
                             <div class="paramBis">
@@ -296,7 +296,7 @@
                                     <option value="Raid preset">Raid preset</option>
                                 </select>
                             </div>
-                            <a href="" class="button-85 load" role="button">L O A D</a>
+                            <button class="button-85 load" role="button" type="button">L O A D</button>
                         </div>
 <!--                         <p class="littleWarning"><span class="redDot">*</span>:Can't be used together or it will mess up.</p> -->
                         <div id="selectedPreset" class="selected-preset"></div>
@@ -314,8 +314,8 @@
                                 <label for="preset_password">Preset Password</label>
                                 <input type="password" name="preset_password" id="preset_password" placeholder="--Please set password--">
                             </div>
-                            <a href="" class="button-85 save" id="save" role="button">S A V E</a><br>
-                            <a href="" class="button-85 save" id="apply" role="button">APPLY PRESET</a>
+                            <button class="button-85 save" id="save" role="button" type="button" >S A V E</button><br>
+                            <button class="button-85 save" id="apply" role="button" type="button">APPLY PRESET</button>
                         </div>
                         <p class="littleWarning"><span class="greenDot">*</span>:Must be filled.</p>
                        </details>
@@ -326,198 +326,10 @@
 </main>
 
 <?php include "footer.php";?>
+<!-- <script src="function-import-data-settings.js"></script> -->
 <script>
-<?php include "function-import-data-settings.js";?>
-document.addEventListener('DOMContentLoaded', async () => {
-await importJson(); // Attendre que les données soient chargées
-    console.log("Données récupérées depuis sessionStorage:");
-    console.log("Settings Data:", JSON.parse(sessionStorage.getItem("settings_data")));
-let settingsData = JSON.parse(sessionStorage.getItem("settings_data"));
-//Fonction pour insérer dans les SPAN le contenu du preset de travail
-function addParamsData() {
-const params = document.querySelectorAll(".param");
-params.forEach(param => {
-    const span = param ? param.querySelector("label .pre-value") : null;
-    const checkboxInput = param.querySelector("input[type='checkbox']");
-        if (checkboxInput) { // Si c'est une checkbox, juste ON ou OFF
-            const id = checkboxInput.id
-            if (settingsData[0][id] == 0) {
-                span.innerHTML="Off";
-                console.log("AA",id, span);
-            } else {
-                console.log(id); 
-                span.innerHTML="On";
-            }
-        }
-    const otherInput = param.querySelector("input[type='text'],input[type='number'],select");
-    if (otherInput) {
-        const id = otherInput.id; //Sinon, on met la valeur, avec une majuscule si c'est pas un nombre.
-        console.log(id,settingsData[0][id]);
-            if (otherInput.type=="number") {
-                span.innerHTML=settingsData[0][id]
-            } else {
-                span.innerHTML=settingsData[0][id].charAt(0).toUpperCase() + settingsData[0][id].slice(1); //Majuscule en début de string
-            }
-        
-    }
-
-});   
-};
-addParamsData();
-let paramsObj = {}; // Stockage global
-
-//Fonction pour, pour chaque paramètre, inclure dans paramsObj les modif apportées par l'utilisateur
-function watchParamsChanges() {
-  const inputs = document.querySelectorAll(".param input, .param select, .param textarea");
-  inputs.forEach(input => {
-    input.addEventListener("change", () => {
-      const paramDiv = input.closest(".param");
-      const span = paramDiv ? paramDiv.querySelector("label .pre-value") : null;
-      const id = input.id || input.name;
-      if (!id) return;
-
-      let value;
-      if (input.type === "checkbox") {
-        value = input.checked;
-      } else {
-        value = input.value;
-      }
-
-      // Ajout ou mise à jour dans paramsObj
-      paramsObj[id] = {
-        value: value
-      };
-      if (value=="") { //Rajouter une barre sur le span pour visualiser le changement, et le retirer si retour à 0.
-        span.style.textDecoration ="none";
-      } else {
-        span.style.textDecoration ="line-through black"; 
-      }
-      console.log(paramsObj);
-    });
-  });
-}
-watchParamsChanges();
-
-// 1. Sélection des éléments HTML
-let searchPreset = document.querySelector('input[name="preset_search"]');
-let resultsContainer = document.querySelector('#resultsContainer');
-const nativePresetSelect = document.querySelector('#native_preset');
-
-// 2. Écoute des changements dans le champ de recherche
-searchPreset.addEventListener('input', () => {
-  resultsContainer.innerHTML = ""; // 2.1. Réinitialisation de l'affichage des résultats
-  const query = searchPreset.value.trim(); // 2.2. Nettoyage de la saisie
-  let count = 0; // 2.3. Compteur pour limiter à 3 résultats
-
-  // 3. Si aucun texte n'est entré, on cache les résultats
-  if (query === "") {
-    resultsContainer.style.visibility = "hidden";
-    return;
-  }
-
-  // 4. Parcours de tous les presets pour vérifier les correspondances
-  settingsData.forEach(preset => {
-    resultsContainer.style.visibility = "visible"; // 4.1. Affichage du conteneur de résultats
-    if (count >= 3) return; // 4.2. Si on a déjà 3 résultats, on arrête
-
-    // 4.3. Comparaison du nom ou de l'ID avec la recherche
-    const nameMatch = preset.preset_name.toLowerCase().includes(query.toLowerCase());
-    const idMatch = preset.preset_id == query || preset.preset_id == Number(query);
-
-    // 4.4. Si correspondance trouvée et que l’ID est valide (non 0)
-    if ((nameMatch || idMatch) && preset.preset_id != 0) {
-      const resultPreset = document.createElement('div'); // 4.5. Création d’un élément HTML
-      resultPreset.classList.add('resultPreset');
-      resultPreset.innerHTML = `
-        <h2>${preset.preset_name}</h2>
-        <p>Gamemode : <strong>${preset.preset_gamemode}</strong><br>ID : ${preset.preset_id}</p>
-      `;
-      resultsContainer.appendChild(resultPreset); // 4.6. Ajout du résultat à l’affichage
-      count++; // 4.7. Incrémentation du compteur
-
-      // 5. Quand l’utilisateur clique sur un résultat
-      resultPreset.addEventListener('click', () => {
-        //5.0 Clear l'autre
-        nativePresetSelect.value = "";
-        // 5.1. Mise à jour du champ avec le nom sélectionné
-        searchPreset.value = preset.preset_name;
-
-        // 5.2. Cacher les résultats
-        resultsContainer.style.visibility = "hidden";
-        resultsContainer.innerHTML = "";
-
-        // 5.3. Affichage du preset sélectionné dans une zone dédiée
-        const selectionDisplay = document.querySelector('#selectedPreset');
-        selectionDisplay.innerHTML = `
-          <h2>Selected Preset :</h2>
-          <p><strong>Nom :</strong> ${preset.preset_name}</p>
-          <p ><strong>ID :</strong> <span class="selectedPresetID">${preset.preset_id}</span></p>
-          <p><strong>Gamemode :</strong> ${preset.preset_gamemode}</p>
-        `;
-        
-        // 5.4. Stockage du preset sélectionné dans une variable globale
-        selectedPreset = preset;
-        // 6. Comportement Native Preset
-        nativePresetSelect.addEventListener('change', () => {
-        const value = nativePresetSelect.value;
-
-        if (value === "") {
-            return; // Rien de sélectionné
-        }
-
-        if (value === "Neutral preset") {
-            selectionDisplay.innerHTML = `
-            <h2>Selected Preset :</h2>
-            <p><strong>Nom :</strong> Neutral Preset</p>
-            <p><strong>ID :</strong> <span class="selectedPresetID">1</span></p>
-            <p><strong>Gamemode :</strong> Max</p>
-            `;
-        } else if (value === "Start preset") {
-            selectionDisplay.innerHTML = `
-            <h2>Selected Preset :</h2>
-            <p><strong>Nom :</strong> Start Preset</p>
-            <p><strong>ID :</strong> <span class="selectedPresetID">2</span></p>
-            <p><strong>Gamemode :</strong> Start</p>
-            `;
-        } else if (value === "Raid preset") {
-            selectionDisplay.innerHTML = `
-            <h2>Selected Preset :</h2>
-            <p><strong>Nom :</strong> Raid Preset</p>
-            <p><strong>ID :</strong> <span class="selectedPresetID">3</span></p>
-            <p><strong>Gamemode :</strong> Raid</p>
-            `;
-        }
-
-        // Réinitialiser la recherche après sélection
-        searchPreset.value = "";
-        });
-      });
-    }
-  });
-});
-
-
-function loadPreset() {
-  const loadBtn = document.querySelector(".load");
-  
-  loadBtn.addEventListener("click", () => {
-    const sPI = document.querySelector('.selectedPresetID')?.innerText; 
-
-    if (sPI && !isNaN(sPI)) {
-      const presetIndex = parseInt(sPI);
-      if (settings[presetIndex]) {
-        sessionStorage.setItem("settings_data", JSON.stringify([JSON.parse(sessionStorage.getItem("settings_data"))[selectedID]]));
-        /* addParamsData(); */
-        console.log(sessionStorage);
-      } else {
-        alert("Aucun ID trouvé !");
-      }
-    } else {
-        alert("Aucun preset sélectionné !");
-    }
-  });
-}
-});
+    <?php include "function-visual-return.js";?>
+    <?php include "script_settings.js";?>
 </script>
 </body>
 </html>
