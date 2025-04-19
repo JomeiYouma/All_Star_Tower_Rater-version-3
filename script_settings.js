@@ -226,7 +226,7 @@ searchPreset.addEventListener('input', () => {
         });
     }
 let newPresetObj = {};
-function ajouterDansBDD() {
+function addToBDD() {
     const presetNameInput = document.getElementById("preset_name");
 
     if (presetNameInput.value !== "") {
@@ -274,20 +274,48 @@ function ajouterDansBDD() {
     }
 }
 
+function applyPreset() {
+  if (Object.keys(paramsObj).length !== 0) {
+    newPresetObj = {}; // reset à chaque appel
 
-        /* fetch("ajouter.php", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/x-www-form-urlencoded"
-          },
-          body: `nom=${encodeURIComponent(nom)}&age=${encodeURIComponent(age)}`
+    Object.keys(settingsData[0]).forEach(key => {
+        // On utilise la valeur dans paramsObj si elle existe, sinon celle de settingsData
+        newPresetObj[key] = (paramsObj[key]?.value !== undefined ? paramsObj[key].value : settingsData[0][key]);
+    });
+    console.log("✅ Nouvel objet enregistré :", newPresetObj);
+    // Faire le lien et les test via la bdd
+    fetch("apply_preset.php", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(newPresetObj)
+      })
+      .then(async res => {
+        const text = await res.text(); // ⚠️ pas .json()
+        console.log("RAW response", text); // <--- VOIR le vrai contenu
+        try {
+          const json = JSON.parse(text);
+          if (json.success) {
+            visualReturn(presetNameInput, "Preset added successfully!", "rgb(150, 250, 150)", "black");
+            alert("Added preset. New preset's ID : " + json.preset_id);
+          } else {
+            alert("Erreur : " + json.message);
+          }
+        } catch (e) {
+          console.error("JSON Parsing error :", e);
+        }
         })
-        .then(res => res.text())
-        .then(data => {
-          console.log("Réponse serveur :", data);
-        }); */
+        .catch(error => console.error("Network error", error));
+} else {
+    alert("No settings modification.");   
+}
+}
   loadPreset();
   document.getElementById("save").addEventListener("click", () => {
-    ajouterDansBDD();
+    addToBDD();
+  });
+  document.getElementById("apply").addEventListener("click", () => {
+    applyPreset();
   });
 });
