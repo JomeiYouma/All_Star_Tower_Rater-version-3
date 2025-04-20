@@ -171,21 +171,21 @@ searchPreset.addEventListener('input', () => {
                 selectionDisplay.innerHTML = `
                 <h2>Selected Preset :</h2>
                 <p><strong>Nom :</strong> Neutral Preset</p>
-                <p><strong>ID :</strong> <span class="selectedPresetID">1</span></p>
+                <p><strong>ID :</strong> <span class="selectedPresetID">2</span></p>
                 <p><strong>Gamemode :</strong> Max</p>
                 `;
             } else if (value === "Start preset") {
                 selectionDisplay.innerHTML = `
                 <h2>Selected Preset :</h2>
                 <p><strong>Nom :</strong> Start Preset</p>
-                <p><strong>ID :</strong> <span class="selectedPresetID">2</span></p>
+                <p><strong>ID :</strong> <span class="selectedPresetID">3</span></p>
                 <p><strong>Gamemode :</strong> Start</p>
                 `;
             } else if (value === "Raid preset") {
                 selectionDisplay.innerHTML = `
                 <h2>Selected Preset :</h2>
                 <p><strong>Nom :</strong> Raid Preset</p>
-                <p><strong>ID :</strong> <span class="selectedPresetID">3</span></p>
+                <p><strong>ID :</strong> <span class="selectedPresetID">4</span></p>
                 <p><strong>Gamemode :</strong> Raid</p>
                 `;
             }
@@ -216,12 +216,12 @@ searchPreset.addEventListener('input', () => {
             visualReturn(selectionDisplay, "Preset successfully loaded :)", "RGB(46, 204, 113)", "white")
                 searchPreset.value='';
 
-            console.log("Preset chargé avec succès !");
+            console.log("Preset successfully loaded");
             } else {
-            alert("Aucun preset trouvé pour cet ID !");
+            alert("No preset found with this ID.");
             }
         } else {
-            alert("Aucun preset sélectionné !");
+            alert("No selected preset.");
         }
         });
     }
@@ -273,7 +273,11 @@ function addToBDD() {
         alert("Preset Name is not filled.");
     }
 }
-
+let buttonApply = document.getElementById("apply");
+let consentCheckContainer =document.querySelector(".consent-check");
+let buttonSave =  document.getElementById("save");
+let buttonApplynt =document.getElementById("applynt");
+let buttonApply2 =document.getElementById("apply2");
 function applyPreset() {
   if (Object.keys(paramsObj).length !== 0) {
     newPresetObj = {}; // reset à chaque appel
@@ -292,15 +296,18 @@ function applyPreset() {
         body: JSON.stringify(newPresetObj)
       })
       .then(async res => {
-        const text = await res.text(); // ⚠️ pas .json()
+        const text = await res.text();
         console.log("RAW response", text); // <--- VOIR le vrai contenu
         try {
           const json = JSON.parse(text);
           if (json.success) {
-            visualReturn(presetNameInput, "Preset added successfully!", "rgb(150, 250, 150)", "black");
-            alert("Added preset. New preset's ID : " + json.preset_id);
+            alert("Applied preset. Access preset with ID : " + json.preset_id);
           } else {
-            alert("Erreur : " + json.message);
+            consentCheckContainer.style.visibility="visible";
+            consentCheckContainer.style.display="flex";//Affiche la div du choix
+            buttonApply.style.visibility="hidden";
+            buttonApply.style.display="none";
+            alert("Warning : " + json.message);
           }
         } catch (e) {
           console.error("JSON Parsing error :", e);
@@ -312,10 +319,29 @@ function applyPreset() {
 }
 }
   loadPreset();
-  document.getElementById("save").addEventListener("click", () => {
+  buttonSave.addEventListener("click", () => {
     addToBDD();
   });
-  document.getElementById("apply").addEventListener("click", () => {
+  buttonApply.addEventListener("click", () => {
     applyPreset();
+  });
+  buttonApply2.addEventListener("click", () => {
+    consentCheckContainer.style.visibility="hidden";
+    consentCheckContainer.style.display="none";
+    buttonApply.style.visibility="visible";
+    buttonApply.style.display="block";
+    visualReturn(buttonApply, "Applied Preset", "rgb(150, 250, 177)", "black", "S A V E"); 
+    let fullList = JSON.parse(sessionStorage.getItem("settings_data"));
+    fullList[0] = newPresetObj; // Modif settings en local (oui j'ai compris qu'il y avait une différence trop tard, j'aurais pu faire quelque chose de beaucoup plus condensé)
+    sessionStorage.setItem("settings_data", JSON.stringify(fullList)); //Et du coup modif en storage.
+    addParamsData();
+    console.log(fullList);
+  });
+  buttonApplynt.addEventListener("click", () => {
+    consentCheckContainer.style.visibility="hidden";
+    consentCheckContainer.style.display="none";
+    buttonApply.style.visibility="visible";
+    buttonApply.style.display="block";
+    visualReturn(buttonApply, "Apply Canceled", "rgb(250, 152, 150)", "black", "S A V E");
   });
 });

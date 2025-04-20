@@ -314,8 +314,15 @@
                                 <label for="preset_password">Preset Password</label>
                                 <input type="password" name="preset_password" id="preset_password" placeholder="--Please set password--">
                             </div>
-                            <button class="button-85 save" id="save" role="button" type="button" >S A V E</button><br>
+                            <button class="button-85 save" id="save" role="button" type="button" >S A V E</button>
                             <button class="button-85 save" id="apply" role="button" type="button">APPLY PRESET</button>
+                        </div>
+                        
+                        <div class="consent-check">
+                        <p>Your preset will not be saved. You'll can access to it until you close the site.</p>
+                        <button class="button-85 save" id="apply2" role="button" type="button" >STILL APPLY</button>
+                        
+                        <button class="button-85 save" id="applynt" role="button" type="button" >CANCEL APPLY</button>
                         </div>
                         <p class="littleWarning"><span class="greenDot">*</span>:Must be filled.</p>
                        </details>

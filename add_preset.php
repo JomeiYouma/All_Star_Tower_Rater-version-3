@@ -5,7 +5,7 @@ $pdo = new PDO("mysql:host=localhost;dbname=all_star_tower_rater;charset=utf8", 
 
 $data = json_decode(file_get_contents("php://input"), true);
 if (!$data || empty($data["preset_name"])) {
-    echo json_encode(["success" => false, "message" => "Nom de preset manquant."]);
+    echo json_encode(["success" => false, "message" => "Preset name missing."]);
     exit;
 }
 

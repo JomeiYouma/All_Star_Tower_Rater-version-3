@@ -363,14 +363,5 @@ if ((unitId1 == 175 && unitId2 == 96)||(unitId1 == 96 && unitId2 == 175)) {
 }
 });
 </script>
-<?php else: ?><!-- ##################SCRIPT EMPTY############# -->
-<script>
-//Focus des boites vides vers la recherche
-document.getElementById("first-box").addEventListener("click", function() {
-document.getElementById("name1").focus();
-});
-document.getElementById("second-box").addEventListener("click", function() {
-document.getElementById("name2").focus();
-});
-</script>
 <?php endif; ?>
+</html>

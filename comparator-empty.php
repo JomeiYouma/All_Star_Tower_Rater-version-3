@@ -72,10 +72,17 @@ if  (isset($id2)) {
 </section>
 </section>
 <script>
-  document.getElementById("first-box").addEventListener("click", function() {
+    let firstBox = document.getElementById("first-box");
+    let secondBox = document.getElementById("second-box");
+    //On est obligé de faire un if, sinon ça bug quand c'est remplacé dans le HTML parce qu'on les fait disparaître du HTML.
+    if (firstBox !== null) {
+        firstBox.addEventListener("click", function() {
     document.getElementById("name1").focus();
   });
-  document.getElementById("second-box").addEventListener("click", function() {
+    }
+    if (secondBox !== null) { 
+        document.getElementById("second-box").addEventListener("click", function() {
     document.getElementById("name2").focus();
   });
+    }
 </script>

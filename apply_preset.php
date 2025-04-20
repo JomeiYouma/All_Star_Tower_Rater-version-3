@@ -35,7 +35,7 @@ foreach ($all_presets as $preset) {
         //Trouvé
         echo json_encode([
             "success" => true,
-            "message" => "Preset existant trouvé.",
+            "message" => "Presset applied.",
             "preset_id" => $preset["preset_id"]
         ]);
         exit;

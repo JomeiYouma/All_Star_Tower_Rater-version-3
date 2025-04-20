@@ -307,3 +307,30 @@ body {
         margin-top: 4px;
         margin-bottom: 4px;
     }
+
+    .consent-check{
+        margin: 15px;
+        display: none;
+        visibility: hidden;
+        flex-direction: row;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        transition: all ease-in-out 0.6s;
+    }
+
+    .consent-check button{
+        width: 45%;
+    }
+
+    .consent-check #applynt{
+        background-color: #e74c3c;
+    }
+
+    .consent-check #applynt:hover{
+        background-color: #b13a2d;
+    }
+
+    .consent-check p{
+        width: 90%;
+        /* padding: 20px; */
+    }
