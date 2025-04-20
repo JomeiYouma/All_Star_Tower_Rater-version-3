@@ -1,7 +1,7 @@
 //###################  DIAGRAMME PARAMETRABLE  ####################
 
 let settingImportanceAoeType = 50; //ça sera une setting plus tard
-let settingMethode = 1; // 1 = log, 2 = linear
+let settingMethode = settingsData[0].method; // 1 = log, 2 = linear
 let settingRankRatio = 50; //Immportance de du rank par rapport à l'importance de la valeur (ça sera une setting plus tard)
 
 function ratioGeneral(stat1, statRank1, rankNbr, maxValue1, minValue1, importance, stat2, statRank2, maxValue2, minValue2) {//Fonction pour les deux échelles
@@ -63,7 +63,7 @@ console.log('FirstCalc * 1-rankRatio%) + rank/maxRank * rankRatio%) * importance
     (statRank2 / rankNbr) * (settingRankRatio / 100)
 ) * (importance / 100));
 
-    if (settingMethode === 0) {
+    if (settingMethode == "linear") {
             return (
                 (((((stat1/maxValue1) * (1-settingRankRatio/100)) + ((statRank1/rankNbr) * (settingRankRatio/100))) * (1-(importance/100))) + (((stat2/maxValue2) * (1-settingRankRatio/100)) + ((statRank2/rankNbr) * (settingRankRatio/100))) * (importance/100))*100
         )

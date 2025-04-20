@@ -330,7 +330,7 @@ function applyPreset() {
     consentCheckContainer.style.display="none";
     buttonApply.style.visibility="visible";
     buttonApply.style.display="block";
-    visualReturn(buttonApply, "Applied Preset", "rgb(150, 250, 177)", "black", "S A V E"); 
+    visualReturn(buttonApply, "Applied Preset", "rgb(150, 250, 177)", "black", "A P P L Y"); 
     let fullList = JSON.parse(sessionStorage.getItem("settings_data"));
     fullList[0] = newPresetObj; // Modif settings en local (oui j'ai compris qu'il y avait une différence trop tard, j'aurais pu faire quelque chose de beaucoup plus condensé)
     sessionStorage.setItem("settings_data", JSON.stringify(fullList)); //Et du coup modif en storage.

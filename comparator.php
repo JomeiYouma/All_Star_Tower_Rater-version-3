@@ -197,6 +197,8 @@ aeC.innerHTML = modifiedData.find(obj => obj.unitId === unitId1).aoe_points - mo
 cellAdjucement(aeC);
 let hrC = document.querySelector('.hrC');
 hrC.innerHTML = modifiedData.find(obj => obj.unitId === unitId1).range - modifiedData.find(obj => obj.unitId === unitId2).range;
+console.log("DEBUG 1 :", modifiedData.find(obj => obj.unitId === unitId1).dps_total);
+console.log("DEBUG 2 :", modifiedData.find(obj => obj.unitId === unitId2).dps_total)
 cellAdjucement(hrC);
 let dsC = document.querySelector('.dsC');
 dsC.innerHTML = modifiedData.find(obj => obj.unitId === unitId1).dps_total - modifiedData.find(obj => obj.unitId === unitId2).dps_total;
@@ -299,18 +301,17 @@ let myChart = new Chart(ctx, {
 });
 //Clic diagram//
 const diagramImg = document.querySelector(".comparativeStar img");
-
-diagramImg.addEventListener("click", () => {
+function methodChanger() {
     let methodColor1; 
     let methodColor2;
-    if (settingMethode === 1) {
-        settingMethode = 0;
+    if (settingMethode == "logarithmic") {
+        settingMethode = "linear";
         diagramImg.src = "image_file/diagram-lin-2.png";
         diagramImg.alt = "Change calculation method to logarithmic";
         methodColor1 = '255,204,113';
         methodColor2 = '143,113,255';
     } else {
-        settingMethode = 1;
+        settingMethode = "logarithmic";
         diagramImg.src = "image_file/diagram-log-2.png";
         diagramImg.alt = "Change calculation method to linear";
         methodColor1 = '255,99,132';
@@ -357,6 +358,10 @@ diagramImg.addEventListener("click", () => {
         pointHoverBorderColor: `rgb(${methodColor2})` 
     }];
     myChart.update();
+}
+methodChanger();
+diagramImg.addEventListener("click", () => {
+    methodChanger();
 });
 if ((unitId1 == 175 && unitId2 == 96)||(unitId1 == 96 && unitId2 == 175)) {
     <?php include "dubstep_canva.js";?>  
