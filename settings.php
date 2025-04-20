@@ -14,7 +14,7 @@
 <main class="settingsMain">
     <div class="frame">
         <h1>Settings</h1>
-        <p>Les paramètres vous permettent d'activer les différents boosts pour vos unités et de modifier les coefficients des variables dont dépendent les calculs subjectifs. Vous pouvez également choisir le mode de jeu considéré par l'outil. Il est possible d'enregistrer vos paramètres en créant un "preset".</p>
+        <p>The settings allow you to activate different boosts for your units and modify the coefficients of variables on which subjective calculations depend. You can also choose the game mode considered by the tool. It is possible to save your settings by creating a "<a class="anchor" href="#anchor_preset">preset</a>".</p>
         <form action="" class="settingsForm">
                     <details open class="generalSettingsDetails">
                         <summary>
@@ -22,7 +22,7 @@
                         </summary>    
                         <div class="divi">
                         <div class="param">
-                            <label for="preset_gamemode">Gamemode<span class="greenDot">*</span> : <span class="pre-value">Start</span></label>
+                            <label for="preset_gamemode">Gamemode : <span class="pre-value">Start</span></label>
                             <select name="preset_gamemode" id="preset_gamemode">
                                 <option value="">--Please choose an option--</option>
                                 <option value="start">Start</option>
@@ -55,7 +55,6 @@
                             <label for="leader_cost">Leader cost economy : <span class="pre-value">20</span> %</label>
                             <input type="number" name="leader_cost" id="leader_cost" min="0" max="20" placeholder="--Please enter an economy--">
                         </div></div>
-                        <p class="littleWarning"><span class="greenDot">*</span>:Must be filled if you want create a preset.</p>
                     </details>
                     <details class="generalSettingsDetails">
                         <summary>
@@ -239,7 +238,7 @@
                             <input type="number" name="importance_aoetype" id="importance_aoetype" min="0" max="100" placeholder="--Please enter a value--">
                         </div>
                         
-                        <div class="param">
+<!--                         <div class="param"> Pas implémenté
                             <label for="importance_range">Importance Range : <span class="pre-value">100</span></label>
                             <input type="number" name="importance_range" id="importance_range" min="0" max="100" placeholder="--Please enter a value--">
                         </div>
@@ -252,7 +251,7 @@
                         <div class="param">
                             <label for="importance_aoe">Importance AoE : <span class="pre-value">100</span></label>
                             <input type="number" name="importance_aoe" id="importance_aoe" min="0" max="100" placeholder="--Please enter a value--">
-                        </div>
+                        </div> -->
 
                         <div class="separator"></div>
 
@@ -274,7 +273,7 @@
         </form>
     </div><br>
     <div class="frame">
-        <h1>Preset</h1>
+        <h1 id="anchor_preset">Preset</h1>
         <form action="" class="settingsForm">
                     <details class="generalSettingsDetails">
                         <summary>
@@ -310,10 +309,10 @@
                                 <label for="preset_name">Preset Name<span class="greenDot">*</span></label>
                                 <input type="text" name="preset_name" id="preset_name" placeholder="--Please set name--">
                             </div>
-                            <div class="paramBis">
+<!--                             <div class="paramBis"> Pas implémenté
                                 <label for="preset_password">Preset Password</label>
                                 <input type="password" name="preset_password" id="preset_password" placeholder="--Please set password--">
-                            </div>
+                            </div> -->
                             <button class="button-85 save" id="save" role="button" type="button" >S A V E</button>
                             <button class="button-85 save" id="apply" role="button" type="button">APPLY PRESET</button>
                         </div>

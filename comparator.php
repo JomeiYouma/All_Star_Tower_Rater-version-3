@@ -301,10 +301,16 @@ let myChart = new Chart(ctx, {
 });
 //Clic diagram//
 const diagramImg = document.querySelector(".comparativeStar img");
-function methodChanger() {
+function methodChanger(way) { //Pour réutiliser au clic et au chargement dans le sens inverse.
+    let from;
+    if (way == 1) {
+        from = "logarithmic"
+    } else {
+        from = "linear"
+    }
     let methodColor1; 
     let methodColor2;
-    if (settingMethode == "logarithmic") {
+    if (settingMethode == from) {
         settingMethode = "linear";
         diagramImg.src = "image_file/diagram-lin-2.png";
         diagramImg.alt = "Change calculation method to logarithmic";
@@ -359,10 +365,11 @@ function methodChanger() {
     }];
     myChart.update();
 }
-methodChanger();
 diagramImg.addEventListener("click", () => {
-    methodChanger();
+    methodChanger(1);
 });
+methodChanger(0);
+/* console.log(settingMethode); */
 if ((unitId1 == 175 && unitId2 == 96)||(unitId1 == 96 && unitId2 == 175)) {
     <?php include "dubstep_canva.js";?>  
 }

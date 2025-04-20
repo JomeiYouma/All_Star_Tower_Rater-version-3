@@ -264,47 +264,59 @@ let myChart = new Chart(ctx, {
   }
     }
 });
+
+
 //Clic diagram//
 const diagramImg = document.querySelector(".character-star-diagram img");
-
-diagramImg.addEventListener("click", () => {
+function methodChanger(way) {//Pour réutiliser au clic et au chargement dans le sens inverse.
+    let from;
+    if (way == 1) {
+        from = "logarithmic"
+    } else {
+        from ="linear"
+    }
     let methodColor; // Déclaration de la variable à l'extérieur de la condition
 
-    if (settingMethode === 1) {
-        settingMethode = 0;
-        diagramImg.src = "image_file/diagram(2).png";
-        diagramImg.alt = "Change calculation method to logarithmic";
-        methodColor = '255,204,113'; 
-    } else {
-        settingMethode = 1;
-        diagramImg.src = "image_file/diagram-log.png";
-        diagramImg.alt = "Change calculation method to linear";
-        methodColor = '113,193,255'; 
-    }
+if (settingMethode == from) {
+    settingMethode = "linear";
+    diagramImg.src = "image_file/diagram(2).png";
+    diagramImg.alt = "Change calculation method to logarithmic";
+    methodColor = '255,204,113'; 
+} else {
+    settingMethode = "logarithmic";
+    diagramImg.src = "image_file/diagram-log.png";
+    diagramImg.alt = "Change calculation method to linear";
+    methodColor = '113,193,255'; 
+}
 
-    applyMethod(unitA, values1); // Recalcule les données en fonction de la méthode
+applyMethod(unitA, values1); // Recalcule les données en fonction de la méthode
 
-    // Actualisation du diagramme avec les couleurs dynamiques
-    myChart.data.datasets = [{
-        label: name.innerHTML,
-        data: [
-           /*Worthiness */ values1.wt ,
-           /*Cost */ values1.cost,
-           /*Farming Difficulty */ unitsData[unitId].farming_difficulty_points,
-           /*Range */ /* hrElement.innerHTML */values1.range ,
-           /*Progression */unitsData[unitId].progression_points ,
-           /*DPS */ values1.dps,
-        ],
-        fill: true,
-        backgroundColor: `rgba(${methodColor}, 0.2)`, 
-        borderColor: `rgb(${methodColor})`,        
-        pointBackgroundColor: `rgb(${methodColor})`, 
-        pointBorderColor: '#fff',
-        pointHoverBackgroundColor: '#fff',
-        pointHoverBorderColor: `rgb(${methodColor})` 
-    }];
-    myChart.update();
+// Actualisation du diagramme avec les couleurs dynamiques
+myChart.data.datasets = [{
+    label: name.innerHTML,
+    data: [
+       /*Worthiness */ values1.wt ,
+       /*Cost */ values1.cost,
+       /*Farming Difficulty */ unitsData[unitId].farming_difficulty_points,
+       /*Range */ /* hrElement.innerHTML */values1.range ,
+       /*Progression */unitsData[unitId].progression_points ,
+       /*DPS */ values1.dps,
+    ],
+    fill: true,
+    backgroundColor: `rgba(${methodColor}, 0.2)`, 
+    borderColor: `rgb(${methodColor})`,        
+    pointBackgroundColor: `rgb(${methodColor})`, 
+    pointBorderColor: '#fff',
+    pointHoverBackgroundColor: '#fff',
+    pointHoverBorderColor: `rgb(${methodColor})` 
+}];
+myChart.update();
+}
+diagramImg.addEventListener("click", () => {
+    methodChanger(1);
 });
+methodChanger(0); //Initialisation à la bonne couleur
+/* console.log(settingMethode); */
 });
 </script>
 </body>

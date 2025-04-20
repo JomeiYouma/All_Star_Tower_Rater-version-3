@@ -1,3 +1,30 @@
+  /* ---------------- COLORS ----------------*/
+  :root {
+    /* Violets */
+    --dark-violet: #3c2a8c;
+    --violet: #5a41d4;
+    --light-violet: #a89cf3;
+  
+    /* Bleus (cohérents avec les violets) */
+    --primary-blue: #3b82f6;
+    --dark-blue: #1e3a8a;
+    --light-blue: #dbeafe;
+  
+    /* Neutres */
+    --white: #ffffff;
+    --light-gray: #f3f4f6;
+    --medium-gray: #d1d5db;
+    --dark-gray: #1f2937;
+    --text-gray: #374151;
+  
+    /* Accent - Vert */
+    --green: #10b981;
+    --dark-green: #065f46;
+  
+    /* Accent - Rouge */
+    --red: #ef4444;
+    --dark-red: #7f1d1d;
+  }
 /* EMPTY -----------------------------------------------*/
 .empty-search-space{
     display: flex;
@@ -15,8 +42,8 @@
 .part-search-card{
     position: relative;
     margin: 24px 0px 24px 0px;
-    border: lightgray 1px solid;
-    background: white;  
+    border: var(--medium-gray) 1px solid;
+    background: var(--white);  
     border-radius: 1rem;
     margin-bottom: 2rem;
     box-shadow: 0 2px 4px rgba(0,0,0,0.05);
@@ -46,9 +73,9 @@
     display: flex;
     width: 100%;
     aspect-ratio: 1/1;
-    border: gray 2px dotted;
+    border: var(--medium-gray) 2px dotted;
     border-radius: 1rem;
-    color: gray;
+    color: var(--text-gray);
     align-items: center;
     justify-content: center;
     background-image: url("/All_Star_Tower_Rater/image_file/blank_character.png");
@@ -61,8 +88,8 @@
 .clear-the-selection{
     position: absolute;
     /* z-index: 1000000; */
-    color: red;
-    background-color: rgb(247, 236, 236);
+    color: var(--red);
+    background-color: var(--medium-gray);
     border-radius: 5px;
     max-width: 75px;
     left: 65%;
@@ -75,12 +102,12 @@ transform: scale(1.1);
 }
 
 .clear-the-selection:visited{
-    color: red;
+    color: var(--red);
 }
 /* FULL ---------------------------------------------- */
 
 main {
-    background-color: #f8f9fa;
+    background-color: var(--light-gray);
     color: black;
     padding: 20px;
     line-height: 1.6;
@@ -109,12 +136,12 @@ h2 {
     padding: 25px;
     border-radius: 8px;
     position: relative;
-    background-color: white;
+    background-color: var(--white);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     transition: transform 0.3s ease;
     position: relative;
     overflow: hidden;
-    color: white;
+    color: var(--white);
 }
 .illu1 img, .illu2 img {
     position: absolute;
@@ -135,11 +162,11 @@ h2 {
   }
 
 .blue {
-    border-top: 4px solid #3b82f6;
+    border-top: 4px solid var(--primary-blue);
 }
 
 .red {
-    border-top: 4px solid #ef4444;
+    border-top: 4px solid varvar(--red);
 }
 
 .name1, .name2 {
@@ -148,16 +175,16 @@ h2 {
 }
 
 .name1 {
-    color: #3b82f6;
+    color: var(--primary-blue);
 }
 
 .name2 {
-    color: #ef4444;
+    color: var(--red);
 }
 
 .forname1, .forname2 {
     font-size: 1.1rem;
-    color: #666;
+    color: var(--text-gray);
     margin-bottom: 10px;
 }
 
@@ -172,24 +199,24 @@ h2 {
 
 .enchant1 {
     background-color: rgba(59, 130, 246, 0.1);
-    color: #3b82f6;
+    color: var(--primary-blue);
 }
 
 .enchant2 {
     background-color: rgba(239, 68, 68, 0.1);
-    color: #ef4444;
+    color: var(--red);
 }
 
 .role1, .role2 {
     font-size: 0.95rem;
-    color: grey;
+    color: var(--text-gray);
     margin-bottom: 20px;
 }
 
 /* Section Abilities */
 .middleSecionComparator {
     margin-bottom: 40px;
-    background-color: white;
+    background-color: var(--white);
     padding: 25px;
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
@@ -206,21 +233,21 @@ h2 {
 .firstAbilities img, .secondAbilities img {
     width: 50px;
     height: 50px;
-    background: #eff6ff;
+    background: var(--medium-gray);
     border-radius: 0.5rem;
     padding: 0.25rem;
     transition: transform 0.3s;
   }
 
 .firstAbilities img:hover {
-    border-color: #3b82f6;
+    border-color: var(--primary-blue);
     box-shadow: 0 5px 15px rgba(59, 130, 246, 0.2);
     transform: scale(1.1);
     filter: drop-shadow(0 0 6px rgba(59,130,246,0.3));
 }
 
 .secondAbilities img:hover {
-    border-color: #ef4444;
+    border-color: var(--red);
     box-shadow: 0 5px 15px rgba(239, 68, 68, 0.2);
     transform: scale(1.1);
     filter: drop-shadow(0 0 6px rgba(239, 68, 68, 0.2));
@@ -230,11 +257,11 @@ h2 {
 
 .comparativeStar {
     margin-top: 40px;
-    background-color: #f8f9fa;
+    background-color: var(--medium-gray);
     padding: 20px;
     border-radius: 8px;
     /* max-width: 600px; */
-    border: 1px solid #e0e0e0;
+    border: 1px solid var(--medium-gray);
     position: relative;
     flex: 1; 
     display: flex;
@@ -260,7 +287,7 @@ box-shadow: inset 0px 0px 2px 0px;
 }
 /* Section Stats - Tableau */
 .infoComparator {
-    background-color: white;
+    background-color: var(--white);
     padding: 25px;
     border-radius: 8px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
@@ -276,10 +303,10 @@ box-shadow: inset 0px 0px 2px 0px;
 .stats-table th {
     text-align: left;
     padding: 12px 15px;
-    background-color: #f8f9fa;
+    background-color: var(--light-gray);
     font-weight: 600;
-    color: #555;
-    border-bottom: 2px solid #e0e0e0;
+    color: var(--text-gray);
+    border-bottom: 2px solid var(--medium-gray);
 }
 
 .stats-table th:not(.NUPES) {
@@ -287,7 +314,7 @@ box-shadow: inset 0px 0px 2px 0px;
 }
 .stats-table td {
     padding: 5px 15px;
-    border-bottom: 1px solid #e0e0e0;
+    border-bottom: 1px solid var(--medium-gray);
     vertical-align: middle;
 }
 
@@ -296,7 +323,7 @@ box-shadow: inset 0px 0px 2px 0px;
 }
 
 .stats-table tr:hover td {
-    background-color: #f8f9fa;
+    background-color: var(--light-gray);
 }
 
 .stat-icon {
@@ -309,7 +336,7 @@ box-shadow: inset 0px 0px 2px 0px;
 
 .stat-name {
     font-weight: 500;
-    color: #555;
+    color: var(--text-gray);
 }
 
 .stat-value, th{
@@ -322,7 +349,7 @@ box-shadow: inset 0px 0px 2px 0px;
 .stat-value.hr1, .stat-value.ds1, .stat-value.dd1, 
 .stat-value.dh1, .stat-value.da1, .stat-value.co1, 
 .stat-value.wt1 {
-    color: #3b82f6;
+    color: var(--primary-blue);
 }
 
 .stat-value.mp2, .stat-value.ec2, .stat-value.ar2, 
@@ -330,12 +357,12 @@ box-shadow: inset 0px 0px 2px 0px;
 .stat-value.hr2, .stat-value.ds2, .stat-value.dd2, 
 .stat-value.dh2, .stat-value.da2, .stat-value.co2, 
 .stat-value.wt2 {
-    color: #ef4444;
+    color: var(--red);
 }
 
 .comparison-value {
     font-weight: 600;
-    color: darkgray;
+    color: var(--text-gray);
     text-align: center;
 }
 

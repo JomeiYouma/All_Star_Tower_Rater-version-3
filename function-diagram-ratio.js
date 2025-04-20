@@ -1,8 +1,8 @@
 //###################  DIAGRAMME PARAMETRABLE  ####################
 
-let settingImportanceAoeType = 50; //ça sera une setting plus tard
-let settingMethode = settingsData[0].method; // 1 = log, 2 = linear
-let settingRankRatio = 50; //Immportance de du rank par rapport à l'importance de la valeur (ça sera une setting plus tard)
+let settingImportanceAoeType = settingsData[0].importance_aoetype;
+let settingMethode = settingsData[0].method; // log or linear
+let settingRankRatio = settingsData[0].ranking_percentage; //Immportance du rank par rapport à l'importance de la valeur.
 
 function ratioGeneral(stat1, statRank1, rankNbr, maxValue1, minValue1, importance, stat2, statRank2, maxValue2, minValue2) {//Fonction pour les deux échelles
 
