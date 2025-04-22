@@ -1,5 +1,5 @@
 <?php
-<?php require_once __DIR__ . '/../php_sup/pdo.php';
+require_once __DIR__ . '/../php_sup/pdo.php';
 
 // Requête SQL
 $query = $pdo->query("
