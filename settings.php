@@ -14,7 +14,7 @@
 <main class="settingsMain">
     <div class="frame">
         <h1>Settings</h1>
-        <p>The settings allow you to activate different boosts for your units and modify the coefficients of variables on which subjective calculations depend. You can also choose the game mode considered by the tool. It is possible to save your settings by creating a "<a class="anchor" href="#anchor_preset">preset</a>".</p>
+        <p>These settings let you activate various boosts for your units and adjust the coefficients of variables that affect subjective calculations.   You can also choose the game mode considered by the tool. It is possible to save your settings by creating a "<a class="anchor" href="#anchor_preset">preset</a>".</p>
         <form action="" class="settingsForm">
                     <details open class="generalSettingsDetails">
                         <summary>
@@ -33,28 +33,45 @@
                         
                         <div class="param">
                             <label for="level">Unit level : <span class="pre-value">175</span></label>
-                            <input type="number" name="level" id="level" min="1" max="175" placeholder="--Please enter a level--">
+                            <div class="rangeContainer">
+                                <span id="levelRangeDisplay">0.1</span>
+                                <input type="range" name="level" id="level" min="1" max="175" value="175" step="1">
+                            </div>
                         </div>
         
                         <div class="param">
                             <label for="buff">Buff strength : <span class="pre-value">250</span> %</label>
-                            <input type="number" name="buff" id="buff" min="0" max="300" placeholder="--Please enter a buff nbr--">
+                            <div class="rangeContainer">
+                                <span id="buffRangeDisplay">250</span>
+                                <input type="range" name="buff" id="buff" min="0" max="300" value="250" step="10">
+                            </div>
                         </div>
         
                         <div class="param">
                             <label for="leader">Leader buff : <span class="pre-value">20</span> %</label>
-                            <input type="number" name="leader" id="leader" min="0" max="20" placeholder="--Please enter a buff nbr--">
+                            <div class="rangeContainer">
+                                <span id="leaderRangeDisplay">20</span>
+                                <input type="range" name="leader" id="leader" min="0" max="20" value="20" step="1">
+                            </div>
                         </div>
-        
+
                         <div class="param">
                             <label for="leader_special">Leader DoT buff : <span class="pre-value">12</span> %</label>
-                            <input type="number" name="leader_special" id="leader_special" min="0" max="30" placeholder="--Please enter a buff nbr--">
+                            <div class="rangeContainer">
+                                <span id="leader_specialRangeDisplay">12</span>
+                                <input type="range" name="leader_special" id="leader_special" min="0" max="30" value="12" step="1">
+                            </div>
                         </div>
-        
+                                
                         <div class="param">
-                            <label for="leader_cost">Leader cost economy : <span class="pre-value">20</span> %</label>
-                            <input type="number" name="leader_cost" id="leader_cost" min="0" max="20" placeholder="--Please enter an economy--">
-                        </div></div>
+                            <label for="leader_cost">Leader cost economy : <span class="pre-value">20</span> %
+                            </label>
+                                <div class="rangeContainer">
+                                    <span id="leader_costRangeDisplay">20</span>
+                                    <input type="range" name="leader_cost" id="leader_cost" min="0" max="20" value="20" step="1">
+                            </div>
+                        </div>
+                    </div>
                     </details>
                     <details class="generalSettingsDetails">
                         <summary>
@@ -117,157 +134,191 @@
                             <p class="form-title">Arbitrary settings :</p>
                         </summary>
                         <div class="divi">   
-                        <div class="param">
-                            <label for="pa_full">Points for Full : <span class="pre-value">100</span></label>
-                            <input type="number" name="pa_full" id="pa_full" min="0" max="100" placeholder="--Please enter a value--">
-                        </div>
-                        
-                        <div class="param">
-                            <label for="pa_multiple">Points for Multiple : <span class="pre-value">100</span></label>
-                            <input type="number" name="pa_multiple" id="pa_multiple" min="0" max="100" placeholder="--Please enter a value--">
-                        </div>
-                        
-                        <div class="separator"></div>
+    <div class="param">
+        <label for="pa_full">Points for Full : <span class="pre-value">100</span> | <span id="pa_fullRangeDisplay">100</span></label>
+        <div class="rangeContainer">
+            <input type="range" name="pa_full" id="pa_full" min="0" max="100" value="100">
+        </div>
+    </div>
 
-                        <div class="param">
-                            <label for="pa_cone_half">Points for Cone Half : <span class="pre-value">100</span></label>
-                            <input type="number" name="pa_cone_half" id="pa_cone_half" min="0" max="100" placeholder="--Please enter a value--">
-                        </div>
-                        
-                        <div class="param">
-                            <label for="pa_cone_wide">Points for Cone Wide : <span class="pre-value">100</span></label>
-                            <input type="number" name="pa_cone_wide" id="pa_cone_wide" min="0" max="100" placeholder="--Please enter a value--">
-                        </div>
-                        
-                        <div class="param">
-                            <label for="pa_cone_square">P.f. Cone Square : <span class="pre-value">100</span></label>
-                            <input type="number" name="pa_cone_square" id="pa_cone_square" min="0" max="100" placeholder="--Please enter a value--">
-                        </div>
-                        
-                        <div class="param">
-                            <label for="pa_cone_pyramid">P.f. Cone Pyramid : <span class="pre-value">100</span></label>
-                            <input type="number" name="pa_cone_pyramid" id="pa_cone_pyramid" min="0" max="100" placeholder="--Please enter a value--">
-                        </div>
+    <div class="param">
+        <label for="pa_multiple">Points for Multiple : <span class="pre-value">100</span> | <span id="pa_multipleRangeDisplay">100</span></label>
+        <div class="rangeContainer">
+            <input type="range" name="pa_multiple" id="pa_multiple" min="0" max="100" value="100">
+        </div>
+    </div>
 
-                        <div class="param">
-                            <label for="pa_cone">Points for Cone : <span class="pre-value">100</span></label>
-                            <input type="number" name="pa_cone" id="pa_cone" min="0" max="100" placeholder="--Please enter a value--">
-                        </div>
-                        
-                        <div class="param">
-                            <label for="pa_cone_spike">Points for Cone Spike : <span class="pre-value">100</span></label>
-                            <input type="number" name="pa_cone_spike" id="pa_cone_spike" min="0" max="100" placeholder="--Please enter a value--">
-                        </div>
-                        
-                        <div class="param">
-                            <label for="pa_cone_narrow">P.f. Cone Narrow : <span class="pre-value">100</span></label>
-                            <input type="number" name="pa_cone_narrow" id="pa_cone_narrow" min="0" max="100" placeholder="--Please enter a value--">
-                        </div>
-                        
-                        <div class="param">
-                            <label for="pa_line">Points for Line : <span class="pre-value">100</span></label>
-                            <input type="number" name="pa_line" id="pa_line" min="0" max="100" placeholder="--Please enter a value--">
-                        </div>
+    <div class="separator"></div>
 
-                        <div class="separator"></div>
-                        
-                        <div class="param">
-                            <label for="pa_circle_fat">Points for Circle Fat : <span class="pre-value">100</span></label>
-                            <input type="number" name="pa_circle_fat" id="pa_circle_fat" min="0" max="100" placeholder="--Please enter a value--">
-                        </div>
-                        
-                        <div class="param">
-                            <label for="pa_circle_huge">Points for Circle Huge : <span class="pre-value">100</span></label>
-                            <input type="number" name="pa_circle_huge" id="pa_circle_huge" min="0" max="100" placeholder="--Please enter a value--">
-                        </div>
-                        
-                        <div class="param">
-                            <label for="pa_circle_verylarge">P.f. Circle Very Large : <span class="pre-value">100</span></label>
-                            <input type="number" name="pa_circle_verylarge" id="pa_circle_verylarge" min="0" max="100" placeholder="--Please enter a value--">
-                        </div>
-                        
-                        <div class="param">
-                            <label for="pa_circle_large">Points for Circle Large : <span class="pre-value">100</span></label>
-                            <input type="number" name="pa_circle_large" id="pa_circle_large" min="0" max="100" placeholder="--Please enter a value--">
-                        </div>
-                                                
-                        <div class="param">
-                            <label for="pa_circle">Points for Circle : <span class="pre-value">100</span></label>
-                            <input type="number" name="pa_circle" id="pa_circle" min="0" max="100" placeholder="--Please enter a value--">
-                        </div>
-                        
-                        <div class="param">
-                            <label for="pa_circle_medium">P.f. Circle Medium : <span class="pre-value">100</span></label>
-                            <input type="number" name="pa_circle_medium" id="pa_circle_medium" min="0" max="100" placeholder="--Please enter a value--">
-                        </div>
-                        
-                        <div class="param">
-                            <label for="pa_circle_little">Points for Circle Little : <span class="pre-value">100</span></label>
-                            <input type="number" name="pa_circle_little" id="pa_circle_little" min="0" max="100" placeholder="--Please enter a value--">
-                        </div>
-                        
-                        <div class="param">
-                            <label for="pa_circle_tiny">Points for Circle Tiny : <span class="pre-value">100</span></label>
-                            <input type="number" name="pa_circle_tiny" id="pa_circle_tiny" min="0" max="100" placeholder="--Please enter a value--">
-                        </div>
-                        
-                        <div class="param">
-                            <label for="pa_single">Points for Single : <span class="pre-value">100</span></label>
-                            <input type="number" name="pa_single" id="pa_single" min="0" max="100" placeholder="--Please enter a value--">
-                        </div>
-                        
-                        <div class="param">
-                            <label for="pa_single_trap">Points for Single Trap : <span class="pre-value">100</span></label>
-                            <input type="number" name="pa_single_trap" id="pa_single_trap" min="0" max="100" placeholder="--Please enter a value--">
-                        </div>
-                        
-                        <div class="param">
-                            <label for="pa_summon">Points for Summon : <span class="pre-value">100</span></label>
-                            <input type="number" name="pa_summon" id="pa_summon" min="0" max="100" placeholder="--Please enter a value--">
-                        </div>
-                        
-                        <div class="param">
-                            <label for="pa_controllable">P.f. Controllable : <span  class="pre-value">100</span></label>
-                            <input type="number" name="pa_controllable" id="pa_controllable" min="0" max="100" placeholder="--Please enter a value--">
-                        </div>
+    <div class="param">
+        <label for="pa_cone_half">Points for Cone Half : <span class="pre-value">100</span> | <span id="pa_cone_halfRangeDisplay">100</span></label>
+        <div class="rangeContainer">
+            <input type="range" name="pa_cone_half" id="pa_cone_half" min="0" max="100" value="100">
+        </div>
+    </div>
 
-                        <div class="separator"></div>
+    <div class="param">
+        <label for="pa_cone_wide">Points for Cone Wide : <span class="pre-value">100</span> | <span id="pa_cone_wideRangeDisplay">100</span></label>
+        <div class="rangeContainer">
+            <input type="range" name="pa_cone_wide" id="pa_cone_wide" min="0" max="100" value="100">
+        </div>
+    </div>
 
-                        <div class="param">
-                            <label for="importance_aoetype"> Importance AoE Type : <span  class="pre-value">100</span></label>
-                            <input type="number" name="importance_aoetype" id="importance_aoetype" min="0" max="100" placeholder="--Please enter a value--">
-                        </div>
-                        
-<!--                         <div class="param"> Pas implémenté
-                            <label for="importance_range">Importance Range : <span class="pre-value">100</span></label>
-                            <input type="number" name="importance_range" id="importance_range" min="0" max="100" placeholder="--Please enter a value--">
-                        </div>
-                        
-                        <div class="param">
-                            <label for="importance_dps">Importance DPS : <span class="pre-value">100</span></label>
-                            <input type="number" name="importance_dps" id="importance_dps" min="0" max="100" placeholder="--Please enter a value--">
-                        </div>
-                        
-                        <div class="param">
-                            <label for="importance_aoe">Importance AoE : <span class="pre-value">100</span></label>
-                            <input type="number" name="importance_aoe" id="importance_aoe" min="0" max="100" placeholder="--Please enter a value--">
-                        </div> -->
+    <div class="param">
+        <label for="pa_cone_square">P.f. Cone Square : <span class="pre-value">100</span> | <span id="pa_cone_squareRangeDisplay">100</span></label>
+        <div class="rangeContainer">
+            <input type="range" name="pa_cone_square" id="pa_cone_square" min="0" max="100" value="100">
+        </div>
+    </div>
 
-                        <div class="separator"></div>
+    <div class="param">
+        <label for="pa_cone_pyramid">P.f. Cone Pyramid : <span class="pre-value">100</span> | <span id="pa_cone_pyramidRangeDisplay">100</span></label>
+        <div class="rangeContainer">
+            <input type="range" name="pa_cone_pyramid" id="pa_cone_pyramid" min="0" max="100" value="100">
+        </div>
+    </div>
 
-                        <div class="param">
-                            <label for="method">Chart Scaling : <span class="pre-value">logarithmic</span></label>
-                            <select name="method" id="method">
-                                <option value="">--Please choose an option--</option>
-                                <option value="linear">Linear</option>
-                                <option value="logarithmic">Logarithmic</option>
-                            </select>
-                        </div>
-                        
-                        <div class="param">
-                            <label for="ranking_percentage">Chart Order Scaling : <span class="pre-value">100</span> %</label>
-                            <input type="number" name="ranking_percentage" id="ranking_percentage" min="0" max="100" placeholder="--Please enter a value--">
-                        </div></div>
+    <div class="param">
+        <label for="pa_cone">Points for Cone : <span class="pre-value">100</span> | <span id="pa_coneRangeDisplay">100</span></label>
+        <div class="rangeContainer">
+            <input type="range" name="pa_cone" id="pa_cone" min="0" max="100" value="100">
+        </div>
+    </div>
+
+    <div class="param">
+        <label for="pa_cone_spike">Points for Cone Spike : <span class="pre-value">100</span> | <span id="pa_cone_spikeRangeDisplay">100</span></label>
+        <div class="rangeContainer">
+            <input type="range" name="pa_cone_spike" id="pa_cone_spike" min="0" max="100" value="100">
+        </div>
+    </div>
+
+    <div class="param">
+        <label for="pa_cone_narrow">P.f. Cone Narrow : <span class="pre-value">100</span> | <span id="pa_cone_narrowRangeDisplay">100</span></label>
+        <div class="rangeContainer">
+            <input type="range" name="pa_cone_narrow" id="pa_cone_narrow" min="0" max="100" value="100">
+        </div>
+    </div>
+
+    <div class="param">
+        <label for="pa_line">Points for Line : <span class="pre-value">100</span> | <span id="pa_lineRangeDisplay">100</span></label>
+        <div class="rangeContainer">
+            <input type="range" name="pa_line" id="pa_line" min="0" max="100" value="100">
+        </div>
+    </div>
+
+    <div class="separator"></div>
+
+    <div class="param">
+        <label for="pa_circle_fat">Points for Circle Fat : <span class="pre-value">100</span> | <span id="pa_circle_fatRangeDisplay">100</span></label>
+        <div class="rangeContainer">
+            <input type="range" name="pa_circle_fat" id="pa_circle_fat" min="0" max="100" value="100">
+        </div>
+    </div>
+
+    <div class="param">
+        <label for="pa_circle_huge">Points for Circle Huge : <span class="pre-value">100</span> | <span id="pa_circle_hugeRangeDisplay">100</span></label>
+        <div class="rangeContainer">
+            <input type="range" name="pa_circle_huge" id="pa_circle_huge" min="0" max="100" value="100">
+        </div>
+    </div>
+
+    <div class="param">
+        <label for="pa_circle_verylarge">P.f. Circle Very Large : <span class="pre-value">100</span> | <span id="pa_circle_verylargeRangeDisplay">100</span></label>
+        <div class="rangeContainer">
+            <input type="range" name="pa_circle_verylarge" id="pa_circle_verylarge" min="0" max="100" value="100">
+        </div>
+    </div>
+
+    <div class="param">
+        <label for="pa_circle_large">Points for Circle Large : <span class="pre-value">100</span> | <span id="pa_circle_largeRangeDisplay">100</span></label>
+        <div class="rangeContainer">
+            <input type="range" name="pa_circle_large" id="pa_circle_large" min="0" max="100" value="100">
+        </div>
+    </div>
+
+    <div class="param">
+        <label for="pa_circle">Points for Circle : <span class="pre-value">100</span> | <span id="pa_circleRangeDisplay">100</span></label>
+        <div class="rangeContainer">
+            <input type="range" name="pa_circle" id="pa_circle" min="0" max="100" value="100">
+        </div>
+    </div>
+
+    <div class="param">
+        <label for="pa_circle_medium">P.f. Circle Medium : <span class="pre-value">100</span> | <span id="pa_circle_mediumRangeDisplay">100</span></label>
+        <div class="rangeContainer">
+            <input type="range" name="pa_circle_medium" id="pa_circle_medium" min="0" max="100" value="100">
+        </div>
+    </div>
+
+    <div class="param">
+        <label for="pa_circle_little">Points for Circle Little : <span class="pre-value">100</span> | <span id="pa_circle_littleRangeDisplay">100</span></label>
+        <div class="rangeContainer">
+            <input type="range" name="pa_circle_little" id="pa_circle_little" min="0" max="100" value="100">
+        </div>
+    </div>
+
+    <div class="param">
+        <label for="pa_circle_tiny">Points for Circle Tiny : <span class="pre-value">100</span> | <span id="pa_circle_tinyRangeDisplay">100</span></label>
+        <div class="rangeContainer">
+            <input type="range" name="pa_circle_tiny" id="pa_circle_tiny" min="0" max="100" value="100">
+        </div>
+    </div>
+
+    <div class="param">
+        <label for="pa_single">Points for Single : <span class="pre-value">100</span> | <span id="pa_singleRangeDisplay">100</span></label>
+        <div class="rangeContainer">
+            <input type="range" name="pa_single" id="pa_single" min="0" max="100" value="100">
+        </div>
+    </div>
+
+    <div class="param">
+        <label for="pa_single_trap">Points for Single Trap : <span class="pre-value">100</span> | <span id="pa_single_trapRangeDisplay">100</span></label>
+        <div class="rangeContainer">
+            <input type="range" name="pa_single_trap" id="pa_single_trap" min="0" max="100" value="100">
+        </div>
+    </div>
+
+    <div class="param">
+        <label for="pa_summon">Points for Summon : <span class="pre-value">100</span> | <span id="pa_summonRangeDisplay">100</span></label>
+        <div class="rangeContainer">
+            <input type="range" name="pa_summon" id="pa_summon" min="0" max="100" value="100">
+        </div>
+    </div>
+
+    <div class="param">
+        <label for="pa_controllable">P.f. Controllable : <span class="pre-value">100</span> | <span id="pa_controllableRangeDisplay">100</span></label>
+        <div class="rangeContainer">
+            <input type="range" name="pa_controllable" id="pa_controllable" min="0" max="100" value="100">
+        </div>
+    </div>
+
+    <div class="separator"></div>
+
+    <div class="param">
+        <label for="importance_aoetype">Importance AoE Type : <span class="pre-value">100</span> | <span id="importance_aoetypeRangeDisplay">100</span></label>
+        <div class="rangeContainer">
+            <input type="range" name="importance_aoetype" id="importance_aoetype" min="0" max="100" value="100">
+        </div>
+    </div>
+
+    <div class="separator"></div>
+
+    <div class="param">
+        <label for="method">Chart Scaling : <span class="pre-value">logarithmic</span></label>
+        <select name="method" id="method">
+            <option value="">--Please choose an option--</option>
+            <option value="linear">Linear</option>
+            <option value="logarithmic">Logarithmic</option>
+        </select>
+    </div>
+
+    <div class="param">
+        <label for="ranking_percentage">Chart Order Scaling : <span class="pre-value">100</span> | <span id="ranking_percentageRangeDisplay">100</span></label>
+        <div class="rangeContainer">
+            <input type="range" name="ranking_percentage" id="ranking_percentage" min="0" max="100" value="100">
+        </div>
+    </div>
+</div></div>
                     </details>
 
         </form>

@@ -10,15 +10,15 @@
                     <ul class="space-y-2">
                         <li><a href="#" class="text-gray-400 hover:text-white transition"><i class="fas fa-chevron-right mr-2 text-xs"></i> Data Sources</a></li>
                         <li><a href="#" class="text-gray-400 hover:text-white transition"><i class="fas fa-chevron-right mr-2 text-xs"></i> Privacy Policy</a></li>
-                        <li><a href="#" class="text-gray-400 hover:text-white transition"><i class="fas fa-chevron-right mr-2 text-xs"></i> Request Custom Analysis</a></li>
+                        <li><a href="vocab.php" class="text-gray-400 hover:text-white transition"><i class="fas fa-chevron-right mr-2 text-xs"></i> Glossary</a></li>
                     </ul>
                 </div>
                 <div>
                     <h3 class="text-lg font-semibold mb-4">Connect With Us</h3>
                     <div class="flex space-x-4">
-                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-discord text-xl"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-twitter text-xl"></i></a>
-                        <a href="#" class="text-gray-400 hover:text-white transition"><i class="fab fa-github text-xl"></i></a>
+                        <a href="https://discord.gg/QpRXkNR8JQ" target="_blank" class="text-gray-400 hover:text-white transition"><i class="fab fa-discord text-xl"></i></a>
+                        <a href="google.com" target="_blank" class="text-gray-400 hover:text-white transition"><i class="fab fa-twitter text-xl"></i></a>
+                        <a href="google.com" target="_blank" class="text-gray-400 hover:text-white transition"><i class="fab fa-github text-xl"></i></a>
                     </div>
                 </div>
             </div>

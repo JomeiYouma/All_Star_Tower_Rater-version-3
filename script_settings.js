@@ -193,7 +193,16 @@ searchPreset.addEventListener('input', () => {
             // Réinitialiser la recherche après sélection
             searchPreset.value = "";
             });
-
+//Actualiser l'affichage des input RANGE
+    function updateRangeDisplay(input){
+      const inputId = input.id;
+      const valueRangeSpan = document.getElementById(inputId + "RangeDisplay");
+      if (valueRangeSpan) valueRangeSpan.textContent = input.value;
+    }
+    document.querySelectorAll('input[type="range"]').forEach(input => {
+      input.addEventListener('input', () => updateRangeDisplay(input));
+      updateRangeDisplay(input); // Initialise la valeur affichée
+    });
 
     function loadPreset() {
         const loadBtn = document.querySelector(".load");
