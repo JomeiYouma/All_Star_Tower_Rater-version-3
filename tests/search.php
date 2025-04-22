@@ -1,114 +1,60 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ASTR SEARCH</title>
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
+<div>
+<?php
+
+// Paramètres à fournir avant include
+$linkPrefix = $linkPrefix ?? 'characterPageTest.php?id='; // Pour pouvoir utiliser la searchbar pour plusieurs choses
+$searchField = $searchField ?? 'name'; // nom du champ GET (ex: 'name1', 'name2')
+$label = $label ?? 'Search a character';           // texte du label
+/* $title = $title ?? 'Résultats';    */
+
+// input actuelle
+$searchValue = $_GET[$searchField] ?? '';
+
+?>
+
+<!-- Formulaire -->
+<form method="get" class="search">
+<?php
+    foreach ($_GET as $key => $value) {
+        if ($key !== $searchField) {
+            echo '<input type="hidden" name="' . htmlspecialchars($key) . '" value="' . htmlspecialchars($value) . '">';
         }
+    }
+    ?>
+   <!--  <label for="<?= $searchField ?>"><?= $label ?></label> -->
+    <input  placeholder="<?= $label ?>" type="text" name="<?= $searchField ?>" id="<?= $searchField ?>" value="<?= htmlspecialchars($searchValue) ?>">
+    <button type="submit"><img src="image_file/white-research.png" alt="Rechercher un personnage."></button>
+</form>
 
-        body {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background-color: #f4f4f4;
-            padding: 20px;
+<?php
+//SI INPUT NON VIDE
+if ($searchValue !== '') {
+    $conn = new PDO("mysql:host=localhost;dbname=all_star_tower_rater;charset=utf8", "root", "");
+/*LIMIT 6 pour ne pas charger plus d'units que necessaire mais quand même savoir quand il y en a trop*/
+    $stmt = $conn->prepare("
+        SELECT in_game_name, real_name, unit_id, unit_file FROM units 
+        WHERE in_game_name LIKE :search 
+        OR real_name LIKE :search
+        ORDER BY in_game_name
+        LIMIT 6 
+    ");
+    $stmt->execute(['search' => '%' . $searchValue . '%']);
+    $units = $stmt->fetchAll();
+    if (count($units)) {
+        echo "<ul class='results'>";
+        $i = 0;
+        foreach ($units as $unit) {
+            if ($i >= 5) break;
+            echo "<li><a class='search-link' href='" . $linkPrefix . urlencode($unit['unit_id']) . "'>"
+            . htmlspecialchars($unit['in_game_name']) . " (" . htmlspecialchars($unit['real_name']) . ")"
+            . "</a></li>";
+            $i++;
         }
-
-        .title {
-            font-size: 24px;
-            font-weight: bold;
-            color: #333;
-            text-decoration: none;
-            margin-bottom: 20px;
-        }
-
-        h1 {
-            font-size: 32px;
-            margin-bottom: 20px;
-        }
-
-        .personnages {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            justify-content: center;
-            max-width: 1200px;
-        }
-
-        .card {
-            width: 200px;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            text-align: center;
-            padding: 8px;
-        }
-
-        .card img {
-            width: 100px;
-            height: 100px;
-            border-radius: 6px;
-            object-fit: cover;
-            margin-bottom: 10px;
-        }
-
-        .stats {
-            font-size: 12px;
-        }
-
-        .stat {
-            font-weight: bold;
-            background: #007BFF;
-            color: white;
-            padding: 3px;
-            border-radius: 4px;
-            margin-top: 5px;
-        }
-    </style>
-</head>
-<body>
-
-<a class="title" href="index.php">ALL STAR TOWER RATER v0.2</a>
-<h1>Unit list</h1>
-<div id="personnages" class="personnages"></div>
-
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-    fetch('sqlToJson.php')
-        .then(response => response.json())
-        .then(afficherPersonnages)
-        .catch(error => console.error('Erreur:', error));
-});
-
-function afficherPersonnages(units) {
-    const container = document.getElementById('personnages');
-    container.innerHTML = '';
-
-    Object.values(units).forEach(unit => {
-        const card = document.createElement('div');
-        card.classList.add('card');
-
-        card.innerHTML = `
-            <img src="/All_Star_Tower_Rater/image_file/${unit.unit_file}" alt="">
-            <h2>${unit.in_game_name}</h2>
-            <h3>${unit.real_name}</h3>
-            <div class="stats">
-                <div class="stat">DPS: ${unit.dps_max}</div>
-                <div class="stat">RNG: ${unit.rng_max}</div>
-                <div class="stat">Coût: ${unit.cost_max}</div>
-            </div>
-        `;
-
-        container.appendChild(card);
-    });
+        if (count($units)>5) { echo "<li>and more …</li>"; }
+        echo "</ul>";
+    } else {
+        echo "<p>Aucun résultat trouvé.</p>";
+    }
 }
-</script>
-
-</body>
-</html>
+?>
+</div>
