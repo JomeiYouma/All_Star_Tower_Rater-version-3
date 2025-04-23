@@ -55,7 +55,7 @@ function addContentForUnit(unitId, elements) {
         upElement.innerHTML = unitsData[unitId].progression;
         aeElement.innerHTML = unitsData[unitId][`aoe_${gamemode}`];
         hrElement.innerHTML = unitsData[unitId][`rng_${gamemode}`] * (1 + settingsData[0].rng_buff / 100);
-
+        console.log('AAAAAAA',unitsData[unitId][`aoe_${gamemode}`]);
         const dps_hit = calculateDpsHit(unitId, gamemode, settingsData, mp);
         const dps_dot = calculateDpsDot(unitId, gamemode, settingsData);
         const dps_ability = calculateDpsAbility(unitId, gamemode, settingsData, mp);

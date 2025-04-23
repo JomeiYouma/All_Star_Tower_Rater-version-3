@@ -47,7 +47,7 @@
         <section class="recommandations">
             <h3>Quick Changes</h3>
             <form action="">
-            <label for="gamemodeFast" class="gamemodeFast">Gamemode : <span>250</span></label>
+            <label for="gamemodeFast" class="gamemodeFast">Gamemode : <span>Preset</span></label>
                 <select name="gamemodeFast" id="gamemodeFast">
                     <option value="">--Please choose an option--</option>
                     <option value="start">Start</option>
@@ -169,9 +169,7 @@ let name = document.querySelector(".character-name h1");
 let desc = document.querySelector(".character-name p");
 let img = document.querySelector(".character-illu");
 let capaContainer = document.querySelector(".character-abilities");
-//Fast Settings
-/* let gmFast = document.querySelector(".gamemodeFast span");
-let buffFast = document.querySelector(".buffFast span"); */
+
 //Stats
     let mpElement = document.querySelector(".mp");//Oui franchement j'ai bourriné mais bon c'est rapide au moins.
     let ecElement = document.querySelector(".ec");
@@ -266,6 +264,7 @@ let myChart = new Chart(ctx, {
   }
     }
 });
+let methodColor; // Déclaration de la variable à l'extérieur de la condition
 
 
 //Clic diagram//
@@ -277,8 +276,7 @@ function methodChanger(way) {//Pour réutiliser au clic et au chargement dans le
     } else {
         from ="linear"
     }
-    let methodColor; // Déclaration de la variable à l'extérieur de la condition
-
+   
 if (settingMethode == from) {
     settingMethode = "linear";
     diagramImg.src = "/All_Star_Tower_Rater/assets/images/diagram(2).png";
@@ -321,8 +319,71 @@ methodChanger(0); //Initialisation à la bonne couleur
 /* console.log(settingMethode); */
 
 
-//Quick settings :
+//Settings(Quick)
+let gmFastText = document.querySelector(".gamemodeFast span");
+let gmFastInput = document.getElementById("gamemodeFast");
+gmFastInput.addEventListener("change", () => {
+    const selectedValue = gmFastInput.value;
+    if (selectedValue !== "") {
+          // Met à jour settingsData
+  settingsData[0].preset_gamemode = selectedValue;
 
+// Enregistre dans sessionStorage
+sessionStorage.setItem("settingsData", JSON.stringify(settingsData));
+gamemode = settingsData ? settingsData[0].preset_gamemode : "";
+console.log(gamemode,settingsData);
+// Met à jour le texte dans le span
+gmFastText.innerText = selectedValue;
+
+// Recalcule
+addContentForUnit(unitId, {
+    name: name,
+    desc: desc,
+    illu: img,
+    capaContainer: capaContainer,
+    mpElement: mpElement,
+    ecElement: ecElement,
+    rlElement: rlElement,
+    arElement: arElement,
+    fdElement: fdElement,
+    upElement: upElement,
+    aeElement: aeElement,
+    hrElement: hrElement,
+    dsElement: dsElement,
+    ddElement: ddElement,
+    dhElement: dhElement,
+    daElement: daElement,
+    coElement: coElement,
+    wtElement: wtElement,
+    ecElement2 : ecElement2,
+}); 
+addModifiedData();
+document.querySelectorAll(".format").forEach(element => {
+    element.innerHTML = formatNumberShort(element.innerHTML);
+});
+applyMethod(unitA, values1); 
+// Actualisation du diagramme avec les couleurs dynamiques
+myChart.data.datasets = [{
+    label: name.innerHTML,
+    data: [
+       /*Worthiness */ values1.wt ,
+       /*Cost */ values1.cost,
+       /*Farming Difficulty */ unitsData[unitId].farming_difficulty_points,
+       /*Range */ /* hrElement.innerHTML */values1.range ,
+       /*Progression */unitsData[unitId].progression_points ,
+       /*DPS */ values1.dps,
+    ],
+    fill: true,
+    backgroundColor: `rgba(${methodColor}, 0.2)`, 
+    borderColor: `rgb(${methodColor})`,        
+    pointBackgroundColor: `rgb(${methodColor})`, 
+    pointBorderColor: '#fff',
+    pointHoverBackgroundColor: '#fff',
+    pointHoverBorderColor: `rgb(${methodColor})` 
+}];
+myChart.update();
+    }
+});
 });
 </script>
 </body>
