@@ -70,14 +70,26 @@ function calculateDpsTotal(dps_hit, dps_dot, dps_ability) {
 
 // Fonction pour calculer le coût
 function calculateCost(unitId, gamemode, settingsData, mp) {
+    const unit = unitsData[unitId];
+    const costList = unit[`cost_${gamemode}`];
+
+    console.log(">>> COST DEBUG", unitId, gamemode, "mp =", mp, "costList =", costList);
+
+    if (Array.isArray(costList)) {
+        return costList[mp];
+    } else {
+        return costList; // au cas où ce n’est pas une array mais un simple nombre
+    }
     return parseFloat(unitsData[unitId][`cost_${gamemode}`]) * parseFloat(mp) *
            (1 - parseFloat(settingsData[0].leader_cost) / 100);
 }
 
 // Fonction pour calculer le ratio WT
 function calculateWt(ds, co) {
-    let dsValue = parseFormattedNumber(ds);
+    let dsValue = parseFormattedNumber(ds); //TRAQUER LE DS DEPUIS ICI CAR IL VAUT 0 !!
+    console.log(dsValue);
     let coValue = parseFormattedNumber(co);
+    console.log(co,coValue);
     return dsValue / coValue;
 }
 

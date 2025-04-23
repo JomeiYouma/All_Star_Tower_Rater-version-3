@@ -43,12 +43,14 @@ let maxDpsValue = 0;
 let minWtValue = 0;
 let maxWtValue = 0;
 function addModifiedData() {
+    console.log(modifiedData.length);
     modifiedData = [];
 
     Object.entries(unitsData).forEach(([unitId, unit]) => {
         let mp = unit.placement;
         if (gamemode === "raid") {
-            mp = unit.placement_raid || unit.placement;
+            mp = unit.placement_raid !== "" ? unit.placement_raid : unit.placement;
+            
         }
         //Étape 2 : Calculs
         // Calcul des DPS
@@ -98,6 +100,7 @@ function addModifiedData() {
 //Étape 3 : Ordonner et ranker
     unitsNbr = modifiedData.length;
     console.log("Nombre d'units",unitsNbr);
+    console.log('MP=',modifiedData[0].placement)
 // COST RANK ###########################################################
     modifiedData.sort((a, b) => parseFloat(a.cost) - parseFloat(b.cost));
     maxCostValue = modifiedData[modifiedData.length - 1].cost;
@@ -106,8 +109,8 @@ function addModifiedData() {
         unit.rank_cost = index + 1;
     /* console.log("Cost",unit.cost , unit.unitId , unit.rank_cost , unit.in_game_name); */
     });
-/* console.log('Max cost =',maxCostValue);
-console.log('Min cost =',minCostValue); */
+console.log('Max cost =',maxCostValue);
+console.log('Min cost =',minCostValue);
 // AOE RANK ##########################################################
     modifiedData.sort((a, b) => parseFloat(a.aoe_points) - parseFloat(b.aoe_points));
     maxAoeValue = modifiedData[modifiedData.length - 1].aoe_points;

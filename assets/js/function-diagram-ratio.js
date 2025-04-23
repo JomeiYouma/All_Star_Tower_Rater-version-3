@@ -6,7 +6,8 @@ let settingRankRatio = settingsData[0].ranking_percentage; //Immportance du rank
 
 function ratioGeneral(stat1, statRank1, rankNbr, maxValue1, minValue1, importance, stat2, statRank2, maxValue2, minValue2) {//Fonction pour les deux échelles
 
-console.log('-------------Infos générales-------------');
+function logComplete() {
+        console.log('-------------Infos générales-------------');
 console.log("rankNbr:", rankNbr);
 console.log("importance Stat 2 -> 1:", importance,' %');
 console.log("settingRankRatio:", settingRankRatio, ' %');
@@ -62,6 +63,8 @@ console.log('FirstCalc * 1-rankRatio%) + rank/maxRank * rankRatio%) * importance
     ) +
     (statRank2 / rankNbr) * (settingRankRatio / 100)
 ) * (importance / 100));
+    }
+
 
     if (settingMethode == "linear") {
             return (
