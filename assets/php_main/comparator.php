@@ -6,14 +6,14 @@
     <title>All Star Tower Rater Comparator</title>
     <link href="/All_Star_Tower_Rater/assets/css/style_general.css" rel="stylesheet" />
     <link href="/All_Star_Tower_Rater/assets/css/style_comparator.css" rel="stylesheet" />
-    <link rel="icon" href="/All_Star_Tower_Rater/assets/images/favicon.ico">
+    <link rel="icon" href="/All_Star_Tower_Rater/assets/images/favicon_local.ico">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body class="comparatorBody">
 <?php 
     $id1 = $_GET['id1']?? null;
     $id2 = $_GET['id2']?? null;
-    include "header.php"?><?php if (isset($id2) && isset($id1)): ?>
+    include __DIR__ . "/../php_sup/header.php"?><?php if (isset($id2) && isset($id1)): ?>
     <main class="empty-comparatorMain" style="display: none;"></main>
     <main class="comparatorMain">
 <?php include __DIR__ . "/../php_sup/comparator-full.php"; ?>
@@ -143,6 +143,7 @@ addContentForUnit(unitId1, {
     daElement: da1,
     coElement: co1,
     wtElement: wt1,
+    ecElement2: enchant1,
 });
 
 addContentForUnit(unitId2, {
@@ -164,6 +165,7 @@ addContentForUnit(unitId2, {
     daElement: da2,
     coElement: co2,
     wtElement: wt2,
+    ecElement2: enchant2,
 });
 addModifiedData();
 //-----COMPARATOR ROW------------
@@ -201,23 +203,35 @@ console.log("DEBUG 1 :", modifiedData.find(obj => obj.unitId === unitId1).dps_to
 console.log("DEBUG 2 :", modifiedData.find(obj => obj.unitId === unitId2).dps_total)
 cellAdjucement(hrC);
 let dsC = document.querySelector('.dsC');
-dsC.innerHTML = modifiedData.find(obj => obj.unitId === unitId1).dps_total - modifiedData.find(obj => obj.unitId === unitId2).dps_total;
+dsC.innerHTML = ds1.innerHTML - ds2.innerHTML;
 cellAdjucement(dsC);
+ds1.innerHTML = formatNumberShort(ds1.innerHTML);
+ds2.innerHTML = formatNumberShort(ds2.innerHTML);
 let ddC = document.querySelector('.ddC');
-ddC.innerHTML = modifiedData.find(obj => obj.unitId === unitId1).dps_dot - modifiedData.find(obj => obj.unitId === unitId2).dps_dot;
+ddC.innerHTML = dd1.innerHTML - dd2.innerHTML;
 cellAdjucement(ddC);
+dd1.innerHTML = formatNumberShort(dd1.innerHTML);
+dd2.innerHTML = formatNumberShort(dd2.innerHTML);
 let dhC = document.querySelector('.dhC');
-dhC.innerHTML = modifiedData.find(obj => obj.unitId === unitId1).dps_hit - modifiedData.find(obj => obj.unitId === unitId2).dps_hit;
+dhC.innerHTML = dh1.innerHTML - dh2.innerHTML;
 cellAdjucement(dhC);
+dh1.innerHTML = formatNumberShort(dh1.innerHTML);
+dh2.innerHTML = formatNumberShort(dh2.innerHTML);
 let daC = document.querySelector('.daC');
-daC.innerHTML = modifiedData.find(obj => obj.unitId === unitId1).dps_ability - modifiedData.find(obj => obj.unitId === unitId2).dps_ability;
+daC.innerHTML = da1.innerHTML - da2.innerHTML;
 cellAdjucement(daC);
-let ctC = document.querySelector('.coC');
-ctC.innerHTML = modifiedData.find(obj => obj.unitId === unitId1).cost - modifiedData.find(obj => obj.unitId === unitId2).cost;
-cellAdjucement(ctC);
+da1.innerHTML = formatNumberShort(da1.innerHTML);
+da2.innerHTML = formatNumberShort(da2.innerHTML);
+let coC = document.querySelector('.coC');
+coC.innerHTML = co1.innerHTML - co2.innerHTML;
+cellAdjucement(coC);
+co1.innerHTML = formatNumberShort(co1.innerHTML);
+co2.innerHTML = formatNumberShort(co2.innerHTML);
 let wtC = document.querySelector('.wtC');
 wtC.innerHTML = wt1.innerHTML - wt2.innerHTML;
 cellAdjucement(wtC);
+wt1.innerHTML = formatNumberShort(wt1.innerHTML);
+wt2.innerHTML = formatNumberShort(wt2.innerHTML);
 thName1.innerHTML = modifiedData.find(obj => obj.unitId === unitId1).in_game_name;
 thName2.innerHTML = modifiedData.find(obj => obj.unitId === unitId2).in_game_name;
 
@@ -371,8 +385,9 @@ diagramImg.addEventListener("click", () => {
 methodChanger(0);
 /* console.log(settingMethode); */
 if ((unitId1 == 175 && unitId2 == 96)||(unitId1 == 96 && unitId2 == 175)) {
-    <?php include "/All_Star_Tower_Rater//All_Star_Tower_Rater/assets/js/dubstep_canva.js";?>  
-}
+    const script = document.createElement('script');
+    script.src = "/All_Star_Tower_Rater/assets/js/dubstep_canva.js";
+    document.body.appendChild(script);}
 });
 </script>
 <?php endif; ?>

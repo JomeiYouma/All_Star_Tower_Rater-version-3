@@ -4,7 +4,7 @@ function addContentForUnit(unitId, elements) {
         mpElement, ecElement, rlElement, arElement,
         fdElement, upElement, aeElement, hrElement,
         dsElement, ddElement, dhElement, daElement,
-        coElement, wtElement, /* gmFast */
+        coElement, wtElement, ecElement2 /* gmFast */
     } = elements;
 
     if (unitId && unitsData[unitId]) {
@@ -27,7 +27,7 @@ function addContentForUnit(unitId, elements) {
 
                     capaContainer.innerHTML += `
                         <div class="tooltip">
-                            <img src="image_file/${ability.ability_file}" alt='${ability.ability_name}'>
+                            <img src="../images/${ability.ability_file}" alt='${ability.ability_name}'>
                             <div class="tooltiptext">
                                 <strong class="effect-text">Effect :</strong> ${ability.ability_description}<br>
                                 <strong class="type-text">Ability type :</strong> ${typeArray.join(", ") || "N/A"}<br>
@@ -46,6 +46,9 @@ function addContentForUnit(unitId, elements) {
 
         mpElement.innerHTML = mp;
         ecElement.innerHTML = unitsData[unitId].enchant;
+        if (ecElement2) {
+            ecElement2.innerHTML = unitsData[unitId].enchant;
+        }
         rlElement.innerHTML = unitsData[unitId][`role_${gamemode}`];
         arElement.innerHTML = unitsData[unitId][`hit_air_${gamemode}`];
         fdElement.innerHTML = unitsData[unitId].farming_difficulty;
@@ -57,10 +60,10 @@ function addContentForUnit(unitId, elements) {
         const dps_dot = calculateDpsDot(unitId, gamemode, settingsData);
         const dps_ability = calculateDpsAbility(unitId, gamemode, settingsData, mp);
 
-        dhElement.innerHTML = formatNumber(calculateLevelBasedDps(dps_hit));
-        ddElement.innerHTML = formatNumber(calculateLevelBasedDps(dps_dot));
-        daElement.innerHTML = formatNumber(dps_ability);
-        dsElement.innerHTML = formatNumber(
+        dhElement.innerHTML = (calculateLevelBasedDps(dps_hit));
+        ddElement.innerHTML = (calculateLevelBasedDps(dps_dot));
+        daElement.innerHTML = (dps_ability);
+        dsElement.innerHTML = (
             calculateDpsTotal(
                 calculateLevelBasedDps(dps_hit),
                 calculateLevelBasedDps(dps_dot),
@@ -69,8 +72,8 @@ function addContentForUnit(unitId, elements) {
         );
 
         const cost = calculateCost(unitId, gamemode, settingsData, mp);
-        coElement.innerHTML = formatNumber(cost);
-        wtElement.innerHTML = formatNumber(calculateWt(dsElement.innerHTML, coElement.innerHTML));
+        coElement.innerHTML = (cost);
+        wtElement.innerHTML = (calculateWt(dsElement.innerHTML, coElement.innerHTML));
 
         /* gmFast.innerHTML = gamemode; */
     }

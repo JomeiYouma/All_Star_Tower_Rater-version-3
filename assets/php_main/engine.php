@@ -6,7 +6,7 @@
     <title>Advanced Search All Star Tower Rater</title>
     <link href="/All_Star_Tower_Rater/assets/css/style_general.css" rel="stylesheet" />
     <link href="/All_Star_Tower_Rater/assets/css/style.css" rel="stylesheet" />
-    <link rel="icon" href="/All_Star_Tower_Rater/assets/images/favicon.ico">
+    <link rel="icon" href="/All_Star_Tower_Rater/assets/images/favicon_local.ico">
     <style>
         .searchResults {
             display: flex;

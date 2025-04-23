@@ -51,7 +51,7 @@ function formatNumberShort(num) {
         return isNegative ? -value : value;
     }
     
-    function formatNumber(num) {
+/*     function formatNumber(num) {
         const abs = Math.abs(num);
         let formatted = "";
     
@@ -61,13 +61,15 @@ function formatNumberShort(num) {
         else formatted = abs.toFixed(2);
     
         return (num < 0 ? "-" : "") + formatted;
-    }
+    } */
     
     function formatNumberShort(num) {
         const abs = Math.abs(num);
         const sign = num < 0 ? "-" : "";
-        if (abs >= 1e9) return sign + (abs / 1e9).toFixed(1) + "B";
-        if (abs >= 1e6) return sign + (abs / 1e6).toFixed(1) + "M";
-        if (abs >= 1e3) return sign + (abs / 1e3).toFixed(1) + "k";
-        return sign + abs.toFixed(2);
+        if (abs >= 1e9) return sign + (abs / 1e9).toFixed(2) + "B";
+        if (abs >= 1e6) return sign + (abs / 1e6).toFixed(2) + "M";
+        if (abs >= 1e3) return sign + (abs / 1e3).toFixed(2) + "k";
+        return sign + abs.toFixed(3);
     }
+
+    console.log("function-format working");

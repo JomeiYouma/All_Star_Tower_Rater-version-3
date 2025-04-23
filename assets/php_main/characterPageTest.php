@@ -6,7 +6,7 @@
     <title>Character Page All Star Tower Rater</title>
     <link href="/All_Star_Tower_Rater/assets/css/style_general.css" rel="stylesheet" />
     <link href="/All_Star_Tower_Rater/assets/css/style_character_page.css" rel="stylesheet" />
-    <link rel="icon" href="/All_Star_Tower_Rater/assets/images/favicon.ico">
+    <link rel="icon" href="/All_Star_Tower_Rater/assets/images/favicon_local.ico">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body class="characterPageBody">
@@ -20,6 +20,7 @@
         <div class="character-name">
             <h1>Nom du personnage</h1>
             <p>Description ou sous-texte</p>
+            <p class="ecElement2">Enchant</p>
         </div>
         <div class="character-illu">
             <img src="/All_Star_Tower_Rater/assets/images/blank_character.png" alt="">
@@ -109,32 +110,32 @@
         <div class="stat-box">
             <img src="/All_Star_Tower_Rater/assets/images/fierce-man.png" alt="" class="stat-icon">
             <span class="stat-name">Damage / seconds</span>
-            <span class="stat-value ds">?</span>
+            <span class="stat-value ds format">?</span>
         </div>
         <div class="stat-box">
             <img src="/All_Star_Tower_Rater/assets/images/bleeding_heart.png" alt="" class="stat-icon">
             <span class="stat-name">DPS from DoT</span>
-            <span class="stat-value dd">?>
+            <span class="stat-value dd format">?>
         </div>
         <div class="stat-box">
             <img src="/All_Star_Tower_Rater/assets/images/raw_damage.png" alt="" class="stat-icon">
             <span class="stat-name">DPS from hits</span>
-            <span class="stat-value dh">?</span>
+            <span class="stat-value dh format">?</span>
         </div>
         <div class="stat-box">
             <img src="/All_Star_Tower_Rater/assets/images/magic_damage.png" alt="" class="stat-icon">
             <span class="stat-name">DPS from Abilities</span>
-            <span class="stat-value da">?</span>
+            <span class="stat-value da format">?</span>
         </div>
         <div class="stat-box">
             <img src="/All_Star_Tower_Rater/assets/images/take-my-money.png" alt="" class="stat-icon">
             <span class="stat-name">Cost</span>
-            <span class="stat-value co">?</span>
+            <span class="stat-value co format">?</span>
         </div>
         <div class="stat-box">
             <img src="/All_Star_Tower_Rater/assets/images/buy-card.png" alt="" class="stat-icon">
             <span class="stat-name">Worthiness</span>
-            <span class="stat-value wt">?</span>
+            <span class="stat-value wt format">?</span>
         </div>
         
     </section>
@@ -169,11 +170,12 @@ let desc = document.querySelector(".character-name p");
 let img = document.querySelector(".character-illu");
 let capaContainer = document.querySelector(".character-abilities");
 //Fast Settings
-let gmFast = document.querySelector(".gamemodeFast span");
-let buffFast = document.querySelector(".buffFast span");
+/* let gmFast = document.querySelector(".gamemodeFast span");
+let buffFast = document.querySelector(".buffFast span"); */
 //Stats
     let mpElement = document.querySelector(".mp");//Oui franchement j'ai bourriné mais bon c'est rapide au moins.
     let ecElement = document.querySelector(".ec");
+    let ecElement2 = document.querySelector(".ecElement2");
     let rlElement = document.querySelector(".rl");
     let arElement = document.querySelector(".ar");
     let fdElement = document.querySelector(".fd");
@@ -210,8 +212,12 @@ addContentForUnit(unitId, {
     daElement: daElement,
     coElement: coElement,
     wtElement: wtElement,
+    ecElement2 : ecElement2,
 });
 addModifiedData();
+document.querySelectorAll(".format").forEach(element => {
+    element.innerHTML = formatNumberShort(element.innerHTML);
+});
 //----- PRÉPARATION DIAGRAMME ------
 const ctx = document.getElementById('myChart');
 <?php include __DIR__ . "/../js/function-diagram-ratio.js"; ?> //Paramétrage
@@ -313,6 +319,10 @@ diagramImg.addEventListener("click", () => {
 });
 methodChanger(0); //Initialisation à la bonne couleur
 /* console.log(settingMethode); */
+
+
+//Quick settings :
+
 });
 </script>
 </body>

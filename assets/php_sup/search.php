@@ -29,7 +29,7 @@ $searchValue = $_GET[$searchField] ?? '';
 <?php
 //SI INPUT NON VIDE
 if ($searchValue !== '') {
-require_once __DIR__ . '/../php_main/pdo.php';
+    require_once __DIR__ . '/pdo.php';
 /*LIMIT 6 pour ne pas charger plus d'units que necessaire mais quand même savoir quand il y en a trop*/
     $stmt = $pdo->prepare("
         SELECT in_game_name, real_name, unit_id, unit_file FROM units 

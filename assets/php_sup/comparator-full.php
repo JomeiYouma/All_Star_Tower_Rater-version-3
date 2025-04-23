@@ -81,25 +81,25 @@
                 <tr>
                     <td class="stat-name"><img src="/All_Star_Tower_Rater/assets/images/summonning.png" class="stat-icon">Farming Difficulty</td>
                     <td class="stat-value fd1">?</td>
-                    <td class="comparison-value fdC">-</td>
+                    <td class="comparison-value "><span class="fdC">-</span> pts</td>
                     <td class="stat-value fd2">?</td>
                 </tr>
                 <tr>
                     <td class="stat-name"><img src="/All_Star_Tower_Rater/assets/images/upgrading.png" class="stat-icon">Upgrade Progression</td>
                     <td class="stat-value up1">?</td>
-                    <td class="comparison-value upC">-</td>
+                    <td class="comparison-value "><span class="upC">-</span> pts</td>
                     <td class="stat-value up2">?</td>
                 </tr>
                 <tr>
                     <td class="stat-name"><img src="/All_Star_Tower_Rater/assets/images/aoe.png" class="stat-icon">Area of Effect Type</td>
                     <td class="stat-value ae1">?</td>
-                    <td class="comparison-value aeC">-</td>
+                    <td class="comparison-value "><span class="aeC">-</span> pts</td>
                     <td class="stat-value ae2">?</td>
                 </tr>
                 <tr>
                     <td class="stat-name"><img src="/All_Star_Tower_Rater/assets/images/range.png" class="stat-icon">Hitting Range</td>
                     <td class="stat-value hr1">?</td>
-                    <td class="comparison-value hrC">-</td>
+                    <td class="comparison-value "><span class="hrC">-</span> pts</td>
                     <td class="stat-value hr2">?</td>
                 </tr>
                 <tr>

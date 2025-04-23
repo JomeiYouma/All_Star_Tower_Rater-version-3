@@ -6,8 +6,7 @@
     <title>All Star Tower Rater Hub</title>
     <link href="assets/css/style_general.css" rel="stylesheet" />
     <link href="/All_Star_Tower_Rater/assets/css/style.css" rel="stylesheet" />
-    <link rel="icon" href="/All_Star_Tower_Rater/assets/images/favicon.ico">
-    <link rel="icon" href="/All_Star_Tower_Rater/assets/images/favicon.ico">
+    <link rel="icon" href="/All_Star_Tower_Rater/assets/images/favicon_local.ico">
 </head>
 <body class="hubBody">
     
