@@ -40,6 +40,12 @@ function calculateDpsDot(unitId, gamemode, settingsData) {
 
 // Fonction pour calculer le DPS ABILITY
 function calculateDpsAbility(unitId, gamemode, settingsData, mp) {
+/*     console.log("Unit DPS values:", {
+        dps_placement: unitsData[unitId][`dps_${gamemode}_placement`],
+        dps_fix_placement: unitsData[unitId][`dps_${gamemode}_fix_placement`],
+        dps_buffable: unitsData[unitId][`dps_${gamemode}_buffable`],
+        dps_not_buffable: unitsData[unitId][`dps_${gamemode}_not_buffable`]
+      }); */
     const dps_placement = parseFloat(unitsData[unitId][`dps_${gamemode}_placement`]) * parseFloat(mp) *
                           (1 + parseFloat(settingsData[0].idol) / 100) *
                           (1 + parseFloat(settingsData[0].fear) / 100);
@@ -72,8 +78,8 @@ function calculateDpsTotal(dps_hit, dps_dot, dps_ability) {
 function calculateCost(unitId, gamemode, settingsData, mp) {
     const unit = unitsData[unitId];
     const costList = unit[`cost_${gamemode}`];
-
-    console.log(">>> COST DEBUG", unitId, gamemode, "mp =", mp, "costList =", costList);
+/* 
+    console.log(">>> COST DEBUG", unitId, gamemode, "mp =", mp, "costList =", costList); */
 
     if (Array.isArray(costList)) {
         return costList[mp];
@@ -86,11 +92,12 @@ function calculateCost(unitId, gamemode, settingsData, mp) {
 
 // Fonction pour calculer le ratio WT
 function calculateWt(ds, co) {
-    let dsValue = parseFormattedNumber(ds); //TRAQUER LE DS DEPUIS ICI CAR IL VAUT 0 !!
-    console.log(dsValue);
+    let dsValue = parseFormattedNumber(ds); //TRAQUER LE DS DEPUIS ICI CAR IL VAUT NaN !!
+/*     console.log("DS dans WT:",dsValue); */
     let coValue = parseFormattedNumber(co);
-    console.log(co,coValue);
-    return dsValue / coValue;
+/*     console.log("CO dans WT",coValue);
+    console.log(dsValue / coValue || 0); */
+    return dsValue / coValue || 0;
 }
 
 // Fonction pour calculer le level modifier

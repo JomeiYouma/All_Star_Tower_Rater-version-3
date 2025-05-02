@@ -97,14 +97,19 @@ function addModifiedData() {
             wt: wt
         });
     });
+    console.log(modifiedData);
 //Étape 3 : Ordonner et ranker
     unitsNbr = modifiedData.length;
     console.log("Nombre d'units",unitsNbr);
     console.log('MP=',modifiedData[0].placement)
 // COST RANK ###########################################################
     modifiedData.sort((a, b) => parseFloat(a.cost) - parseFloat(b.cost));
-    maxCostValue = modifiedData[modifiedData.length - 1].cost;
-    minCostValue = modifiedData[0].cost;
+    maxCostValue = parseFloat(modifiedData[modifiedData.length - 1].cost);
+    if (modifiedData[0].cost == 0) { // Pour empêcher la division par 0.
+        minCostValue = 1;
+    } else {
+    minCostValue = parseFloat(modifiedData[0].cost);
+    };
     modifiedData.forEach((unit, index) => { // Ajouter le rang dans modifiedData 1er = rang 1
         unit.rank_cost = index + 1;
     /* console.log("Cost",unit.cost , unit.unitId , unit.rank_cost , unit.in_game_name); */
@@ -113,8 +118,8 @@ console.log('Max cost =',maxCostValue);
 console.log('Min cost =',minCostValue);
 // AOE RANK ##########################################################
     modifiedData.sort((a, b) => parseFloat(a.aoe_points) - parseFloat(b.aoe_points));
-    maxAoeValue = modifiedData[modifiedData.length - 1].aoe_points;
-    minAoeValue = modifiedData[0].aoe_points;
+    maxAoeValue = parseFloat(modifiedData[modifiedData.length - 1].aoe_points);
+    minAoeValue = parseFloat(modifiedData[0].aoe_points);
     modifiedData.forEach((unit, index) => { // Ajouter le rang dans modifiedData 1er = rang 1
         unit.rank_aoe = index + 1;
 /*     console.log("AOE",unit.aoe_points , unit.unitId , unit.rank_aoe , unit.in_game_name); */
@@ -124,7 +129,7 @@ console.log('Min aoe =',minAoeValue);
 // RANGE RANK ##########################################################
 modifiedData.sort((a, b) => parseFloat(a.range) - parseFloat(b.range));
     if ((modifiedData[modifiedData.length - 1].range)<200) { //Évite de compter les range absurdes comme 1024, 200 = toute la map.
-        maxRngValue = modifiedData[modifiedData.length - 1].range;
+        maxRngValue = parseFloat(modifiedData[modifiedData.length - 1].range);
     } else {
         maxRngValue = 160
     }
@@ -137,8 +142,9 @@ console.log('Max range =',maxRngValue);
 console.log('Min range =',minRngValue);
 // DPS RANK ##########################################################
 modifiedData.sort((a, b) => parseFloat(a.dps_total) - parseFloat(b.dps_total));
-    maxDpsValue = modifiedData[modifiedData.length - 1].dps_total;
-    minDpsValue = modifiedData[0].dps_total;
+console.log("########### TRI SELON DPS TOTAL: ",modifiedData);
+    maxDpsValue = parseFloat(modifiedData[modifiedData.length - 1].dps_total);
+    minDpsValue = parseFloat(modifiedData[0].dps_total);
     modifiedData.forEach((unit, index) => { // Ajouter le rang dans modifiedData 1er = rang 1
         unit.rank_dps_total = index + 1;
 /*     console.log("DPS",unit.dps_total , unit.unitId , unit.rank_dps_total , unit.in_game_name); */
@@ -147,8 +153,12 @@ console.log('Max dps =',maxDpsValue);
 console.log('Min dps =',minDpsValue);
 // WORTHINESS RANK ##########################################################
 modifiedData.sort((b, a) => parseFloat(b.wt) - parseFloat(a.wt));
-    maxWtValue = modifiedData[modifiedData.length - 1].wt;
-    minWtValue = modifiedData[0].wt;
+    maxWtValue = parseFloat(modifiedData[modifiedData.length - 1].wt);
+    if (modifiedData[0].wt == 0) { // Pour empêcher la division par 0.
+        minWtValue = 1;
+    } else {
+    minWtValue = parseFloat(modifiedData[0].wt);
+    };
     modifiedData.forEach((unit, index) => { // Ajouter le rang dans modifiedData 1er = rang 1
         unit.rank_wt = index + 1;
     /* console.log("Worthiness",unit.wt , unit.unitId , unit.rank_wt , unit.in_game_name); */

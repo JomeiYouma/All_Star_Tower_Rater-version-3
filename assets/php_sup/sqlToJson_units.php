@@ -41,7 +41,8 @@ while ($entree = $query->fetch(PDO::FETCH_ASSOC)) {
             "dps_start_dot" => $entree["dps_start_dot"],
 /*             "dps_start-computed" => $entree["dps_start_computed"],
             "dps_start_position" => $entree["dps_start_position"],
-            "dps_start_placement" => $entree["dps_start_placement"], */
+            */
+            "dps_start_placement" => $entree["dps_start_placement"], 
             "dps_start_fix_placement" => $entree["dps_start_fix_placement"],
 /*             "dps_start_points" => $entree["dps_start_points"], */
             "cost_start" => $entree["cost_start"],

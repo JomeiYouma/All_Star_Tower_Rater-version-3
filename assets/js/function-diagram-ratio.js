@@ -15,7 +15,7 @@ console.log("settingMethode:", settingMethode, ' 0=linear');
 console.log('-------------Infos Stat 1 (ex : dps)-------------');
 console.log("stat1:", stat1);
 console.log("minValue1:", minValue1);
-console.log("maxValue1:", maxValue1);
+console.log("maxValue1:", maxValue1); //ICI DEBUG : BIEN LA MÊME VALEUR QUE DANS LE MODIFIED DATA
 console.log("statRank1:", statRank1);
 console.log('Stat log',Math.log(1 + stat1))
 console.log('Min value log',Math.log(1 + minValue1))
@@ -63,16 +63,36 @@ console.log('FirstCalc * 1-rankRatio%) + rank/maxRank * rankRatio%) * importance
     ) +
     (statRank2 / rankNbr) * (settingRankRatio / 100)
 ) * (importance / 100));
-    }
-
-
+    };
+    logComplete();
+    let result;
     if (settingMethode == "linear") {
-            return (
-                (((((stat1/maxValue1) * (1-settingRankRatio/100)) + ((statRank1/rankNbr) * (settingRankRatio/100))) * (1-(importance/100))) + (((stat2/maxValue2) * (1-settingRankRatio/100)) + ((statRank2/rankNbr) * (settingRankRatio/100))) * (importance/100))*100
-        )
+        result = (
+            (((((stat1/maxValue1) * (1-settingRankRatio/100)) + ((statRank1/rankNbr) * (settingRankRatio/100))) * (1-(importance/100))) + (((stat2/maxValue2) * (1-settingRankRatio/100)) + ((statRank2/rankNbr) * (settingRankRatio/100))) * (importance/100))*100
+    )
+            return result;
+            if (result > 100) {
+                console.warn("⚠️ Score > 100 détecté !");
+            }
+            console.log(
+                "stat1 : ", stat1,
+                "maxValue1 : ", maxValue1,
+                "stat1/maxValue1 : " ,stat1 / maxValue1,
+                "statRank1 : ", statRank1,
+                "rankNbr : ", rankNbr,
+                "statRank1/rankNbr : ", statRank1 / rankNbr,
+                "stat2 : ", stat2,
+                "maxValue2 : ", maxValue2,
+                "stat2/maxValue2 : ", stat2 / maxValue2,
+                "statRank2 : ", statRank2,
+                "statRank2/rankNbr : ", statRank2 / rankNbr,
+                "settingRankRatio (%) : ", settingRankRatio,
+                "importance (%) :", importance,
+                "Résultat final :", result
+            );
         } else {
             
-            return (
+            result = (
             ((
                 (
                     (
@@ -92,13 +112,42 @@ console.log('FirstCalc * 1-rankRatio%) + rank/maxRank * rankRatio%) * importance
             ) +
             (statRank2 / rankNbr) * (settingRankRatio / 100)
         ) * (importance / 100)) * 100;
-
+        return result;
+        if (result > 100) {
+            console.warn("⚠️ Score > 100 détecté !");
+        }
+        console.log(
+            "stat1 : ", stat1,
+            "maxValue1 : ", maxValue1,
+            "stat1/maxValue1 : " ,stat1 / maxValue1,
+            "statRank1 : ", statRank1,
+            "rankNbr : ", rankNbr,
+            "statRank1/rankNbr : ", statRank1 / rankNbr,
+            "stat2 : ", stat2,
+            "maxValue2 : ", maxValue2,
+            "stat2/maxValue2 : ", stat2 / maxValue2,
+            "statRank2 : ", statRank2,
+            "statRank2/rankNbr : ", statRank2 / rankNbr,
+            "settingRankRatio (%) : ", settingRankRatio,
+            "importance (%) :", importance,
+            "Résultat final :", result
+        );
     }; 
+   
 };
+
+
+
+
+
 function applyMethod(currentUnit, valuesObj){
+    console.log("################ COST ################")
     valuesObj.cost = ratioGeneral(currentUnit.cost, currentUnit.rank_cost, unitsNbr, maxCostValue, minCostValue, 0, 10, 140, 1000, 0);
+    console.log("################ WT ################")
     valuesObj.wt = ratioGeneral(currentUnit.wt, currentUnit.rank_wt, unitsNbr, maxWtValue, minWtValue, 0, 10, 140, 1000, 0);
+    console.log("################ DPS ################")
     valuesObj.dps = ratioGeneral(currentUnit.dps_total, currentUnit.rank_dps_total, unitsNbr, maxDpsValue, minDpsValue, 0, 10, 140, 1000, 0);
+    console.log("################ AOE ################")
     valuesObj.range = ratioGeneral(currentUnit.range, currentUnit.rank_range, unitsNbr, maxRngValue, minRngValue, settingImportanceAoeType, currentUnit.aoe_points, currentUnit.rank_aoe, maxAoeValue, minAoeValue);
 
     console.log('Cost : ', valuesObj.cost);

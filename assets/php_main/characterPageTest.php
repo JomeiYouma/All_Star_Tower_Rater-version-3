@@ -289,7 +289,7 @@ if (settingMethode == from) {
     methodColor = '113,193,255'; 
 }
 
-applyMethod(unitA, values1); // Recalcule les données en fonction de la méthode
+applyMethod(unitA, values1); // Recalcule les données en fonction de la méthode , DEBUG : VÉRIFIER QUE UNIT A RENVOIE BIEN MODIFIED DATA
 
 // Actualisation du diagramme avec les couleurs dynamiques
 myChart.data.datasets = [{
@@ -361,6 +361,7 @@ addModifiedData();
 document.querySelectorAll(".format").forEach(element => {
     element.innerHTML = formatNumberShort(element.innerHTML);
 });
+unitA = modifiedData.find(unit => unit.unitId === unitId);
 applyMethod(unitA, values1); 
 // Actualisation du diagramme avec les couleurs dynamiques
 myChart.data.datasets = [{
