@@ -52,7 +52,10 @@ params.forEach(param => {
             if (otherInput.type=="number") {
                 span.innerHTML=settingsData[0][id]
             } else {
-                span.innerHTML=settingsData[0][id].charAt(0).toUpperCase() + settingsData[0][id].slice(1); //Majuscule en début de string
+              console.log('Type de settingsData[0][id] :', typeof settingsData[0][id], ' - Valeur :', settingsData[0][id]);
+              console.log(typeof settingsData[0][id], settingsData[0][id]);
+              const value = String(settingsData[0][id]);
+              span.innerHTML = value.charAt(0).toUpperCase() + value.slice(1);//Majuscule en début de string
             }
         
     }

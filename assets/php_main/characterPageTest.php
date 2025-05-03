@@ -46,7 +46,7 @@
             <canvas id="myChart"></canvas></section>
         <section class="recommandations">
             <h3>Quick Changes</h3>
-            <form action="">
+            
             <label for="gamemodeFast" class="gamemodeFast">Gamemode : <span>Preset</span></label>
                 <select name="gamemodeFast" id="gamemodeFast">
                     <option value="">--Please choose an option--</option>
@@ -54,12 +54,11 @@
                     <option value="raid">Raid</option>
                      <option value="max">Max</option>
                  </select>
-                <label for="buffFast">Buff strength : <span>250</span> %</label>
-                <input type="number" name="buffFast" id="buffFast" min="0" max="300" placeholder="--Please enter a buff nbr--">
+                <label for="buffFast" class="buffFast">Buff strength : <span>250</span> %</label>
+                <input type="range" name="buffFast" id="buffFast" min="0" max="300" step="25" value="90"> 
                 <label for="loadPresetFast">Load preset by ID</label>
                 <input type="text" name="loadPresetFast" id="loadPresetFast" placeholder="--Please select preset ID--">
-                <input class="fastSubmit" type="submit">
-            </form>
+            <button class="fastSubmit">L O A D</button>
         </section>               
 
     </section>
@@ -320,23 +319,9 @@ methodChanger(0); //Initialisation à la bonne couleur
 
 
 //Settings(Quick)
-let gmFastText = document.querySelector(".gamemodeFast span");
-let gmFastInput = document.getElementById("gamemodeFast");
-gmFastInput.addEventListener("change", () => {
-    const selectedValue = gmFastInput.value;
-    if (selectedValue !== "") {
-          // Met à jour settingsData
-  settingsData[0].preset_gamemode = selectedValue;
-
-// Enregistre dans sessionStorage
-sessionStorage.setItem("settingsData", JSON.stringify(settingsData));
-gamemode = settingsData ? settingsData[0].preset_gamemode : "";
-console.log(gamemode,settingsData);
-// Met à jour le texte dans le span
-gmFastText.innerText = selectedValue;
-
-// Recalcule
-addContentForUnit(unitId, {
+//1: Recalcul
+function reAddContentForUnit(){
+    addContentForUnit(unitId, {
     name: name,
     desc: desc,
     illu: img,
@@ -382,7 +367,72 @@ myChart.data.datasets = [{
     pointHoverBackgroundColor: '#fff',
     pointHoverBorderColor: `rgb(${methodColor})` 
 }];
-myChart.update();
+myChart.update();  
+}
+//2: APPELS SELON LA FAST-SETTING
+//Gamemode
+let gmFastText = document.querySelector(".gamemodeFast span");
+let gmFastInput = document.getElementById("gamemodeFast");
+gmFastInput.addEventListener("change", () => {
+    const selectedValue = gmFastInput.value;
+    if (selectedValue !== "") {
+          // Met à jour settingsData
+  settingsData[0].preset_gamemode = selectedValue;
+
+// Enregistre dans sessionStorage
+sessionStorage.setItem("settingsData", JSON.stringify(settingsData));
+gamemode = settingsData ? settingsData[0].preset_gamemode : "";
+console.log(gamemode,settingsData);
+// Met à jour le texte dans le span
+gmFastText.innerText = selectedValue;
+reAddContentForUnit()
+    }
+});
+//Buff
+let buffFastText = document.querySelector(".buffFast span");
+let buffFastInput = document.getElementById("buffFast");
+buffFastInput.addEventListener("change", () => {
+    const selectedValue = buffFastInput.value;
+    if (selectedValue !== "") {
+          // Met à jour settingsData
+  settingsData[0].buff = selectedValue;
+
+// Enregistre dans sessionStorage
+sessionStorage.setItem("settingsData", JSON.stringify(settingsData));
+buff = settingsData ? settingsData[0].buff : "";
+console.log(buff,settingsData);
+// Met à jour le texte dans le span
+buffFastText.innerText = selectedValue;
+reAddContentForUnit()
+    }
+});
+// LOAD PRESET BY ID
+let fastID = document.querySelector(".fastSubmit");
+let fastIDInput = document.getElementById("loadPresetFast");
+
+fastID.addEventListener("click", () => {
+    const selectedValue = fastIDInput.value.trim();
+
+    if (selectedValue !== "") {
+        let foundPreset = settingsData.find(preset => preset.preset_id == selectedValue);
+
+        if (foundPreset) {
+            console.log("Preset trouvé :", foundPreset);
+
+            // Remplace le preset [0] par celui trouvé
+            settingsData[0] = { ...foundPreset };
+
+            // Met à jour sessionStorage
+            sessionStorage.setItem("settings_data", JSON.stringify(settingsData));
+
+            // Rafraîchir l’affichage
+            reAddContentForUnit()
+
+        } else {
+            alert("Aucun preset trouvé avec preset_id =" + selectedValue);
+        }
+    } else {
+        alert("Champ vide !");
     }
 });
 });
