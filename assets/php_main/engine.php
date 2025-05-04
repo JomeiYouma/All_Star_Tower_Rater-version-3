@@ -5,95 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Advanced Search All Star Tower Rater</title>
     <link href="/All_Star_Tower_Rater/assets/css/style_general.css" rel="stylesheet" />
-    <link href="/All_Star_Tower_Rater/assets/css/style.css" rel="stylesheet" />
+    <link href="/All_Star_Tower_Rater/assets/css/style_engine.css" rel="stylesheet" />
     <link rel="icon" href="/All_Star_Tower_Rater/assets/images/favicon_local.ico">
-    <style>
-        .searchResults {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background-color: #f4f4f4;
-            padding: 20px;
-        }
-
-        .title {
-            font-size: 24px;
-            font-weight: bold;
-            color: #333;
-            text-decoration: none;
-            margin-bottom: 20px;
-        }
-
-        h1 {
-            font-size: 2rem;
-            margin-bottom: 20px;
-        }
-
-        .personnages {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            justify-content: center;
-            max-width: 1200px;
-        }
-
-        .card {
-            width: 200px;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-            text-align: center;
-            padding: 8px;
-        }
-
-        .card img {
-            width: 100px;
-            height: 100px;
-            border-radius: 6px;
-            object-fit: cover;
-            margin-bottom: 10px;
-        }
-
-        .stats {
-            font-size: 12px;
-        }
-
-        .stat {
-            font-weight: bold;
-            background: #007BFF;
-            color: white;
-            padding: 3px;
-            border-radius: 4px;
-            margin-top: 5px;
-        }
-        .card {
-    cursor: pointer;
-}
-    </style>
-    
 </head>
 <body class="searchBody">
     
 <?php include __DIR__ . '/../php_sup/header.php'; ?>
 
-<main class="settingsMain">
+<main class="engineMain">
     <div class="frame">
-        <h1>Advanced Search</h1>
-        <p>Les paramètres vous permettent d'activer les différents boosts pour vos unités et de modifier les coefficients des variables dont dépendent les calculs subjectifs. Vous pouvez également choisir le mode de jeu considéré par l'outil. Il est possible d'enregistrer vos paramètres en créant un "preset".</p>
+        <h1>Advanced search filters</h1>
+        <p>Use the filters below to find the perfect units for your strategy. You can filter by name, enchant type, roles, abilities, costs and more.</p>
             <form action="" method="GET" class="settingsForm">
-    <details open class="generalSettingsDetails">
-        <summary>
-            <p class="form-title">Filters :</p>
-        </summary>    
+
         <div class="divi">
 
             <div class="param">
-                <label for="name">Name :</label>
+                <label for="name"><img style="width: 15px;" class="engineIcon"  src="/All_Star_Tower_Rater/image_file/tag.png" alt=""> Name :</label>
                 <input type="text" name="name" id="name">
             </div>
 
             <div class="param">
-                <label for="enchantFilter">Enchant :</label>
+                <label for="enchantFilter"><img style="width: 15px;" class="engineIcon"  src="/All_Star_Tower_Rater/image_file/flame.png" alt=""> Enchant :</label>
                 <select name="enchant" id="enchantFilter">
                     <option value="">--Please choose an option--</option>
                     <option value="fire">Fire</option>
@@ -107,7 +40,7 @@
             </div>
 
             <div class="param">
-                <label for="isHittingAir">Air damage :</label>
+                <label for="isHittingAir"><img style="width: 15px;" class="engineIcon"  src="/All_Star_Tower_Rater/image_file/target_air.png" alt=""> Air damage :</label>
                 <select name="air" id="isHittingAir">
                     <option value="">--Please choose an option--</option>
                     <option value="ground">Ground (no)</option>
@@ -120,7 +53,7 @@
             </div>
 
             <div class="param">
-                <label for="role">Role :</label>
+                <label for="role"><img style="width: 15px;" class="engineIcon"  src="/All_Star_Tower_Rater/image_file/role.png" alt=""> Role :</label>
                 <select name="role" id="role">
                     <option value="">--Please choose an option--</option>
                     <option value="Executionner">Executionner</option>
@@ -145,7 +78,7 @@
             </div>
 
             <div class="param">
-                <label for="roleNbr">Number of roles:</label>
+                <label for="roleNbr"><img style="width: 15px;" class="engineIcon"  src="/All_Star_Tower_Rater/image_file/epingle.png" alt=""> Number of roles:</label>
                 <select name="roleNbr" id="roleNbr">
                     <option value="">--Please choose an option--</option>
                     <option value="one">1</option>
@@ -157,7 +90,7 @@
             </div>
 
             <div class="param">
-                <label for="abilityType">Type of abilities :</label>
+                <label for="abilityType"><img style="width: 15px;" class="engineIcon"  src="/All_Star_Tower_Rater/image_file/tonnerre.png" alt=""> Type of abilities :</label>
                 <select name="abilityType" id="abilityType">
                     <option value="">--Please choose an option (A->Z)--</option>
                     <option value="Attack Change">Attack Change</option>
@@ -189,7 +122,7 @@
             </div>
 
             <div class="param">
-                <label for="startCost">Placement cost (per unit):</label>
+                <label for="startCost"><img style="width: 15px;" class="engineIcon"  src="/All_Star_Tower_Rater/image_file/pile-de-pieces.png" alt=""> Placement cost (per unit):</label>
                 <select name="startCost" id="startCost">
                     <option value="">--Please choose an option--</option>
                     <option value="500 or less">500 or less</option>
@@ -202,7 +135,7 @@
             </div>
  
             <div class="param">
-                <label for="maxCost">Maximum cost (per unit):</label>
+                <label for="maxCost"><img style="width: 15px;" class="engineIcon"  src="/All_Star_Tower_Rater/image_file/de-largent.png" alt=""> Maximum cost (per unit):</label>
                 <select name="maxCost" id="maxCost">
                     <option value="">--Please choose an option--</option>
                     <option value="minus50k">Less than 50 000</option>
@@ -216,7 +149,7 @@
             </div>
 
             <div class="param">
-                <label for="max_placement">Maximum Placement :</label>
+                <label for="max_placement"><img style="width: 15px;" class="engineIcon"  src="/All_Star_Tower_Rater/image_file/cube-avec-des-couches.png" alt=""> Maximum Placement :</label>
                 <select name="max_placement" id="max_placement">
                     <option value="">--Please choose an option--</option>
                     <option value="1">1</option>
@@ -226,7 +159,7 @@
             </div>
 
             <div class="param">
-                <label for="collectionDifficulty">Collection difficulty (E=Ez):</label>
+                <label for="collectionDifficulty"><img style="width: 15px;" class="engineIcon"  src="/All_Star_Tower_Rater/image_file/star.png" alt=""> Collection difficulty (E=Ez):</label>
                 <select name="collectionDifficulty" id="collectionDifficulty">
                     <option value="">--Please choose an option--</option>
                     <option value="f">F and less</option>
@@ -238,24 +171,48 @@
                     <option value="s">S and +</option>
                 </select>
             </div>
+                    <!-- Order By Filter -->
+            <div class="param">
+                <label for="orderBy" class="filter-label"><img style="width: 15px;" class="engineIcon"  src="/All_Star_Tower_Rater/image_file/trier.png" alt=""> Order By:</label>
+                <select name="orderBy" id="orderBy" class="filter-select">
+                    <option value="name_asc">Name (A-Z)</option>
+                    <option value="name_desc">Name (Z-A)</option>
+                    <option value="cost_start_asc">Placement Cost (Low to High)</option>
+                    <option value="cost_start_desc">Placement Cost (High to Low)</option>
+                    <option value="cost_max_asc">Max Cost (Low to High)</option>
+                    <option value="cost_max_desc">Max Cost (High to Low)</option>
+                    <option value="difficulty_asc">Collection Difficulty (Easy to Hard)</option>
+                    <option value="difficulty_desc">Collection Difficulty (Hard to Easy)</option>
+                    <option value="placement_asc">Max Placement (Low to High)</option>
+                    <option value="placement_desc">Max Placement (High to Low)</option>
+                </select>
+        </div>
+                        <!-- Reset & Search Buttons -->
+                        <div class="filter-actions">
+                    <a href="engine.php" class="filter-button reset-button">
+                    <img style="width: 15px;" src="/All_Star_Tower_Rater/image_file/annuler.png" alt=""> Reset Filters
+                    <a>
+                </div>
 
 <!--             <button type="submit" class="button-85">Rechercher</button> -->
         </div>
-        <p class="littleWarning"><span class="greenDot">*</span> Must be filled if you want to create a preset.</p>
-    </details>
+        <p class="littleWarning"><img style="width: 15px;" class="engineIcon"  src="/All_Star_Tower_Rater/image_file/information-gray.png" alt=""> * Custom options are currently in development and may not work as expected..</p>
             </form>
 
     </div>
     <div class="frame searchResults">
+        <div class="inline-container">
         <h1>Search Results</h1>
         <h2 class="filtersMessage"><span class="foundUnits"></span>Waiting for filters...</h2>
+        </div>
         <div id="personnages" class="personnages"></div>
     </div>
 </main>
-<?php include __DIR__ . "/../php_sup/footer.php"?>
-
-
+<?php 
+    include __DIR__ . "/../php_sup/footer.php"
+?>
 <script>
+    
 let enchant = (document.getElementById('enchantFilter'));//Déclaration des inputs
 let name = (document.getElementById('name'));
 let air = (document.getElementById('isHittingAir'));
@@ -583,21 +540,26 @@ if (collectionDifficulty.value) {
         if ((foundUnits == 0) || (foundUnits == 1)) {
         document.querySelector(".filtersMessage").innerHTML = "<span class='foundUnits'></span> unit found."   
         } else {
-        document.querySelector(".filtersMessage").innerHTML = "<span class='foundUnits'></span> units found."   
+        document.querySelector(".filtersMessage").innerHTML = "<span class='foundUnits'></span> units found"   
         }
         document.querySelector(".foundUnits").innerHTML = foundUnits;
     }
         
         card.innerHTML = `
-            <img src="/All_Star_Tower_Rater/assets/images/${unit.unit_file}" alt="">
+        <div class="unit-card-image-container">
+            <img class="card-image" src="/All_Star_Tower_Rater/assets/images/${unit.unit_file}" alt="">
+            </div>
+            <div class="unit-card-content">
             <h2>${unit.in_game_name}</h2>
             <h3>${unit.real_name}</h3>
-            <div class="stats">
-                <div class="stat">ROLE: ${unit.role_max}</div>
-                <div class="stat">F D: ${unit.farming_difficulty}</div>
-                <div class="stat">Coût: ${unit.cost_max}</div>
+            <div class="unit-stats">
+                <div class="stat-badge role-badge">ROLE: ${unit.role_max}</div>
+                <div class="stat-badge difficulty-badge">F D: ${unit.farming_difficulty}</div>
+                <div class="stat-badge cost-badge">Coût: ${unit.cost_max?.toLocaleString()} $</div> 
+            </div>
             </div>
         `; 
+        //Pour espacer les chiffres donc les rendre lisibles => toLocaleString()
         container.appendChild(card);
     });
     

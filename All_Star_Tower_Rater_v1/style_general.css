@@ -18,9 +18,14 @@
     --text-gray: #374151;
   
     /* Accent - Vert */
-    --green: #10b981;
-    --dark-green: #065f46;
-  
+    --light-green: #86efac;
+    --green: #10b981; 
+    --dark-green: #065f46; 
+
+    /* Accent - Jaune */
+    --yellow: #facc15;
+    --dark-yellow: #92400e;
+
     /* Accent - Rouge */
     --red: #ef4444;
     --dark-red: #7f1d1d;
@@ -44,19 +49,19 @@
  
   a{
     text-decoration: none;
-    color: #222;
+    color: var(--dark-gray);
   }
   a:visited{
     text-decoration: none;
-    color: #222;
+    color: var(--dark-gray);
   }
 
 .whiteLink {
-    color: white;
+    color: var(--white);
   }
   
 .whiteLink:visited {
-    color: white;
+    color: var(--white);
   }
 
   /* ----------------- FONTS ----------------- */

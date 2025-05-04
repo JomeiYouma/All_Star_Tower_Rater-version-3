@@ -18,14 +18,19 @@
     --text-gray: #374151;
   
     /* Accent - Vert */
-    --green: #10b981;
-    --dark-green: #065f46;
-  
+    --light-green: #86efac;
+    --green: #10b981; 
+    --dark-green: #065f46; 
+
+    /* Accent - Jaune */
+    --yellow: #facc15;
+    --dark-yellow: #92400e;
+
     /* Accent - Rouge */
+    --light-red:#fca5a5 ;
     --red: #ef4444;
     --dark-red: #7f1d1d;
   }
-
 /* ----------------- RESET & BASE ----------------- */
 *, *::after, *::before {
     box-sizing: border-box;
