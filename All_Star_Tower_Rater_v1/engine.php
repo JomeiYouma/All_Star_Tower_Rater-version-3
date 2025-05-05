@@ -8,40 +8,27 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        }
-        .stat-badge {
-            transition: all 0.2s ease;
-        }
-        .stat-badge:hover {
-            transform: scale(1.05);
-        }
-        .filter-section {
-            transition: all 0.3s ease;
-        }
-        .smooth-scroll {
-            scroll-behavior: smooth;
-        }
-        /* Custom scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #888;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #555;
-        }
-        .order-dropdown {
-            min-width: 200px;
-        }
-    </style>
+    @media (min-width: 1730px) {
+      .sectionA,.sectionB{
+        display:flex;
+        flex-direction:column;
+      }
+      main {
+        display:flex;
+        flex-direction: row;
+      }
+
+      .sectionB {
+        align-self: flex-start;
+        position: sticky;
+        top: 130px;
+        height: 100vh;
+        max-height: 900px;
+        overflow-y: auto;
+        margin-left: 40px;
+      }
+    }
+  </style>
 </head>
 <body class="bg-gray-100 smooth-scroll">
     <!-- Header -->
@@ -49,7 +36,8 @@
     <!-- Main Content -->
     <main class="container mx-auto px-4 py-8">
         <!-- Search Filters Section -->
-        <section class="bg-white rounded-xl shadow-md p-6 mb-8">
+         <!-- <div class="sectionA"> -->
+        <section class="engineMain flex flex-col gap-6 sectionA">
             <div class="flex items-center mb-6">
                 <i class="fas fa-sliders-h text-2xl text-indigo-700 mr-3"></i>
                 <h2 class="text-2xl font-bold text-gray-800">Advanced Search Filters</h2>
@@ -255,7 +243,7 @@
         </section>
 
         <!-- Search Results Section -->
-        <section class="bg-white rounded-xl shadow-md p-6">
+        <section class="bg-white rounded-xl shadow-md p-6 w-full  sectionB">
             <div class="flex items-center justify-between mb-6">
                 <div class="flex items-center">
                     <i class="fas fa-list-ul text-2xl text-indigo-700 mr-3"></i>

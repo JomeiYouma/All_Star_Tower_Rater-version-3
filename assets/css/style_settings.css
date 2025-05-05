@@ -95,6 +95,8 @@ body {
             padding: 10px;
             background-color: var(--light-gray);
             border-radius: 4px;
+            max-height: 60px; /*Pour que ça ne prenne pas trop de hauteur en mode tablet*/
+            /* overflow: scroll; */
         }
         .paramBis{
             position: relative;

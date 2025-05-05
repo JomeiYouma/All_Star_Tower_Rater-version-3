@@ -362,7 +362,7 @@ function arrayToObject(arr) {
 units = arrayToObject(sortUnits(unitsArray, orderBy.value)); // 'units' devient un objet trié en fonction de l'option sélectionnée
 
 // Optionnel : Sauvegarde dans sessionStorage pour persister les données triées
-sessionStorage.setItem("units_data", JSON.stringify(units)); // Sauvegarde 'units' trié sous forme de JSON
+/* sessionStorage.setItem("units_data", JSON.stringify(units));  */// Sauvegarde 'units' trié sous forme de JSON
     Object.values(units).forEach(unit => {
         const card = document.createElement('div');
         card.classList.add('card');

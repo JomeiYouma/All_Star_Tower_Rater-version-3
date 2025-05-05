@@ -20,7 +20,7 @@
         align-self: baseline;
         display: flex;
         position: sticky;
-        top: 0;
+        top: 130px;
         height: 100vh;
         max-height: 900px;
         overflow-y: auto;
@@ -247,6 +247,7 @@ select:focus {
     margin-top: 0.5rem;
     opacity: 0.85;
     font-size: 0.75rem;
+    /* align-self: end; */
   }
   
   /* ---------------------- BADGES ---------------------- */
