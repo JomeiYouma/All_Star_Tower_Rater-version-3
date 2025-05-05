@@ -306,7 +306,63 @@ function afficherPersonnages(units) {//Affichage des personnages
     let settingsData = JSON.parse(sessionStorage.getItem("settings_data"));
     let gamemode = settingsData ? settingsData[0].preset_gamemode : ""; 
 
+    // Affichage du type et des données actuelles de 'units' dans la console
+console.log("unitsData type:", typeof units); // Affiche le type de 'units' (devrait être un objet)
+console.log("unitsData:", units); // Affiche l'objet 'units'
 
+// On convertit l'objet 'units' en tableau, ce qui permet de le trier
+const unitsArray = Object.values(units); // 'Object.values' transforme l'objet en tableau
+console.log(unitsArray); // Affiche le tableau 'unitsArray' pour vérification
+
+// Sélectionne l'élément du DOM qui contient l'option de tri
+let orderBy = document.getElementById('orderBy'); // Récupère l'élément avec l'ID 'orderBy' (généralement un <select>)
+
+// Fonction qui trie le tableau 'unitsArray' en fonction de la valeur du tri sélectionné
+function sortUnits(unitsArray, orderByValue) {
+    if (!unitsArray || unitsArray.length === 0) return unitsArray; // Si le tableau est vide ou inexistant, renvoie tel quel
+    
+    return unitsArray.sort((a, b) => {
+        switch(orderByValue) { // En fonction de la valeur de tri choisie (par exemple 'name_asc')
+            case 'name_asc': // Tri par nom croissant
+                return a.in_game_name.localeCompare(b.in_game_name); // Compare les noms en ordre alphabétique croissant
+            case 'name_desc': // Tri par nom décroissant
+                return b.in_game_name.localeCompare(a.in_game_name); // Compare les noms en ordre alphabétique décroissant
+            case 'cost_start_asc': // Tri par coût de départ croissant
+                return (a.cost_start || 0) - (b.cost_start || 0); // Si 'cost_start' est absent, considère 0
+            case 'cost_start_desc': // Tri par coût de départ décroissant
+                return (b.cost_start || 0) - (a.cost_start || 0); // Idem mais dans l'ordre inverse
+            case 'cost_max_asc': // Tri par coût maximum croissant
+                return (a.cost_max || 0) - (b.cost_max || 0);
+            case 'cost_max_desc': // Tri par coût maximum décroissant
+                return (b.cost_max || 0) - (a.cost_max || 0);
+            case 'difficulty_asc': // Tri par difficulté croissante
+                return (a.farming_difficulty_points || 0) - (b.farming_difficulty_points || 0);
+            case 'difficulty_desc': // Tri par difficulté décroissante
+                return (b.farming_difficulty_points || 0) - (a.farming_difficulty_points || 0);
+            case 'placement_asc': // Tri par placement croissant
+                return (a.placement || 0) - (b.placement || 0);
+            case 'placement_desc': // Tri par placement décroissant
+                return (b.placement || 0) - (a.placement || 0);
+            default: // Si aucune option n'est sélectionnée, tri par nom croissant par défaut
+                return a.in_game_name.localeCompare(b.in_game_name);
+        }
+    });
+}
+
+// Fonction pour reconvertir un tableau en objet
+function arrayToObject(arr) {
+    const obj = {}; // Crée un objet vide
+    arr.forEach((item, index) => { // Parcours chaque élément du tableau
+        obj[index] = item; // Ajoute chaque élément dans l'objet avec la clé index (0, 1, 2, ...)
+    });
+    return obj; // Retourne l'objet reconstruit
+}
+
+// On applique le tri sur le tableau et ensuite on le reconvertit en objet
+units = arrayToObject(sortUnits(unitsArray, orderBy.value)); // 'units' devient un objet trié en fonction de l'option sélectionnée
+
+// Optionnel : Sauvegarde dans sessionStorage pour persister les données triées
+sessionStorage.setItem("units_data", JSON.stringify(units)); // Sauvegarde 'units' trié sous forme de JSON
     Object.values(units).forEach(unit => {
         const card = document.createElement('div');
         card.classList.add('card');
@@ -534,6 +590,7 @@ if (collectionDifficulty.value) {
             break;
     }
 }
+
 
     if (card.style.display != 'none') { //Récupération du nombre d'units sélectionnées et accord de la phrase.
         foundUnits = foundUnits + 1;
