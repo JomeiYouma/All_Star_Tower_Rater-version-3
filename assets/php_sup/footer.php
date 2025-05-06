@@ -53,7 +53,7 @@
                     <li><a href="#"><img class="icon-chevron" src="/All_Star_Tower_Rater/image_file/chevron.png" alt="">Tutorials</a></li>
                     <li><a href="#"><img class="icon-chevron" src="/All_Star_Tower_Rater/image_file/chevron.png" alt=""> Data Sources</a></li>
                     <li><a href="#"><img class="icon-chevron" src="/All_Star_Tower_Rater/image_file/chevron.png" alt=""> Privacy Policy</a></li>
-                    <li><a href="vocab.php"><i class="fas fa-chevron-right"></i> Glossary</a></li>
+                    <li><a href="vocab.php"><img class="icon-chevron" src="/All_Star_Tower_Rater/image_file/chevron.png" alt="">    </i> Glossary</a></li>
                 </ul>
             </div>
             <div>
