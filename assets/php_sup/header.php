@@ -44,7 +44,8 @@ function isSelected($pageName, $currentPage) {
     </li>
 
 
-            <!-- Barre de recherche -->
+            <!-- Barre de recherche 
+             strpos Cherche la position numérique de la première occurrence de 'engine.php' dans $currentPage (et retourne false sinon).-->
             <?php if (strpos($currentPage, 'engine.php') === false): ?> 
                 <li class="search-li">
                     <?php

@@ -85,16 +85,15 @@
     padding: 0.25rem 0.5rem;
     border-radius: 4rem;
   }
-  /* ------------------------- SEARCH ----------------------- */
-h1 {
+
+  h1 {
     font-size: 1.75rem;
     font-weight: 700;
-    color: var(--dark-gray);
     display: flex;
     align-items: center;
     gap: 0.5rem;
 }
-
+  /* ------------------------- SEARCH ----------------------- */
 p {
     color: var(--text-gray);
     margin-bottom: 1.5rem;

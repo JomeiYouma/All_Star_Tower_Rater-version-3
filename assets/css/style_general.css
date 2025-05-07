@@ -64,6 +64,9 @@
     color: var(--white);;
   }
 
+  h1{
+    color: var(--dark-blue);
+  }
   /* ----------------- FONTS ----------------- */
   @font-face {
     font-family: "star";
@@ -91,7 +94,7 @@ header {
 .nav {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  flex: 1;
   align-items: center;
   gap: 15px;
   list-style: none;
@@ -275,7 +278,12 @@ footer .icon-social {
   .search button[type="submit"]:hover {
     background-color: var(--green);
   }
-  
+  .search-link{
+    color: var(--dark-gray);
+  }
+  .search-link:visited{
+    color: var(--dark-gray);
+  }
   /* ----------------- SEARCH RESULTS ----------------- */
   .results {
     margin-top: 8px;

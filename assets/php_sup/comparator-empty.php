@@ -1,3 +1,7 @@
+<div class="head">
+<h1>Comparator</h1>
+<p>Select two units to compare their statistics.</p>
+</div>
 <section class="empty-search-space">
     <section class="search-part">
     <!-- <h1>Select first unit</h1> -->

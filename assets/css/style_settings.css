@@ -108,7 +108,11 @@ body {
             color: var(--dark-gray);
             margin-right: 10px;
         }
-
+/* input:focus {
+    outline: 2px solid #4A90E2;
+    outline-offset: 4px;
+    transition: outline 0.2s ease-in-out; // DEMANDER À GAËLLE COMMENT METTRE UNE OUTLINE
+} */
         .param label span,.paramBis label span {
             color: var(--primary-blue);
             font-weight: normal;

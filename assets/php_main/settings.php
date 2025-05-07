@@ -14,7 +14,8 @@
 <main class="settingsMain">
     <div class="frame">
         <h1>Settings</h1>
-        <p>These settings let you activate various boosts for your units and adjust the coefficients of variables that affect subjective calculations.   You can also choose the game mode considered by the tool. It is possible to save your settings by creating a "<a class="anchor" href="#anchor_preset">preset</a>".</p>
+        <p>These settings let you activate various boosts for your units and adjust the coefficients of variables that affect subjective calculations. Once you have selected your settings, you can apply them directly with <a class="anchor" href="#apply">apply preset</a> or save them for future use, which will give you a code to remember, with <a class="anchor" href="#save">save preset</a>.
+</p>
         <form action="" class="settingsForm">
                     <details open class="generalSettingsDetails">
                         <summary>
@@ -324,7 +325,7 @@
         </form>
     </div><br>
     <div class="frame">
-        <h1 id="anchor_preset">Preset</h1>
+        <h1>Preset</h1>
         <form action="" class="settingsForm">
                     <details class="generalSettingsDetails">
                         <summary>
@@ -364,7 +365,7 @@
                                 <label for="preset_password">Preset Password</label>
                                 <input type="password" name="preset_password" id="preset_password" placeholder="--Please set password--">
                             </div> -->
-                            <button class="button-85 save" id="save" role="button" type="button" >S A V E</button>
+                            <button class="button-85 save" id="save" role="button" type="button">S A V E</button>
                             <button class="button-85 save" id="apply" role="button" type="button">APPLY PRESET</button>
                         </div>
                         

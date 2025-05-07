@@ -105,14 +105,33 @@ transform: scale(1.1);
     color: var(--red);
 }
 /* FULL ---------------------------------------------- */
-
+.comparatorBody{
+    background-color: var(--light-gray);
+}
 main {
     background-color: var(--light-gray);
     color: black;
     padding: 20px;
-    line-height: 1.6;
+    height: 70vh;
+    min-height: 800px;
 }
-
+.head{
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+margin-bottom: 10vh;
+background-color: var(--white);
+border-radius: 2rem;
+width: 70%;
+margin: auto    ;
+}
+.head h1{
+    font-size: 1.75rem;
+}
+.head p{
+    font-size: 1rem;
+}
 h2 {
     text-align: center;
     font-size: 1.8rem;
