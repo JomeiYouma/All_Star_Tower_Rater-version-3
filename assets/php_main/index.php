@@ -30,13 +30,13 @@
         </p>
         
         <div class="button-container">
-            <a href="/All_Star_Tower_Rater/assets/php_main/comparator.php" class="action-btn btn-comparator slide-up delay-2">
+            <a href="/All_Star_Tower_Rater/assets/php_main/comparator.php" class="action-btn btn-comparator slide-up delay-4">
                 Unit Comparator
             </a>
-            <a href="/All_Star_Tower_Rater/assets/php_main/engine.php" class="action-btn btn-team slide-up delay-3">
+            <a href="/All_Star_Tower_Rater/assets/php_main/engine.php" class="action-btn btn-team slide-up delay-2">
                 Search Engine
             </a>
-            <a href="/All_Star_Tower_Rater/assets/php_main/settings.php" class="action-btn btn-settings slide-up delay-4">
+            <a href="/All_Star_Tower_Rater/assets/php_main/settings.php" class="action-btn btn-settings slide-up delay-3">
                 Settings & Presets
             </a>
         </div>
