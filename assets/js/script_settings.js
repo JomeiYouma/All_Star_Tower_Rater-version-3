@@ -313,7 +313,7 @@ function applyPreset() {
         try {
           const json = JSON.parse(text);
           if (json.success) {
-            alert("Applied preset. Access preset with ID : " + json.preset_id);
+            alert("Applied preset.You must remember the preset ID : " + json.preset_id);
           } else {
             consentCheckContainer.style.visibility="visible";
             consentCheckContainer.style.display="flex";//Affiche la div du choix

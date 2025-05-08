@@ -1,0 +1,8 @@
+main{
+max-width: 1000px;
+margin: 24px auto 24px auto;
+}
+
+body .privacyMain ul{
+list-style:disc;
+}

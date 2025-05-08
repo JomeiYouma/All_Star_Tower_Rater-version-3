@@ -56,7 +56,7 @@
                 <label for="role"><img style="width: 15px;" class="engineIcon"  src="/All_Star_Tower_Rater/image_file/role.png" alt=""> Role :</label>
                 <select name="role" id="role">
                     <option value="">--Please choose an option--</option>
-                    <option value="Executionner">Executionner</option>
+                    <option value="Executionner">Executioner</option>
                     <option value="Nuker">Nuker</option>
                     <option value="Camper">Camper</option>
                     <option value="Crowd Control">Crowd Control</option>
@@ -85,7 +85,7 @@
                     <option value="two">2</option>
                     <option value="three">3</option>
                     <option value="four">4</option>
-                    <option value="oneNoExecutionner">1 (without Executionner)</option>
+                    <option value="oneNoExecutionner">1 (without Executioner)</option>
                 </select>
             </div>
 

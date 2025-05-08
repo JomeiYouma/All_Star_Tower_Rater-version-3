@@ -3,7 +3,7 @@
 body {
             background-color: var(--light-gray);
             color: var(--dark-gray);
-            line-height: 1.6;
+           /*  line-height: 1.6; */
         }
 
         /* Main Container */

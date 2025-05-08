@@ -52,7 +52,7 @@
                 <ul>
                     <li><a href="#"><img class="icon-chevron" src="/All_Star_Tower_Rater/image_file/chevron.png" alt="">Tutorials</a></li>
                     <li><a href="#"><img class="icon-chevron" src="/All_Star_Tower_Rater/image_file/chevron.png" alt=""> Data Sources</a></li>
-                    <li><a href="#"><img class="icon-chevron" src="/All_Star_Tower_Rater/image_file/chevron.png" alt=""> Privacy Policy</a></li>
+                    <li><a href="privacy-policy.php"><img class="icon-chevron" src="/All_Star_Tower_Rater/image_file/chevron.png" alt=""> Privacy Policy</a></li>
                     <li><a href="vocab.php"><img class="icon-chevron" src="/All_Star_Tower_Rater/image_file/chevron.png" alt="">    </i> Glossary</a></li>
                 </ul>
             </div>
@@ -66,7 +66,7 @@
             </div>
         </div>
         <div class="border-t">
-            <p>&copy; 2023 All Star Tower Rater. All rights reserved.</p>
+            <p>&copy; 2025 All Star Tower Rater. All rights reserved.</p>
         </div>
     </div>
 </footer>
