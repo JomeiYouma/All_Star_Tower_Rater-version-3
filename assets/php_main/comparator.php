@@ -124,7 +124,8 @@ let buffFast = document.querySelector(".buffFast span");
 <?php include __DIR__ . "/../js/function-add-modified-data.js";?>
 //----------------------------------------------------------------------------
 // Appel de la fonction après le chargement des données
-addContentForUnit(unitId1, {
+function doubleAddContent() {
+    addContentForUnit(unitId1, {
     name: name1,
     desc: forname1,
     illu: illu1,
@@ -168,6 +169,9 @@ addContentForUnit(unitId2, {
     ecElement2: enchant2,
 });
 addModifiedData();
+}
+doubleAddContent();
+
 //-----COMPARATOR ROW------------
 function cellAdjucement(cell) {
     const rawText = cell.innerHTML.trim();
@@ -189,51 +193,65 @@ function cellAdjucement(cell) {
 }
 //Sélection des cases de comparaison et calcul des différence, puis on applique un style selon. Désolé je n'ai pas priorisé la factorisation de cette partie.
 let fdC = document.querySelector('.fdC');
-fdC.innerHTML = modifiedData.find(obj => obj.unitId === unitId1).farming_difficulty_points - modifiedData.find(obj => obj.unitId === unitId2).farming_difficulty_points;
-cellAdjucement(fdC);
 let upC = document.querySelector('.upC');
+let aeC = document.querySelector('.aeC');
+let hrC = document.querySelector('.hrC');
+let dsC = document.querySelector('.dsC');
+let ddC = document.querySelector('.ddC');
+let dhC = document.querySelector('.dhC');
+let daC = document.querySelector('.daC');
+let coC = document.querySelector('.coC');
+let wtC = document.querySelector('.wtC');
+
+function applyCell() {
+ fdC.innerHTML = modifiedData.find(obj => obj.unitId === unitId1).farming_difficulty_points - modifiedData.find(obj => obj.unitId === unitId2).farming_difficulty_points;
+cellAdjucement(fdC);
+
 upC.innerHTML = modifiedData.find(obj => obj.unitId === unitId1).progression_points - modifiedData.find(obj => obj.unitId === unitId2).progression_points;
 cellAdjucement(upC);
-let aeC = document.querySelector('.aeC');
+
 aeC.innerHTML = modifiedData.find(obj => obj.unitId === unitId1).aoe_points - modifiedData.find(obj => obj.unitId === unitId2).aoe_points;
 cellAdjucement(aeC);
-let hrC = document.querySelector('.hrC');
+
 hrC.innerHTML = modifiedData.find(obj => obj.unitId === unitId1).range - modifiedData.find(obj => obj.unitId === unitId2).range;
 console.log("DEBUG 1 :", modifiedData.find(obj => obj.unitId === unitId1).dps_total);
 console.log("DEBUG 2 :", modifiedData.find(obj => obj.unitId === unitId2).dps_total)
 cellAdjucement(hrC);
-let dsC = document.querySelector('.dsC');
+
 dsC.innerHTML = ds1.innerHTML - ds2.innerHTML;
 cellAdjucement(dsC);
 ds1.innerHTML = formatNumberShort(ds1.innerHTML);
 ds2.innerHTML = formatNumberShort(ds2.innerHTML);
-let ddC = document.querySelector('.ddC');
+
 ddC.innerHTML = dd1.innerHTML - dd2.innerHTML;
 cellAdjucement(ddC);
 dd1.innerHTML = formatNumberShort(dd1.innerHTML);
 dd2.innerHTML = formatNumberShort(dd2.innerHTML);
-let dhC = document.querySelector('.dhC');
+
 dhC.innerHTML = dh1.innerHTML - dh2.innerHTML;
 cellAdjucement(dhC);
 dh1.innerHTML = formatNumberShort(dh1.innerHTML);
 dh2.innerHTML = formatNumberShort(dh2.innerHTML);
-let daC = document.querySelector('.daC');
+
 daC.innerHTML = da1.innerHTML - da2.innerHTML;
 cellAdjucement(daC);
 da1.innerHTML = formatNumberShort(da1.innerHTML);
 da2.innerHTML = formatNumberShort(da2.innerHTML);
-let coC = document.querySelector('.coC');
+
 coC.innerHTML = co1.innerHTML - co2.innerHTML;
 cellAdjucement(coC);
 co1.innerHTML = formatNumberShort(co1.innerHTML);
 co2.innerHTML = formatNumberShort(co2.innerHTML);
-let wtC = document.querySelector('.wtC');
+
 wtC.innerHTML = wt1.innerHTML - wt2.innerHTML;
 cellAdjucement(wtC);
 wt1.innerHTML = formatNumberShort(wt1.innerHTML);
 wt2.innerHTML = formatNumberShort(wt2.innerHTML);
 thName1.innerHTML = modifiedData.find(obj => obj.unitId === unitId1).in_game_name;
-thName2.innerHTML = modifiedData.find(obj => obj.unitId === unitId2).in_game_name;
+thName2.innerHTML = modifiedData.find(obj => obj.unitId === unitId2).in_game_name;   
+};
+applyCell();
+
 
 
 //----- PRÉPARATION DIAGRAMME ------
@@ -314,6 +332,8 @@ let myChart = new Chart(ctx, {
     }
 });
 //Clic diagram//
+    let methodColor1; 
+    let methodColor2;
 const diagramImg = document.querySelector(".comparativeStar img");
 function methodChanger(way) { //Pour réutiliser au clic et au chargement dans le sens inverse.
     let from;
@@ -322,8 +342,7 @@ function methodChanger(way) { //Pour réutiliser au clic et au chargement dans l
     } else {
         from = "linear"
     }
-    let methodColor1; 
-    let methodColor2;
+
     if (settingMethode == from) {
         settingMethode = "linear";
         diagramImg.src = "/All_Star_Tower_Rater/assets/images/diagram-lin-2.png";
@@ -388,6 +407,125 @@ if ((unitId1 == 175 && unitId2 == 96)||(unitId1 == 96 && unitId2 == 175)) {
     const script = document.createElement('script');
     script.src = "/All_Star_Tower_Rater/assets/js/dubstep_canva.js";
     document.body.appendChild(script);}
+
+
+//Settings(Quick)
+//1: Recalcul
+function reAddContentForUnit(){
+  doubleAddContent()
+    applyCell();
+
+document.querySelectorAll(".format").forEach(element => {
+    element.innerHTML = formatNumberShort(element.innerHTML);
+});
+/* unitA = modifiedData.find(unit => unit.unitId1 === unitId1); */
+    applyMethod(unitA, values1);
+    applyMethod(unitB, values2);
+// Actualisation du diagramme avec les couleurs dynamiques
+myChart.data.datasets = [{
+        label: name1.innerHTML,
+        data: [
+           /*Worthiness */ values1.wt ,
+           /*Cost */ values1.cost,
+           /*Farming Difficulty */ unitsData[unitId1].farming_difficulty_points,
+           /*Range */ /* hrElement.innerHTML */values1.range ,
+           /*Progression */unitsData[unitId1].progression_points ,
+           /*DPS */ values1.dps,
+        ],
+        fill: true,
+        backgroundColor: `rgba(${methodColor1}, 0.2)`, 
+        borderColor: `rgb(${methodColor1})`,        
+        pointBackgroundColor: `rgb(${methodColor1})`, 
+        pointBorderColor: '#fff',
+        pointHoverBackgroundColor: '#fff',
+        pointHoverBorderColor: `rgb(${methodColor1})` 
+    },{
+        label: name2.innerHTML,
+        data: [
+           /*Worthiness */ values2.wt ,
+           /*Cost */ values2.cost,
+           /*Farming Difficulty */ unitsData[unitId2].farming_difficulty_points,
+           /*Range */ /* hrElement.innerHTML */values2.range ,
+           /*Progression */unitsData[unitId2].progression_points ,
+           /*DPS */ values2.dps,
+        ],
+        fill: true,
+        backgroundColor: `rgba(${methodColor2}, 0.2)`, 
+        borderColor: `rgb(${methodColor2})`,        
+        pointBackgroundColor: `rgb(${methodColor2})`, 
+        pointBorderColor: '#fff',
+        pointHoverBackgroundColor: '#fff',
+        pointHoverBorderColor: `rgb(${methodColor2})` 
+    }];
+
+myChart.update();  
+}
+//2: APPELS SELON LA FAST-SETTING
+//Gamemode
+let gmFastText = document.querySelector(".gamemodeFast span");
+let gmFastInput = document.getElementById("gamemodeFast");
+gmFastInput.addEventListener("change", () => {
+    const selectedValue = gmFastInput.value;
+    if (selectedValue !== "") {
+          // Met à jour settingsData
+  settingsData[0].preset_gamemode = selectedValue;
+
+// Enregistre dans sessionStorage
+sessionStorage.setItem("settingsData", JSON.stringify(settingsData));
+gamemode = settingsData ? settingsData[0].preset_gamemode : "";
+console.log(gamemode,settingsData);
+// Met à jour le texte dans le span
+gmFastText.innerText = selectedValue;
+reAddContentForUnit()
+    }
+});
+//Buff
+let buffFastText = document.querySelector(".buffFast span");
+let buffFastInput = document.getElementById("buffFast");
+buffFastInput.addEventListener("change", () => {
+    const selectedValue = buffFastInput.value;
+    if (selectedValue !== "") {
+          // Met à jour settingsData
+  settingsData[0].buff = selectedValue;
+
+// Enregistre dans sessionStorage
+sessionStorage.setItem("settingsData", JSON.stringify(settingsData));
+buff = settingsData ? settingsData[0].buff : "";
+console.log(buff,settingsData);
+// Met à jour le texte dans le span
+buffFastText.innerText = selectedValue;
+reAddContentForUnit()
+    }
+});
+// LOAD PRESET BY ID
+let fastID = document.querySelector(".fastSubmit");
+let fastIDInput = document.getElementById("loadPresetFast");
+
+fastID.addEventListener("click", () => {
+    const selectedValue = fastIDInput.value.trim();
+
+    if (selectedValue !== "") {
+        let foundPreset = settingsData.find(preset => preset.preset_id == selectedValue);
+
+        if (foundPreset) {
+            console.log("Preset trouvé :", foundPreset);
+
+            // Remplace le preset [0] par celui trouvé
+            settingsData[0] = { ...foundPreset };
+
+            // Met à jour sessionStorage
+            sessionStorage.setItem("settings_data", JSON.stringify(settingsData));
+
+            // Rafraîchir l’affichage
+            reAddContentForUnit()
+
+        } else {
+            alert("Aucun preset trouvé avec preset_id =" + selectedValue);
+        }
+    } else {
+        alert("Champ vide !");
+    }
+});
 });
 </script>
 <?php endif; ?>
