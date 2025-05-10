@@ -20,7 +20,7 @@
         align-self: baseline;
         display: flex;
         position: sticky;
-        top: 130px;
+        top: 110px;
         height: 100vh;
         max-height: 900px;
         overflow-y: auto;

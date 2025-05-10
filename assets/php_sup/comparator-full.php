@@ -47,21 +47,22 @@
             <canvas id="myChart"></canvas>
         </section>
     </section>
-    <section>
+    <section class="quickChanges">
     <h3>Quick Changes</h3>
-            
+            <div class="quickChanges">
             <label for="gamemodeFast" class="gamemodeFast">Gamemode : <span>Preset</span></label>
-                <select name="gamemodeFast" id="gamemodeFast">
+                <select name="gamemodeFast" id="gamemodeFast" class="inputWithMargin">
                     <option value="">--Please choose an option--</option>
                     <option value="start">Start</option>
                     <option value="raid">Raid</option>
                      <option value="max">Max</option>
                  </select>
-                <label for="buffFast" class="buffFast">Buff strength : <span>250</span> %</label>
+                <label for="buffFast" class="buffFast inputWithMargin">Buff strength : <span>250</span> %</label>
                 <input type="range" name="buffFast" id="buffFast" min="0" max="300" step="25" value="90"> 
                 <label for="loadPresetFast">Load preset by ID</label>
-                <input type="text" name="loadPresetFast" id="loadPresetFast" placeholder="--Please select preset ID--">
+                <input class="inputWithMargin" type="text" name="loadPresetFast" id="loadPresetFast" placeholder="--Please select preset ID--">
             <button class="fastSubmit">L O A D</button>
+</div>
     </section>
     <h2>Stats</h2>
     <section class="infoComparator fade-in" style="animation-delay: 0.5s">

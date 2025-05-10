@@ -418,7 +418,8 @@ function reAddContentForUnit(){
 document.querySelectorAll(".format").forEach(element => {
     element.innerHTML = formatNumberShort(element.innerHTML);
 });
-/* unitA = modifiedData.find(unit => unit.unitId1 === unitId1); */
+let unitA = modifiedData.find(unit => unit.unitId === unitId1); 
+let unitB = modifiedData.find(unit => unit.unitId === unitId2); 
     applyMethod(unitA, values1);
     applyMethod(unitB, values2);
 // Actualisation du diagramme avec les couleurs dynamiques

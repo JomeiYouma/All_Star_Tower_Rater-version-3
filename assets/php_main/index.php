@@ -9,11 +9,8 @@
     <link rel="icon" href="/All_Star_Tower_Rater/assets/images/favicon_local.ico">
 
 </head>
-
-
-</style>
 <body class="hubBody">
-        <!-- Animated background -->
+        <!-- Background animé -->
         <div class="bg-animation">
         <div class="circle"></div>
         <div class="circle"></div>
