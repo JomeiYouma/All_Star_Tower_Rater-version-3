@@ -45,6 +45,6 @@ foreach ($all_presets as $preset) {
 //Aucun preset identique
 echo json_encode([
     "success" => false,
-    "message" => "Aucun preset identique trouvé."
+    "message" => "No identical preset found. Your settings will not be saved after closing the browser tab."
 ]);
 ?>

@@ -29,7 +29,7 @@ const aoeTypeMap = { //Selon le nom d'affichage, donner l'équivalence nom du ch
     "CONTROLLABLE": "pa_controllable",
     "NONE": 0,
     "NO": 0
-}; //Étape 1 : déclarer les variables min max value
+}; //Étape 0 : déclarer les variables min max value
 let modifiedData = [];
 let unitsNbr = 0;
 let minCostValue = 0;
@@ -50,13 +50,19 @@ function addModifiedData() {
         let mp = unit.placement;
         if (gamemode === "raid") {
             mp = unit.placement_raid !== "" ? unit.placement_raid : unit.placement;
-            
         }
+//Étape 1 : Vérification des faiblesses / résistances = enchantements
+
+    
+
+    
+
         //Étape 2 : Calculs
         // Calcul des DPS
         let dps_hit = calculateDpsHit(unitId, gamemode, settingsData, mp);
-        let dps_dot = calculateDpsDot(unitId, gamemode, settingsData);
-        let dps_ability = calculateDpsAbility(unitId, gamemode, settingsData, mp);
+        console.log("DEBUG UNDEFINED ",unitId, gamemode, settingsData, mp, 1, 0);
+        let dps_dot = calculateDpsDot(unitId, gamemode, settingsData, isUnitWeak, 1,0);
+        let dps_ability = calculateDpsAbility(unitId, gamemode, settingsData, mp, 1, 0);
         let dps_total = calculateDpsTotal(dps_hit, dps_dot, dps_ability);
 
         // Calcul du coût

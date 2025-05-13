@@ -34,6 +34,7 @@
 <?php if (isset($id2) && isset($id1)): ?><!-- ##################SCRIPT FULL############# -->
 <script>
 document.addEventListener('DOMContentLoaded', async () => {
+    
 <?php include __DIR__ . "/../js/function-calculate-macro.js"?>
     function calculateLevelBasedDps(dps) {
     let level = settingsData[0].level;
