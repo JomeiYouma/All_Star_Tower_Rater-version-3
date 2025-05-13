@@ -1,3 +1,4 @@
+//========================== Petite automatisation d'un retour visuel ==========================
 function visualReturn(element, text, backColor, textColor, initialText) {
     element.innerHTML = text;
     element.style.backgroundColor = backColor;

@@ -1,4 +1,7 @@
-// Déclaration Hard-coded Modifiers
+//========================== FONCTION POUR AJOUTER LES PARAMÈTRES AUX CALCULS ==========================
+
+// Étape 1 : Déclarations des variables globales.
+// Variables d'équivalence pourcentage fixes.
 let enchant_str = 200;
 let enchant_wkn = -75;
 let fear = 5;
@@ -8,7 +11,7 @@ let idol = 15;
 let bloodmoon = 30;
 
 
-// LES VERSIONS "2" SONT LES VERSIONS QUI MARCHENT SANS LA MODIFICATION DES ENCHANTEMENTS
+//Variables nécessaire au système d'enchantements (comme dans Pokemon, Feu>Plante, Eau>Feu ...)
 let enemyEnchant = "none";
 let unitEnchant = "none";
 let isStrength = 0;
@@ -17,6 +20,10 @@ let unitChangeEnchant = false;
 let isUnitWeak = 0;
 let isUnitStrong = 0;
 
+
+//Étape 2 : Considérer les enchantements des paramètres (si l'utilisateur veut que l'unité soit en situation de faiblesse, de force, ou qu'il préfère indiquer directement l'enchantement de l'ennemi.)
+
+//2.1 : Définition fonction pour aller chercher les enchantements dans la data.
 function collectEnchants(unitId, settings){
  isWeakness = (settings[0].enchant_wkn);
  isStrength = (settings[0].enchant_str);
@@ -26,9 +33,9 @@ function collectEnchants(unitId, settings){
  console.log(unitEnchant,enemyEnchant,isStrength,isWeakness, unitId);
 }
 
-
-function hasAbilityType(unit,ability_id) {
-    const abilities = unit?.gamemodes?.start?.abilities; 
+//2.2 : Fonction réutilisable pour checker si l'unité possède une compétence particulière qui transforme l'enchantement ennemi en l'enchantement contre lequel elle est puissante - Dans ce cas, on ignore les forces/faiblesses.(Ne marche que pour les ennemis avec un enchantement)
+function hasAbilityType(unit,ability_id) {//On peut adapter la fonction pour chercher un autre id de capacité.
+    const abilities = unit?.gamemodes?.start?.abilities; //?. car pas forcément de capacités pour ce mode / etc.
     if (!abilities) return false;
 
     for (const abilityId in abilities) {
@@ -47,46 +54,47 @@ function hasAbilityType(unit,ability_id) {
     return false;
 }
 
+//2.3 : Fonction pour définir si on est dans un cas de faiblesse ou de force (0 ou 1, ce qui appliquera ou pas le modifier dans le calcul) dans chaque cas de figure.
 function verifEnchant() {
-        console.log("Log CALCULATE enchant : Ennemy :", enemyEnchant, " Unit :", unitEnchant, "STR ? ", isStrength, "WKN ? ", isWeakness);
+        /* console.log("Log CALCULATE enchant : Ennemy :", enemyEnchant, " Unit :", unitEnchant, "STR ? ", isStrength, "WKN ? ", isWeakness); */
         
         switch (true) { // Priorité : Str > Wkn > Ennemy enchant > Neutral
             case (isStrength == 1):
                 isUnitWeak = 0;
                 isUnitStrong = 1;
-                console.log("STRONG");
+                /* console.log("STRONG"); */
                 break;
 
             case (isWeakness == 1):
                 if (unitChangeEnchant == 1) {
                     isUnitStrong = 1;
                     isUnitWeak = 0;
-                    console.log("STRONG");
+                    /* console.log("STRONG"); */
                 } else {
                 isUnitStrong = 0;
                 isUnitWeak = 1;
-                console.log("WEAK"); 
+                /* console.log("WEAK");  */
                 }
 
                 break;
-            case (enemyEnchant.toUpperCase() !== "NONE") :
+            case (enemyEnchant.toUpperCase() !== "NONE") ://Si l'enchantement ennemi vaut x (mis en full majuscules), alors on regarde si l'enchantement de l'unité réagis (en gros). 
                 switch (true) {
                     case (unitChangeEnchant == 1):
                         isUnitStrong = 1;
                         isUnitWeak = 0;
-                        console.log("STRONG");
+                        /* console.log("STRONG"); */
                         break;
                     case (enemyEnchant.toUpperCase() == "FIRE"):
                         if (unitEnchant.toUpperCase() == "NATURE") {
                             isUnitStrong = 0;
                             isUnitWeak = 1;
-                            console.log("WEAK to fire");
+                            /* console.log("WEAK to fire"); */
                         } else if (unitEnchant.toUpperCase() == "WATER") {
                             isUnitStrong = 1;
                             isUnitWeak = 0;
-                            console.log("STRONG to fire");
+                            /* console.log("STRONG to fire"); */
                         } else {
-                            console.log("Neutral to fire")
+                            /* console.log("Neutral to fire") */
                         }
                         break;
 
@@ -94,13 +102,13 @@ function verifEnchant() {
                         if (unitEnchant.toUpperCase() == "ELECTRIC") {
                             isUnitStrong = 0;
                             isUnitWeak = 1;
-                            console.log("WEAK to nature");
+                           /*  console.log("WEAK to nature"); */
                         } else if (unitEnchant.toUpperCase() == "FIRE") {
                             isUnitStrong = 1;
                             isUnitWeak = 0;
-                            console.log("STRONG to nature");
-                        } else {
-                            console.log("Neutral to nature");
+                           /*  console.log("STRONG to nature"); */
+                        } else { // Dans le cas ou il ne réagit pas, il est neutre, il ne se passe rien, les valeurs de WKN et STR restent à 0.
+                            /* console.log("Neutral to nature"); */
                         }
                         break;
 
@@ -108,13 +116,13 @@ function verifEnchant() {
                     if (unitEnchant.toUpperCase() == "FIRE") {
                         isUnitStrong = 0;
                         isUnitWeak = 1;
-                        console.log("WEAK to water");
+                       /*  console.log("WEAK to water"); */
                     } else if (unitEnchant.toUpperCase() == "ELECTRIC") {
                         isUnitStrong = 1;
                         isUnitWeak = 0;
-                        console.log("STRONG to water");
+                        /* console.log("STRONG to water"); */
                     } else {
-                        console.log("Neutral to water")
+                        /* console.log("Neutral to water") */
                     }
                     break;
 
@@ -122,13 +130,13 @@ function verifEnchant() {
                         if (unitEnchant.toUpperCase() == "WATER") {
                             isUnitStrong = 0;
                             isUnitWeak = 1;
-                            console.log("WEAK to electric");
+                            /* console.log("WEAK to electric"); */
                         } else if (unitEnchant.toUpperCase() == "NATURE") {
                             isUnitStrong = 1;
                             isUnitWeak = 0;
-                            console.log("STRONG to electric");
+                            /* console.log("STRONG to electric"); */
                         } else {
-                            console.log("Neutral to electric");
+                            /* console.log("Neutral to electric"); */
                         }
                         break;
                     
@@ -136,9 +144,9 @@ function verifEnchant() {
                         if (unitEnchant.toUpperCase() == "DARK") {
                             isUnitStrong = 1;
                             isUnitWeak = 0;
-                            console.log("STRONG to holy");
+                           /*  console.log("STRONG to holy"); */
                         } else {
-                            console.log("Neutral to holy")
+                            /* console.log("Neutral to holy") */
                         }
                         break;
 
@@ -146,15 +154,15 @@ function verifEnchant() {
                         if (unitEnchant.toUpperCase() == "HOLY") {
                             isUnitStrong = 1;
                             isUnitWeak = 0;
-                            console.log("STRONG to dark");
+                            /* console.log("STRONG to dark"); */
                         } else {
-                            console.log("Neutral to dark")
+                            /* console.log("Neutral to dark") */
                         }
                         break;
 
                     default:
-                        console.log("No enchant calculation for these settings");
-                        console.log(enemyEnchant);
+                        /* console.log("No enchant calculation for these settings"); */
+                        /* console.log(enemyEnchant); */
                 break;
                 }
             break;
@@ -162,36 +170,38 @@ function verifEnchant() {
             
 
             default:
-                console.log("No enchant calculation for these settings");
-                console.log(enemyEnchant);
+              /*   console.log("No enchant calculation for these settings");
+                console.log(enemyEnchant); */
                 break;
         }
     };
 
-// Fonction pour calculer les DPS
+//Étape 3 : pour chaque statistiques modifiée par beaucoup de paramètres, on la multiplie par son équivalent pourcentage.
+
+// Fonction pour calculer les DPS HITS
 function calculateDpsHit(unitId, gamemode, settingsData, mp, unitForTest) {
+    //Mais avant on n'oublie pas d'appliquer nos fonctions pour les enchantements (ça n'a pas besoin d'être recalculé pour les autres, vu que DPS HITS va définir ça pour tous ceux qui suivent).
+    collectEnchants(unitId, settingsData)
+    unitChangeEnchant =(hasAbilityType(unitForTest,7));
+    verifEnchant(unitId, settingsData);
 
-collectEnchants(unitId, settingsData)
-unitChangeEnchant =(hasAbilityType(unitForTest,7));
-verifEnchant(unitId, settingsData);
+    //Structurellement, ça donne (1+nombre de [case de tableau] * équivalent pourcentage) /100 : 200 devient x3, -75 devient x0.25
+    /* console.log(isUnitStrong,isUnitWeak); */
+        const dps_hit = parseFloat(unitsData[unitId][`dps_${gamemode}_unit`]) *
+                        (1 + parseFloat(settingsData[0].buff) / 100) *
+                        parseFloat(mp) *
+                        (1 + (parseFloat(settingsData[0].idol) * idol) / 100) *
+                        (1 + (isUnitWeak * enchant_wkn) / 100) *
+                        (1 + (parseFloat(settingsData[0].typebane) * typebane) / 100) *
+                        (1 + (isUnitStrong * enchant_str) / 100) *
+                        (1 + (parseFloat(settingsData[0].fear) * fear) / 100) *
+                        (1 + parseFloat(settingsData[0].leader) / 100) *
+                        (1 + parseFloat(settingsData[0].leader_special) / 100);
 
+    /*  console.log("AVEC ENCHANT:",(parseFloat(unitsData[unitId][`dps_${gamemode}_unit`]) * (1 + (parseFloat(isUnitWeak) * enchant_wkn) / 100)),(parseFloat(unitsData[unitId][`dps_${gamemode}_unit`]) * (1 + (parseFloat(isUnitStrong) * enchant_wkn) / 100))," SANS RIEN : ",(parseFloat(unitsData[unitId][`dps_${gamemode}_unit`]))) */
+        return dps_hit;
 
-/* console.log(isUnitStrong,isUnitWeak); */
-    const dps_hit = parseFloat(unitsData[unitId][`dps_${gamemode}_unit`]) *
-                    (1 + parseFloat(settingsData[0].buff) / 100) *
-                    parseFloat(mp) *
-                    (1 + (parseFloat(settingsData[0].idol) * idol) / 100) *
-                    (1 + (isUnitWeak * enchant_wkn) / 100) *
-                    (1 + (parseFloat(settingsData[0].typebane) * typebane) / 100) *
-                    (1 + (isUnitStrong * enchant_str) / 100) *
-                    (1 + (parseFloat(settingsData[0].fear) * fear) / 100) *
-                    (1 + parseFloat(settingsData[0].leader) / 100) *
-                    (1 + parseFloat(settingsData[0].leader_special) / 100);
-
-/*  console.log("AVEC ENCHANT:",(parseFloat(unitsData[unitId][`dps_${gamemode}_unit`]) * (1 + (parseFloat(isUnitWeak) * enchant_wkn) / 100)),(parseFloat(unitsData[unitId][`dps_${gamemode}_unit`]) * (1 + (parseFloat(isUnitStrong) * enchant_wkn) / 100))," SANS RIEN : ",(parseFloat(unitsData[unitId][`dps_${gamemode}_unit`]))) */
-    return dps_hit;
-
-    /* DEBUG POUR VOIR SI LE SYSTEME DE FAIBLESSES MARCHE */
+        /* DEBUG POUR VOIR SI LE SYSTEME DE FAIBLESSES MARCHE */
 }
 
 
@@ -216,7 +226,7 @@ verifEnchant(unitId, settingsData);
 
 // Fonction pour calculer le DPS ABILITY
 function calculateDpsAbility(unitId, gamemode, settingsData, mp) {
-
+    //Ici c'est marrant, on a 3 composantes qui sont pas sensibles aux mêmes bonus.
     const dps_placement = parseFloat(unitsData[unitId][`dps_${gamemode}_placement`]) * parseFloat(mp) *
                           (1 + parseFloat(settingsData[0].idol) / 100) *
                           (1 + parseFloat(settingsData[0].fear) / 100);
@@ -236,7 +246,7 @@ function calculateDpsAbility(unitId, gamemode, settingsData, mp) {
                              (1 + (parseFloat(settingsData[0].fear) * fear) / 100) *
                              (1 + (isUnitStrong * enchant_str) / 100) *
                              (1 + (isUnitWeak * enchant_wkn) / 100) ;
-
+    //On les réunit ici.
     return dps_placement + dps_fix_placement + dps_buffable + dps_not_buffable;
 }
 
@@ -264,7 +274,7 @@ function calculateCost(unitId, gamemode, settingsData, mp) {
 
 // Fonction pour calculer le ratio WT
 function calculateWt(ds, co) {
-    let dsValue = parseFormattedNumber(ds); //TRAQUER LE DS DEPUIS ICI CAR IL VAUT NaN !!
+    let dsValue = parseFormattedNumber(ds); // /!\ Problèmes de NaN ici fréquents. Surveiller. /!\
 /*     console.log("DS dans WT:",dsValue); */
     let coValue = parseFormattedNumber(co);
 /*     console.log("CO dans WT",coValue);
@@ -272,7 +282,7 @@ function calculateWt(ds, co) {
     return dsValue / coValue || 0;
 }
 
-// Fonction pour calculer le level modifier
+// Fonction pour calculer le level modifier qu'on utilise lors de l'affichage des données.
 function calculateLevelBasedDps(dps) {
     let level = parseFloat(settingsData[0].level);
     switch (true) {// switch (true) => si validation du case

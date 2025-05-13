@@ -1,3 +1,4 @@
+//========================== FONCTION POUR IMPORTER APRÈS LE CHARGEMENT DE LA BDD LES DONNÉES, DEPUIS LE SESSION STORAGE, ET LES IMPORTER SI C'EST PAS DÉJÀ FAIT ==========================
 async function importJson() {
     let settingsData = JSON.parse(sessionStorage.getItem("settings_data"));
     if (!settingsData) { // Si "settings_data" n'existe pas, on fetch
@@ -13,5 +14,5 @@ async function importJson() {
     } else {
         console.log("Settings data loaded, open to actions.", settingsData);
     }
-
+    //Je garde les console.log pour vérifier à tout moment la data en entrée pour le reste des scripts.
 }

@@ -1,3 +1,5 @@
+//========================== Easter Egg - En développement ==========================
+
 navigator.mediaDevices.getUserMedia({ audio: true }).then(stream => {
     const audioCtx = new AudioContext();
     const source = audioCtx.createMediaStreamSource(stream);
@@ -13,7 +15,7 @@ navigator.mediaDevices.getUserMedia({ audio: true }).then(stream => {
       analyser.getByteFrequencyData(dataArray);
       const volume = dataArray.reduce((a, b) => a + b, 0) / dataArray.length;
   
-      // 🎚 Dataset 1 animation
+      // Dataset 1 animation
       const mappedDuration = Math.max(100, 2000 - volume * 10);
       const colorValue1 = Math.min(255, volume * 7);
       const pointSize1 = Math.min(10, volume / 4 + 2);
@@ -25,7 +27,7 @@ navigator.mediaDevices.getUserMedia({ audio: true }).then(stream => {
       dataset1.pointRadius = pointSize1;
       dataset1.tension = tensionValue;
   
-      // 🎨 Dataset 2 animation
+      //  Dataset 2 animation
       const dataset2 = myChart.data.datasets[1];
       const colorValue2 = Math.min(255, volume * 5);
       const red = 200 - colorValue2;

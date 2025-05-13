@@ -1,4 +1,6 @@
-//-------------------------------------FONCTION POUR STOCKER DANS UN TAB TOUTES LES VALEURS MODIF POUR TOUTES LES UNITS
+//========================== FONCTION POUR STOCKER DANS UN TABLEAU TOUTES LES STATISTIQUES MODIFIÉES POUR TOUTES LES UNITS : ADD MODIFIED DATA ==========================
+
+//Étape 1 : Établir la table de correspondance entre les points accordés par l'utilisateur à chaque style (zone) d'attaque.
 const aoeTypeMap = { //Selon le nom d'affichage, donner l'équivalence nom du champs
     "FULL": "pa_full",
     "AOE FULL": "pa_full",
@@ -29,7 +31,8 @@ const aoeTypeMap = { //Selon le nom d'affichage, donner l'équivalence nom du ch
     "CONTROLLABLE": "pa_controllable",
     "NONE": 0,
     "NO": 0
-}; //Étape 0 : déclarer les variables min max value
+}; 
+//Étape 2 : déclarer les variables min-max des statistiques
 let modifiedData = [];
 let unitsNbr = 0;
 let minCostValue = 0;
@@ -42,27 +45,25 @@ let minDpsValue = 0;
 let maxDpsValue = 0;
 let minWtValue = 0;
 let maxWtValue = 0;
+
+//Étape 3 : définir la fonction addModifiedData qui va faire appel aux calculs afin de classer et de donner des notes aux unités
 function addModifiedData() {
     console.log(modifiedData.length);
-    modifiedData = [];
-
+    modifiedData = []; //Réinitialise le tableau
+    //Étape 3.1 : Boucle sur chaque unité.
     Object.entries(unitsData).forEach(([unitId, unit]) => {
         let mp = unit.placement;
         if (gamemode === "raid") {
             mp = unit.placement_raid !== "" ? unit.placement_raid : unit.placement;
         }
-//Étape 1 : Vérification des faiblesses / résistances = enchantements
 
-    
+    //Étape 3.2 : Application des caluls pour chaque statistique.
 
-    
-
-        //Étape 2 : Calculs
         // Calcul des DPS
         let dps_hit = calculateDpsHit(unitId, gamemode, settingsData, mp);
-        console.log("DEBUG UNDEFINED ",unitId, gamemode, settingsData, mp, 1, 0);
-        let dps_dot = calculateDpsDot(unitId, gamemode, settingsData, isUnitWeak, 1,0);
-        let dps_ability = calculateDpsAbility(unitId, gamemode, settingsData, mp, 1, 0);
+        /* console.log("DEBUG UNDEFINED ",unitId, gamemode, settingsData, mp, 1, 0); */
+        let dps_dot = calculateDpsDot(unitId, gamemode, settingsData, isUnitWeak);
+        let dps_ability = calculateDpsAbility(unitId, gamemode, settingsData, mp);
         let dps_total = calculateDpsTotal(dps_hit, dps_dot, dps_ability);
 
         // Calcul du coût
@@ -78,7 +79,7 @@ function addModifiedData() {
         // Calcul du ratio WT
         let wt = calculateWt(dps_total, cost);
 
-        // Stockage des valeurs modifiées
+    //Étape 3.2 : Stockage des valeurs modifiées avec un push dans modifiedData
         modifiedData.push({
             unitId: unitId,
             in_game_name: unit.in_game_name,
@@ -93,7 +94,7 @@ function addModifiedData() {
             progression_points: unit.progression_points,
             aoe: unit[`aoe_${gamemode}`],
             aoe_points: aoePoints,
-            range: parseFloat(unit[`rng_${gamemode}`] * (1 + settingsData[0].rng_buff / 100)),
+            range: parseFloat(unit[`rng_${gamemode}`] * (1 + settingsData[0].rng_buff / 100)), //Ce calcul est rapide, alors il est direct ici.
             /* range_points: rangePoints, */
             dps_hit: dps_hit,
             dps_dot: dps_dot,
@@ -104,71 +105,72 @@ function addModifiedData() {
         });
     });
     console.log(modifiedData);
-//Étape 3 : Ordonner et ranker
-    unitsNbr = modifiedData.length;
-    console.log("Nombre d'units",unitsNbr);
-    console.log('MP=',modifiedData[0].placement)
-// COST RANK ###########################################################
-    modifiedData.sort((a, b) => parseFloat(a.cost) - parseFloat(b.cost));
-    maxCostValue = parseFloat(modifiedData[modifiedData.length - 1].cost);
-    if (modifiedData[0].cost == 0) { // Pour empêcher la division par 0.
-        minCostValue = 1;
-    } else {
-    minCostValue = parseFloat(modifiedData[0].cost);
-    };
-    modifiedData.forEach((unit, index) => { // Ajouter le rang dans modifiedData 1er = rang 1
-        unit.rank_cost = index + 1;
-    /* console.log("Cost",unit.cost , unit.unitId , unit.rank_cost , unit.in_game_name); */
-    });
-console.log('Max cost =',maxCostValue);
-console.log('Min cost =',minCostValue);
-// AOE RANK ##########################################################
-    modifiedData.sort((a, b) => parseFloat(a.aoe_points) - parseFloat(b.aoe_points));
-    maxAoeValue = parseFloat(modifiedData[modifiedData.length - 1].aoe_points);
-    minAoeValue = parseFloat(modifiedData[0].aoe_points);
-    modifiedData.forEach((unit, index) => { // Ajouter le rang dans modifiedData 1er = rang 1
-        unit.rank_aoe = index + 1;
-/*     console.log("AOE",unit.aoe_points , unit.unitId , unit.rank_aoe , unit.in_game_name); */
-    });
-console.log('Max aoe =',maxAoeValue);
-console.log('Min aoe =',minAoeValue);
-// RANGE RANK ##########################################################
-modifiedData.sort((a, b) => parseFloat(a.range) - parseFloat(b.range));
-    if ((modifiedData[modifiedData.length - 1].range)<200) { //Évite de compter les range absurdes comme 1024, 200 = toute la map.
-        maxRngValue = parseFloat(modifiedData[modifiedData.length - 1].range);
-    } else {
-        maxRngValue = 160
-    }
-    minRangeValue = modifiedData[0].range;
-    modifiedData.forEach((unit, index) => { // Ajouter le rang dans modifiedData 1er = rang 1
-        unit.rank_range = index + 1;
-/*     console.log("Range",unit.range, unit.unitId , unit.rank_range , unit.in_game_name); */
-    });
-console.log('Max range =',maxRngValue);
-console.log('Min range =',minRngValue);
-// DPS RANK ##########################################################
-modifiedData.sort((a, b) => parseFloat(a.dps_total) - parseFloat(b.dps_total));
-console.log("########### TRI SELON DPS TOTAL: ",modifiedData);
-    maxDpsValue = parseFloat(modifiedData[modifiedData.length - 1].dps_total);
-    minDpsValue = parseFloat(modifiedData[0].dps_total);
-    modifiedData.forEach((unit, index) => { // Ajouter le rang dans modifiedData 1er = rang 1
-        unit.rank_dps_total = index + 1;
-/*     console.log("DPS",unit.dps_total , unit.unitId , unit.rank_dps_total , unit.in_game_name); */
-    });
-console.log('Max dps =',maxDpsValue);
-console.log('Min dps =',minDpsValue);
-// WORTHINESS RANK ##########################################################
-modifiedData.sort((b, a) => parseFloat(b.wt) - parseFloat(a.wt));
-    maxWtValue = parseFloat(modifiedData[modifiedData.length - 1].wt);
-    if (modifiedData[0].wt == 0) { // Pour empêcher la division par 0.
-        minWtValue = 1;
-    } else {
-    minWtValue = parseFloat(modifiedData[0].wt);
-    };
-    modifiedData.forEach((unit, index) => { // Ajouter le rang dans modifiedData 1er = rang 1
-        unit.rank_wt = index + 1;
-    /* console.log("Worthiness",unit.wt , unit.unitId , unit.rank_wt , unit.in_game_name); */
-    });
-console.log('Max wt =',maxWtValue);
-console.log('Min wt =',minWtValue);
+
+//Étape 4 : On ordonne nos valeurs successivement pour obtenir des notes de classement (Il y a beaucoup de console.log car j'ai des soucis avec la définition de la valeur max (100 sur le chart), et mes valeurs dépassent.)
+        unitsNbr = modifiedData.length;
+/*         console.log("Nombre d'units",unitsNbr);
+        console.log('MP=',modifiedData[0].placement) */
+    // COST RANK ###########################################################
+        modifiedData.sort((a, b) => parseFloat(a.cost) - parseFloat(b.cost));
+        maxCostValue = parseFloat(modifiedData[modifiedData.length - 1].cost);
+        if (modifiedData[0].cost == 0) { // Pour empêcher la division par 0.
+            minCostValue = 1;
+        } else {
+        minCostValue = parseFloat(modifiedData[0].cost);
+        };
+        modifiedData.forEach((unit, index) => { // Ajouter le rang dans modifiedData 1er = rang 1
+            unit.rank_cost = index + 1;
+        /* console.log("Cost",unit.cost , unit.unitId , unit.rank_cost , unit.in_game_name); */
+        });
+/*     console.log('Max cost =',maxCostValue);
+    console.log('Min cost =',minCostValue); */
+    // AOE RANK ##########################################################
+        modifiedData.sort((a, b) => parseFloat(a.aoe_points) - parseFloat(b.aoe_points));
+        maxAoeValue = parseFloat(modifiedData[modifiedData.length - 1].aoe_points);
+        minAoeValue = parseFloat(modifiedData[0].aoe_points);
+        modifiedData.forEach((unit, index) => { // Ajouter le rang dans modifiedData 1er = rang 1
+            unit.rank_aoe = index + 1;
+    /*     console.log("AOE",unit.aoe_points , unit.unitId , unit.rank_aoe , unit.in_game_name); */
+        });
+/*     console.log('Max aoe =',maxAoeValue);
+    console.log('Min aoe =',minAoeValue); */
+    // RANGE RANK ##########################################################
+    modifiedData.sort((a, b) => parseFloat(a.range) - parseFloat(b.range));
+        if ((modifiedData[modifiedData.length - 1].range)<200) { //Évite de compter les range absurdes comme 1024, 200 = toute la map.
+            maxRngValue = parseFloat(modifiedData[modifiedData.length - 1].range);
+        } else {
+            maxRngValue = 160
+        }
+        minRangeValue = modifiedData[0].range;
+        modifiedData.forEach((unit, index) => { // Ajouter le rang dans modifiedData 1er = rang 1
+            unit.rank_range = index + 1;
+    /*     console.log("Range",unit.range, unit.unitId , unit.rank_range , unit.in_game_name); */
+        });
+/*     console.log('Max range =',maxRngValue);
+    console.log('Min range =',minRngValue); */
+    // DPS RANK ##########################################################
+    modifiedData.sort((a, b) => parseFloat(a.dps_total) - parseFloat(b.dps_total));
+    /* console.log("########### TRI SELON DPS TOTAL: ",modifiedData); */
+        maxDpsValue = parseFloat(modifiedData[modifiedData.length - 1].dps_total);
+        minDpsValue = parseFloat(modifiedData[0].dps_total);
+        modifiedData.forEach((unit, index) => { // Ajouter le rang dans modifiedData 1er = rang 1
+            unit.rank_dps_total = index + 1;
+    /*     console.log("DPS",unit.dps_total , unit.unitId , unit.rank_dps_total , unit.in_game_name); */
+        });
+  /*   console.log('Max dps =',maxDpsValue);
+    console.log('Min dps =',minDpsValue); */
+    // WORTHINESS RANK ##########################################################
+    modifiedData.sort((b, a) => parseFloat(b.wt) - parseFloat(a.wt));
+        maxWtValue = parseFloat(modifiedData[modifiedData.length - 1].wt);
+        if (modifiedData[0].wt == 0) { // Pour empêcher la division par 0.
+            minWtValue = 1;
+        } else {
+        minWtValue = parseFloat(modifiedData[0].wt);
+        };
+        modifiedData.forEach((unit, index) => { // Ajouter le rang dans modifiedData 1er = rang 1
+            unit.rank_wt = index + 1;
+        /* console.log("Worthiness",unit.wt , unit.unitId , unit.rank_wt , unit.in_game_name); */
+        });
+ /*    console.log('Max wt =',maxWtValue);
+    console.log('Min wt =',minWtValue); */
 };

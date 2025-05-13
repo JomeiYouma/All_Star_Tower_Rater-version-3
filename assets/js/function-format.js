@@ -1,4 +1,4 @@
-
+//========================== FONCTION POUR DONNER UNE BELLE APPARENCE AUX CHIFFRES ==========================
 /* function parseFormattedNumber(numStr) {
     if (typeof numStr !== "string") {
         numStr = numStr.toString();
@@ -50,18 +50,6 @@ function formatNumberShort(num) {
     
         return isNegative ? -value : value;
     }
-    
-/*     function formatNumber(num) {
-        const abs = Math.abs(num);
-        let formatted = "";
-    
-        if (abs >= 1e9) formatted = (abs / 1e9).toFixed(2) + "B";
-        else if (abs >= 1e6) formatted = (abs / 1e6).toFixed(2) + "M";
-        else if (abs >= 1e3) formatted = (abs / 1e3).toFixed(2) + "k";
-        else formatted = abs.toFixed(2);
-    
-        return (num < 0 ? "-" : "") + formatted;
-    } */
     
     function formatNumberShort(num) {
         const abs = Math.abs(num);

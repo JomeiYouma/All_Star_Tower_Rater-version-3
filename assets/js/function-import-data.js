@@ -1,3 +1,5 @@
+//========================== FONCTION POUR IMPORTER APRÈS LE CHARGEMENT DE LA BDD LES DONNÉES, DEPUIS LE SESSION STORAGE, ET LES IMPORTER SI C'EST PAS DÉJÀ FAIT ==========================
+//C'est pareil que dans function-import-data-settings.js, mais pour les deux datas.
 async function importJson() {
     let unitsData = JSON.parse(sessionStorage.getItem("units_data"));
     let settingsData = JSON.parse(sessionStorage.getItem("settings_data"));

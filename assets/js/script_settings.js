@@ -1,3 +1,4 @@
+//========================== FONCTION DE GESTION DE LA PAGE DE PARAMÈTRES ==========================
 async function importJson() { //IMPORT DATA ONLY SETTINGS
     let settingsData = JSON.parse(sessionStorage.getItem("settings_data"));
     if (!settingsData) { // Si "settings_data" n'existe pas, on fetch
@@ -216,7 +217,7 @@ searchPreset.addEventListener('input', () => {
         if (sPI && !isNaN(sPI)) {
             const selectedID = parseInt(sPI);
             let fullList = JSON.parse(sessionStorage.getItem("settings_data"));
-            let foundPreset = fullList.find(p => p.preset_id === selectedID);
+            let foundPreset = fullList.find(p => p.preset_id === selectedID); //.find Pratique : Trouve l'élément de droite dans celui de gauche.
     
             if (foundPreset) {
             fullList[0] = foundPreset; // Ne remplace que la 1ère ligne
@@ -357,3 +358,5 @@ function applyPreset() {
     visualReturn(buttonApply, "Apply Canceled", "rgb(250, 152, 150)", "black", "S A V E");
   });
 });
+
+//C'est un peu le bazar, mais ça marche (sauf mes checkbox dont je dois changer l'apparence par défaut si elles sont checkées ou pas).
