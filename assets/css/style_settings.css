@@ -372,3 +372,17 @@ body {
         box-shadow: 0 0 0 2px var(--white), 0 0 4px rgba(0, 0, 0, 0.3);
         cursor: pointer;
     }
+
+
+input[type="range"]:focus::-webkit-slider-thumb {
+    background: var(--black);
+        height: 20px;
+        width: 20px;
+}
+
+
+input[type="range"]:focus::-moz-range-thumb {
+    background: var(--black);
+        height: 20px;
+        width: 20px;
+}

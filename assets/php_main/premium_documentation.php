@@ -99,7 +99,8 @@ if (!empty($_POST['login']) && !empty($_POST['password'])) {
     const openAi = document.querySelector('.open');
     const password = document.querySelector('.password');
 
-  addEventListener('click', () => {
+document.querySelectorAll(".eye").forEach(eye => {
+  eye.addEventListener('click', () => {
     const isClosedHidden = getComputedStyle(closedAi).display === 'none';
 
     if (isClosedHidden) {
@@ -110,8 +111,9 @@ if (!empty($_POST['login']) && !empty($_POST['password'])) {
       closedAi.style.display = 'none';
       openAi.style.display = 'inline-block';
       password.setAttribute('type', 'password');
-        }
-    });
+    }
+  });
+  });
   });
 </script>
 </html>

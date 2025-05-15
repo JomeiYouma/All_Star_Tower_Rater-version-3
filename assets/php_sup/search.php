@@ -23,7 +23,7 @@ $searchValue = $_GET[$searchField] ?? '';
     ?>
    <!--  <label for="<?= $searchField ?>"><?= $label ?></label> -->
     <input  placeholder="<?= $label ?>" type="text" name="<?= $searchField ?>" id="<?= $searchField ?>" value="<?= htmlspecialchars($searchValue) ?>">
-    <button type="submit"><img src="/All_Star_Tower_Rater/assets/images/white-research.png" alt="Rechercher un personnage."></button>
+    <button type="submit"><img src="/All_Star_Tower_Rater/assets/images/white-research.png" alt="Valider la recherche de personnages."></button>
 </form>
 
 <?php

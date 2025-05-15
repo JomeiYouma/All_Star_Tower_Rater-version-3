@@ -43,14 +43,18 @@ document.addEventListener("DOMContentLoaded", async () => {
       const span = param ? param.querySelector("label .pre-value") : null;
       const checkboxInput = param.querySelector("input[type='checkbox']");
       if (checkboxInput) {
-        // Si c'est une checkbox, juste ON ou OFF
+        // Si c'est une checkbox, juste ON ou OFF + Rendre initialement checkées les box + donner une value pour pas avoir à double clic.
         const id = checkboxInput.id;
         if (settingsData[0][id] == 0) {
+          checkboxInput.checked = false;
+          checkboxInput.value="0";
           span.innerHTML = "Off";
           console.log("AA", id, span);
         } else {
           console.log(id);
           span.innerHTML = "On";
+          checkboxInput.checked = true;
+          checkboxInput.value=1; 
         }
       }
       const otherInput = param.querySelector(
