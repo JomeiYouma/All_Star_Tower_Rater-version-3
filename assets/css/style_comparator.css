@@ -543,4 +543,7 @@ box-shadow: inset 0px 0px 2px 0px;
      margin-bottom: 8px;
   }
 
-  
+  ul[class="results"]{
+    position: relative;
+    z-index: 5;
+  }

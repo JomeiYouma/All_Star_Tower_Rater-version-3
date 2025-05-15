@@ -8,7 +8,7 @@
             <div>
                 <h3>Quick Links</h3>
                 <ul>
-                    <li><a href="#"><img class="icon-chevron" src="/All_Star_Tower_Rater/image_file/chevron.png" alt="">Tutorials</a></li>
+                    <li><a href="/All_Star_Tower_Rater/assets/php_main/premium_documentation.php"><img class="icon-chevron" src="/All_Star_Tower_Rater/image_file/chevron.png" alt="">Premium Documentation</a></li>
                     <li><a href="/All_Star_Tower_Rater/assets/php_main/data-source.php"><img class="icon-chevron" src="/All_Star_Tower_Rater/image_file/chevron.png" alt=""> Data Sources</a></li>
                     <li><a href="/All_Star_Tower_Rater/assets/php_main/privacy-policy.php"><img class="icon-chevron" src="/All_Star_Tower_Rater/image_file/chevron.png" alt=""> Privacy Policy</a></li>
                     <li><a href="/All_Star_Tower_Rater/assets/php_main/vocab.php"><img class="icon-chevron" src="/All_Star_Tower_Rater/image_file/chevron.png" alt="">    </i> Glossary</a></li>

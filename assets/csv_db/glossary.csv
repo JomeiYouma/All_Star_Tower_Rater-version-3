@@ -17,7 +17,7 @@ glossary_id,glossary_name,glossary_explaination
 16,Enchant (Strength & Weakness),"Considers how the unit’s enchantment type (e.g. Fire, Water, etc.) interacts with enemy weaknesses or resistances."
 17,Enchant Change,Passive ability that allows the unit to replace enemies enchants by the weak enchant for the unit (ONLY if it already has a enchant).
 18,Executioner,Role given to units that deals high damage to finish off weakened enemies efficiently. It's also the default role.
-19,"Also known as FD. Evaluates how hard it is to obtain or evolve a unit, including materials, time, and event availability.","Evaluates how hard it is to obtain or evolve a unit, including materials, time, and event availability."
+19,Farming Difficulty,"Also known as FD. Evaluates how hard it is to obtain or evolve a unit, including materials, time, and event availability."
 20,Gamemode,"Filters or adjusts stats based on the game mode (e.g., Raid, Infinite, Placement only, etc.), as some units perform better in certain modes."
 21,Golden Stun,Ability that blocks the advance of mobs for a long period of time. Cannot be spammed.
 22,Heal,Ability that restores life to the base/ Increases the life capacity of the base.
