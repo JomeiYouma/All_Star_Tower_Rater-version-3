@@ -156,7 +156,7 @@ select:focus {
 .filter-button {
     text-decoration: none;
     background-color: var(--light-red);
-    color: var(--white);
+    color: var(--black);
     padding: 0.5rem 1rem;
     border-radius: 0.5rem;
     font-weight: 500;

@@ -44,10 +44,10 @@ if (!empty($_POST['login']) && !empty($_POST['password'])) {
     <section>
       <p class="little-div">Please log in to be authentified as a trusted player in order to access to premium documentation.</p>
       <form method="POST" action="">
-        <label for="login">Login</label>
-        <input type="text" placeholder="User" name="login" id="login" required><br>
-        <label for="password">Password</label>
-        <input type="password" placeholder="password" name="password" id="password" class="password" required>
+        <label for="login" class="left">Login</label>
+        <input class="left" type="text" placeholder="User" name="login" id="login" required><br>
+        <label for="password" class="left">Password</label>
+        <input type="password" placeholder="password" name="password" id="password" class="password left" required>
 <lord-icon class="eye open"
     src="https://cdn.lordicon.com/dicvhxpz.json"
     trigger="hover"
@@ -63,7 +63,7 @@ if (!empty($_POST['login']) && !empty($_POST['password'])) {
     colors="primary:#121331,secondary:#5a41d4"
     style="width:25px;height:25px">
 </lord-icon><br>
-        <button type="submit">Connexion</button>
+        <button class="left send" type="submit">Connexion</button>
         <?php if ($loginError): ?>
           <p class="error"><?= htmlspecialchars($loginError) ?></p>
         <?php endif; ?>

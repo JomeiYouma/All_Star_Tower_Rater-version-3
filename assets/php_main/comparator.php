@@ -181,14 +181,14 @@ function cellAdjucement(cell) {
 
     switch (true) {
         case value < 0:
-            cell.style.color = 'darkred';
+            cell.style.color = 'var(--dark-red)';
             break;
         case value > 0:
-            cell.style.color = 'green';
+            cell.style.color = 'var(--dark-green)';
             cell.innerHTML = '+ ' + cell.innerHTML;
             break;
         default:
-            cell.style.color = 'gray';
+            cell.style.color = 'var(--text-gray)';
             break;
     }
 }

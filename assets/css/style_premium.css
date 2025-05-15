@@ -64,7 +64,7 @@ section {
   box-shadow: 0px 0px 3px;
 }
 
-input {
+input[class="left"], input[class="password left"]{
   padding: 8px 12px;
   border: 1px solid var(--medium-gray);
   border-radius: 4px;
@@ -84,7 +84,7 @@ section {
     transform: translateY(0);
   }
 }
-button {
+button[class="left send"]{
   padding: 12px 24px;
   border: none;
   border-radius: 6px;
@@ -99,9 +99,7 @@ button {
 button:hover {
   background-color: var(--primary-blue);
 }
-button,
-input,
-label {
+.left{
   margin-left: 20%;
 }
 .little-div {

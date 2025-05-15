@@ -1,30 +1,4 @@
-  /* ---------------- COLORS ----------------*/
-  :root {
-    /* Violets */
-    --dark-violet: #3c2a8c;
-    --violet: #5a41d4;
-    --light-violet: #a89cf3;
-  
-    /* Bleus (cohérents avec les violets) */
-    --primary-blue: #3b82f6;
-    --dark-blue: #1e3a8a;
-    --light-blue: #dbeafe;
-  
-    /* Neutres */
-    --white: #ffffff;
-    --light-gray: #f3f4f6;
-    --medium-gray: #d1d5db;
-    --dark-gray: #1f2937;
-    --text-gray: #374151;
-  
-    /* Accent - Vert */
-    --green: #10b981;
-    --dark-green: #065f46;
-  
-    /* Accent - Rouge */
-    --red: #ef4444;
-    --dark-red: #7f1d1d;
-  }
+
 /* EMPTY -----------------------------------------------*/
 .empty-search-space{
     display: flex;
@@ -88,8 +62,8 @@
 .clear-the-selection{
     position: absolute;
     /* z-index: 1000000; */
-    color: var(--red);
-    background-color: var(--medium-gray);
+    color: var(--dark-red);
+    background-color: var(--light-gray);
     border-radius: 5px;
     max-width: 75px;
     left: 65%;
@@ -110,7 +84,7 @@ transform: scale(1.1);
 }
 main {
     background-color: var(--light-gray);
-    color: black;
+    color: var(--black);
     padding: 20px;
     height: fit-content;
     min-height: 800px;
@@ -132,6 +106,13 @@ margin: auto    ;
 .head p{
     font-size: 1rem;
 }
+
+h2[class="classic"]{
+    font-size: 1rem;
+    padding: 0px;
+    margin: 0.4rem;
+}
+
 h2 {
     text-align: center;
     font-size: 1.8rem;
@@ -430,8 +411,8 @@ box-shadow: inset 0px 0px 2px 0px;
   .tooltip .tooltiptext {
     visibility: hidden;
     width: 280px;
-    background-color: #222;
-    color: #fff;
+    background-color: var(--text-gray);
+    color: var(--white);
     text-align: left;
     border-radius: 6px;
     padding: 8px;
@@ -543,7 +524,7 @@ box-shadow: inset 0px 0px 2px 0px;
      margin-bottom: 8px;
   }
 
-  ul[class="results"]{
+  .comparatorMain ul[class="results"]{
     position: relative;
     z-index: 5;
   }

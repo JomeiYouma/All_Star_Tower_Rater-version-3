@@ -1,6 +1,6 @@
 <div class="head">
 <h1>Comparator</h1>
-<p>Select two units to compare their statistics.</p>
+<h2 class="classic">Select two units to compare their statistics.</h2><!-- H2 pour pas casser l'odre des h du footer -->
 </div>
 <section class="empty-search-space">
     <section class="search-part">
@@ -25,7 +25,7 @@
                 echo '
                 <div class="part-search-card">
                 <h2>'.$unit['in_game_name'].'</h2>
-                <img src="/All_Star_Tower_Rater/assets/images/'.$unit['unit_file'].'">
+                <img src="/All_Star_Tower_Rater/assets/images/'.$unit['unit_file'].' alt=""">
                 <p>Farming difficulty : '.$unit['farming_difficulty'].'</p><br>
                 <p>Enchant : '.$unit['enchant'].'</p>
                 <a  class="clear-the-selection" href="comparator.php">Clear the Selection</a>
@@ -45,7 +45,7 @@
 // DEUXIÈME BARRE DE RECHERCHE
 $searchField = 'name2';
 $label = 'Select second unit';
-$title = 'Résultats de la recherche du bas';
+$title = 'Second search results';
 if  (isset($id1)) {
     $linkPrefix = '/All_Star_Tower_Rater/assets/php_main/comparator.php?id1='.$id1.'&id2=';
 }else {
