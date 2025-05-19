@@ -175,7 +175,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
           selectionDisplay.innerHTML = `
           <h2>Selected Preset :</h2>
-          <p><strong>Nom :</strong> ${preset.preset_name}</p>
+          <p><strong>Name :</strong> ${preset.preset_name}</p>
           <p ><strong>ID :</strong> <span class="selectedPresetID">${preset.preset_id}</span></p>
           <p><strong>Gamemode :</strong> ${preset.preset_gamemode}</p>
         `;
@@ -302,7 +302,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 visualReturn(
                   presetNameInput,
                   "Preset added successfully!",
-                  "rgb(150, 250, 150)",
+                  "rgb(114, 147, 255)",
                   "black"
                 );
                 alert("Added preset. New preset's ID : " + json.preset_id);
@@ -393,7 +393,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     visualReturn(
       buttonApply,
       "Applied Preset",
-      "rgb(150, 250, 177)",
+      "rgb(101, 170, 255)",
       "black",
       "A P P L Y"
     );

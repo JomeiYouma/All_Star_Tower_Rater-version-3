@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Character Page All Star Tower Rater</title>
+    <meta name="description" content="Test and preview character detail pages for All Star Tower Defense. Review stats, designs, and performance data for ongoing development." >
     <link href="/All_Star_Tower_Rater/assets/css/style_general.css" rel="stylesheet" />
     <link href="/All_Star_Tower_Rater/assets/css/style_character_page.css" rel="stylesheet" />
     <link rel="icon" href="/All_Star_Tower_Rater/assets/images/favicon_local.ico">
@@ -43,7 +44,7 @@
             Change calculation method
             </div>
             </div>
-            <canvas id="myChart"></canvas></section>
+            <canvas id="myChart"></canvas><p class="chart-explain">Representation of the unit’s notes, out of 100, determined in relation to the other units of the game, under the same conditions.</p></section>
         <section class="recommandations">
             <h3>Quick Changes</h3>
             

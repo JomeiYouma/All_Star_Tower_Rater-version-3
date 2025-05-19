@@ -79,6 +79,17 @@ transform: scale(1.1);
     color: var(--red);
 }
 /* FULL ---------------------------------------------- */
+@media (min-width: 1000px){
+  .responsiveSettings{
+    display: flex;
+    flex-direction: row;
+  }
+.responsiveSettings section{
+    width: 48%;
+    margin-left: 16px;
+    margin-right: 16px;
+}
+  }
 .comparatorBody{
     background-color: var(--light-gray);
 }
@@ -253,7 +264,11 @@ h2 {
     filter: drop-shadow(0 0 6px rgba(239, 68, 68, 0.2));
 }
 
-
+.chart-explain{
+    width: 100%;
+    font-size: 0.7rem;
+    
+}
 
 .comparativeStar {
     margin-top: 40px;
@@ -267,6 +282,8 @@ h2 {
     display: flex;
     /* justify-content: center; */
    /*  align-items: center; */
+   flex-direction: column;
+   max-width: 1300px;
 }
 
 .comparativeStar canvas{

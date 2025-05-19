@@ -7,12 +7,13 @@
     <link href="/All_Star_Tower_Rater/assets/css/style_policy.css" rel="stylesheet" />
     <link rel="icon" href="/All_Star_Tower_Rater/assets/images/favicon_local.ico">
     <title>Privacy Policy All Star Tower Rater</title>
+    <meta name="description" content="" >
 </head>
 <body>
 <?php include __DIR__ . '/../php_sup/header.php'; ?>
     <main class="privacyMain">
     <h1>Privacy Policy</h1>
-    <p>Effective Date: 08/05/2025</p>
+    <p>Effective Date: 8 May 2025</p>
     <section>
         <h2>Introduction & Organizational Info:</h2>
         <p>We, at All Star Tower Rater, are dedicated to serving our customers and contacts to the best of our abilities. Part of our commitment involves the responsible management of personal information collected through our website astr.madore.projetsmmichamps.fr, and any related interactions. Our primary goals in processing this information include:</p>

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Advanced Search All Star Tower Rater</title>
+    <meta name="description" content="Use the advanced search engine to filter and find All Star Tower Defense units by stats, traits, rarity, and more for optimal team building." >
     <link href="/All_Star_Tower_Rater/assets/css/style_general.css" rel="stylesheet" />
     <link href="/All_Star_Tower_Rater/assets/css/style_engine.css" rel="stylesheet" />
     <link rel="icon" href="/All_Star_Tower_Rater/assets/images/favicon_local.ico">

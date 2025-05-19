@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Advanced Search | All Star Tower Rater</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" href="/All_Star_Tower_Rater/assets/images/favicon_local.ico">
+    <link href="/All_Star_Tower_Rater/assets/css/style_general.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         .card:hover {
@@ -44,7 +46,7 @@
 </head>
 <body class="bg-gray-100 smooth-scroll">
     <!-- Header -->
-    <?php include 'header.php'; ?>
+    <?php include __DIR__ . '/../php_sup/header.php'; ?>
     <!-- Main Content -->
     <main class="container mx-auto px-4 py-8">
         <!-- Search Filters Section -->
@@ -278,7 +280,9 @@
     </main>
 
     <!-- Footer -->
-    <?php include 'footer.php'; ?>
+    <?php 
+    include __DIR__ . "/../php_sup/footer.php"
+?>
 
     <script>
         // Enhanced version of your JavaScript with better UI interactions

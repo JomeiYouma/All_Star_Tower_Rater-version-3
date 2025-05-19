@@ -1,0 +1,4 @@
+Options +FollowSymLinks
+RewriteEngine On
+
+ErrorDocument 404 /All_Star_Tower_Rater/assets/php_main/404.php

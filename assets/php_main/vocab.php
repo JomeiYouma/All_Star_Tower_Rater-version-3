@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Glossary All Star Tower Rater</title>
+  <meta name="description" content="Glossary of terms used in All Star Tower Rater. Understand the meanings behind stats, attributes, and game mechanics in ASTD." >
     <link href="/All_Star_Tower_Rater/assets/css/style_general.css" rel="stylesheet" />
     <link rel="icon" href="/All_Star_Tower_Rater/assets/images/favicon_local.ico">
   <style>

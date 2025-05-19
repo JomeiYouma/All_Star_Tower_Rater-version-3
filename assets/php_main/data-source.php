@@ -7,6 +7,7 @@
     <link href="/All_Star_Tower_Rater/assets/css/style_policy.css" rel="stylesheet" />
     <link rel="icon" href="/All_Star_Tower_Rater/assets/images/favicon_local.ico">
     <title>Data Source All Star Tower Rater</title>
+    <meta name="description" content="Explore our data sources for All Star Tower Defense analysis. Transparent insights into how unit statistics and rankings are compiled." >
 </head>
 <body>
 <?php include __DIR__ . '/../php_sup/header.php'; ?>

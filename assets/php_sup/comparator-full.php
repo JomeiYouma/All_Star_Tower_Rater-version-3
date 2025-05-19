@@ -37,6 +37,8 @@
         </aside>
         <aside class="secondAbilities red">
         </aside>
+        <br><br>
+        <div class="responsiveSettings">
         <section class="comparativeStar fade-in" style="animation-delay: 0.4s">
             <div class="tooltip">
                 <img src="/All_Star_Tower_Rater/assets/images/diagram-lin-2.png" alt="Change calculation method">
@@ -45,9 +47,10 @@
                 </div>
             </div>
             <canvas id="myChart"></canvas>
+            <p class="chart-explain">Representation of the unit’s notes, out of 100, determined in relation to the other units of the game, under the same conditions.</p>
         </section>
-    </section>
-    <section class="quickChanges">
+        <br>
+        <section class="quickChanges">
     <h3>Quick Changes</h3>
             <div class="quickChanges">
             <label for="gamemodeFast" class="gamemodeFast">Gamemode : <span>Preset</span></label>
@@ -61,9 +64,12 @@
                 <input type="range" name="buffFast" id="buffFast" min="0" max="300" step="25" value="90"> 
                 <label for="loadPresetFast">Load preset by ID</label>
                 <input class="inputWithMargin" type="text" name="loadPresetFast" id="loadPresetFast" placeholder="--Please select preset ID--">
-            <button class="fastSubmit">L O A D</button>
+            <button class="fastSubmit">Load</button>
 </div>
     </section>
+</div>
+    </section>
+    
     <h2>Stats</h2>
     <section class="infoComparator fade-in" style="animation-delay: 0.5s">
         <table class="stats-table">

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>All Star Tower Rater Hub</title>
+    <meta name="description" content="Welcome to All Star Tower Rater — your go-to platform for detailed stats, comparisons, and rankings in All Star Tower Defense on Roblox." >
     <link href="/All_Star_Tower_Rater/assets/css/style_general.css" rel="stylesheet" />
     <link href="/All_Star_Tower_Rater/assets/css/style_hub.css" rel="stylesheet" />
     <link rel="icon" href="/All_Star_Tower_Rater/assets/images/favicon_local.ico">
@@ -22,7 +23,7 @@
  <div class="main-container">
         <h1 class="title fade-in">All Star Tower Rater</h1>
         <p class="subtitle fade-in delay-1"><!-- ordre pour le delay de l'animation -->
-            The ultimate tool to rate, compare and optimize your team compositions in All Star Tower Defense.
+            The ultimate tool for pro All Star Tower Defense players. Rate, compare and optimize your team compositions.
             Find the best units, create powerful teams and dominate the battlefield!
         </p>
         

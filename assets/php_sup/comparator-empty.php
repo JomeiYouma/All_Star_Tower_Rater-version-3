@@ -25,7 +25,7 @@
                 echo '
                 <div class="part-search-card">
                 <h2>'.$unit['in_game_name'].'</h2>
-                <img src="/All_Star_Tower_Rater/assets/images/'.$unit['unit_file'].' alt=""">
+                <img src="/All_Star_Tower_Rater/assets/images/'.$unit['unit_file'].'">
                 <p>Farming difficulty : '.$unit['farming_difficulty'].'</p><br>
                 <p>Enchant : '.$unit['enchant'].'</p>
                 <a  class="clear-the-selection" href="comparator.php">Clear the Selection</a>

@@ -28,6 +28,7 @@ if (!empty($_POST['login']) && !empty($_POST['password'])) {
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Premium Information All Star Tower Rater</title>
+  <meta name="description" content="Access premium features documentation. Learn how to unlock advanced analysis, filtering, and team optimization for ASTD units." >
   <link href="/All_Star_Tower_Rater/assets/css/style_general.css" rel="stylesheet" />
   <link href="/All_Star_Tower_Rater/assets/css/style_premium.css" rel="stylesheet" />
   <link rel="icon" href="/All_Star_Tower_Rater/assets/images/favicon_local.ico">
@@ -83,7 +84,7 @@ if (!empty($_POST['login']) && !empty($_POST['password'])) {
           echo "<div class=\"term\">\n";
           echo "  <h2>$term</h2>\n";
           echo "  <p>$definition</p>\n";
-          echo " <a href=".$link." target='_blank'>-> Ouvrir le document dans un nouvel onglet</a>\n";
+          echo " <a href=".$link." target='_blank' rel='noreferrer noopener'>-> Ouvrir le document dans un nouvel onglet</a>\n";
           echo "</div>\n";
         }
       ?>

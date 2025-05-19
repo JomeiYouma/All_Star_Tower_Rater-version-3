@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>All Star Tower Rater Settings</title>
+    <meta name="description" content="Customize your All Star Tower Rater experience. Save preferences, adjust display options, and personalize your stat comparison tools." >
     <link href="/All_Star_Tower_Rater/assets/css/style_general.css" rel="stylesheet" />
     <link href="/All_Star_Tower_Rater/assets/css/style_settings.css" rel="stylesheet" />
     <link rel="icon" href="/All_Star_Tower_Rater/assets/images/favicon_local.ico">
@@ -80,7 +81,7 @@
                         </summary>    
                         <div class="divi">
                         <div class="param">
-                            <label for="enemy_enchant">Enemy enchant : <span class="pre-value">None</span><span class="redDot">*</span></label>
+                            <label for="enemy_enchant" aria-describedby="messUpWarning">Enemy enchant : <span class="pre-value">None</span><span class="redDot">*</span></label>
                             <select name="enemy_enchant" id="enemy_enchant">
                                 <option value="">--Please choose an option--</option>
                                 <option value="none">None</option>
@@ -94,12 +95,12 @@
                         </div>
                         
                         <div class="param">
-                            <label for="enchant_str">Enchant strength : <span class="pre-value">Off</span><span class="redDot">*</span></label>
+                            <label for="enchant_str" aria-describedby="messUpWarning">Enchant strength : <span class="pre-value">Off</span><span class="redDot">*</span></label>
                             <input type="checkbox" id="enchant_str" name="enchant_str" />
                         </div>
         
                         <div class="param">
-                            <label for="enchant_wkn">Enchant weakness : <span class="pre-value">Off</span><span class="redDot">*</span></label>
+                            <label for="enchant_wkn" aria-describedby="messUpWarning">Enchant weakness : <span class="pre-value">Off</span><span class="redDot">*</span></label>
                             <input type="checkbox" id="enchant_wkn" name="enchant_wkn" />
                         </div>
         
@@ -127,7 +128,7 @@
                             <label for="typebane">Typebane : <span class="pre-value">Off</span></label>
                             <input type="checkbox" id="typebane" name="typebane" />
                         </div></div>
-                        <p class="littleWarning"><span class="redDot">*</span>:Can't be turned on together or it will mess up.</p>
+                        <p class="littleWarning" id="messUpWarning"><span class="redDot">*</span>:Can't be turned on together or it will mess up.</p>
                     </details>
                     <details class="generalSettingsDetails">
                         <summary>
@@ -347,7 +348,7 @@
                                     <option value="Raid preset">Raid preset</option>
                                 </select>
                             </div>
-                            <button class="button-85 load" role="button" type="button">L O A D</button>
+                            <button class="button-85 load" role="button" type="button">Load</button>
                         </div>
 <!--                         <p class="littleWarning"><span class="redDot">*</span>:Can't be used together or it will mess up.</p> -->
                         <div id="selectedPreset" class="selected-preset"></div>
@@ -358,24 +359,24 @@
                         </summary>    
                         <div class="divi">
                             <div class="paramBis">
-                                <label for="preset_name">Preset Name<span class="greenDot">*</span></label>
+                                <label for="preset_name" aria-describedby="fillWarning">Preset Name<span class="greenDot">*</span></label>
                                 <input type="text" name="preset_name" id="preset_name" placeholder="--Please set name--">
                             </div>
 <!--                             <div class="paramBis"> Pas implémenté
                                 <label for="preset_password">Preset Password</label>
                                 <input type="password" name="preset_password" id="preset_password" placeholder="--Please set password--">
                             </div> -->
-                            <button class="button-85 save" id="save" role="button" type="button">S A V E</button>
-                            <button class="button-85 save" id="apply" role="button" type="button">APPLY PRESET</button>
+                            <button class="button-85 save" id="save" role="button" type="button">Save</button>
+                            <button class="button-85 save" id="apply" role="button" type="button">Apply preset</button>
                         </div>
                         
                         <div class="consent-check">
                         <p>Your preset will not be saved. You'll can access to it until you close the site.</p>
-                        <button class="button-85 save" id="apply2" role="button" type="button" >STILL APPLY</button>
+                        <button class="button-85 save" id="apply2" role="button" type="button" >Still apply</button>
                         
-                        <button class="button-85 save" id="applynt" role="button" type="button" >CANCEL APPLY</button>
+                        <button class="button-85 save" id="applynt" role="button" type="button" >Cancel apply</button>
                         </div>
-                        <p class="littleWarning"><span class="greenDot">*</span>:Must be filled.</p>
+                        <p class="littleWarning" id="fillWarning"><span class="greenDot">*</span>:Must be filled.</p>
                        </details>
 
         </form>
