@@ -10,7 +10,7 @@
     <meta name="description" content="" >
 </head>
 <body>
-<?php include __DIR__ . '/../php_sup/header.php'; ?>
+<?php include __DIR__ . "/../php_sup/header.php"; ?>
     <main class="privacyMain">
     <h1>Privacy Policy</h1>
     <p>Effective Date: 8 May 2025</p>
@@ -64,8 +64,6 @@
         <p>To exercise any of these rights, please contact us at sterclassyouma@gmail.com or +33 0783225938. We will respond to your request in accordance with applicable data protection laws and within the timeframes stipulated by those laws. Please note, in some cases, we may need to verify your identity as part of the process to ensure the security of your personal information.<br><br>We are committed to facilitating the exercise of your rights and to ensuring you have full control over your personal information. If you have any questions or concerns about how your personal information is handled, please do not hesitate to get in touch with us.</p>
     </section>
 </main>
-<?php 
-    include __DIR__ . "/../php_sup/footer.php"
-?>
+<?php include __DIR__ . "/../php_sup/footer.php"; ?>
 </body>
 </html>

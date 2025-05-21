@@ -10,7 +10,7 @@
     <meta name="description" content="Explore our data sources for All Star Tower Defense analysis. Transparent insights into how unit statistics and rankings are compiled." >
 </head>
 <body>
-<?php include __DIR__ . '/../php_sup/header.php'; ?>
+<?php include __DIR__ . "/../php_sup/header.php"; ?>
     <main class="privacyMain">
 <br><br>
         <h1>Data Sources</h1>
@@ -39,8 +39,6 @@
             </p>
 
 </main>
-<?php 
-    include __DIR__ . "/../php_sup/footer.php"
-?>
+<?php include __DIR__ . "/../php_sup/footer.php"; ?>
 </body>
 </html>

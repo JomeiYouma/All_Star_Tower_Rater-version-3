@@ -70,12 +70,12 @@
   }
   /* ----------------- FONTS ----------------- */
   @font-face {
-    font-family: "star";
+    font-family: "star",sans-serif;
     src: url(/All_Star_Tower_Rater/assets/fonts/Starborn.ttf);
   }
   
   @font-face {
-    font-family: "normal";
+    font-family: "normal",sans-serif;
     src: url(/All_Star_Tower_Rater/assets/fonts/TT\ Lakes\ Neue\ Trial\ Medium.ttf);
   }
   

@@ -11,7 +11,7 @@
 </head>
 <body class="searchBody">
     
-<?php include __DIR__ . '/../php_sup/header.php'; ?>
+<?php include __DIR__ . "/../php_sup/header.php"; ?>
 
 <main class="engineMain">
     <div class="frame">
@@ -209,9 +209,7 @@
         <div id="personnages" class="personnages"></div>
     </div>
 </main>
-<?php 
-    include __DIR__ . "/../php_sup/footer.php"
-?>
+<?php include __DIR__ . "/../php_sup/footer.php"; ?>
 <script>
     
 let enchant = (document.getElementById('enchantFilter'));//Déclaration des inputs
@@ -605,7 +603,7 @@ if (collectionDifficulty.value) {
         
         card.innerHTML = `
         <div class="unit-card-image-container">
-            <img class="card-image" src="/All_Star_Tower_Rater/assets/images/${unit.unit_file}" alt="">
+            <img class="card-image" loading="lazy" src="/All_Star_Tower_Rater/assets/images/${unit.unit_file}" alt="">
             </div>
             <div class="unit-card-content">
             <h2>${unit.in_game_name}</h2>

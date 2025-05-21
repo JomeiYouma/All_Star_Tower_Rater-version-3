@@ -11,10 +11,11 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body class="comparatorBody">
-<?php 
-    $id1 = $_GET['id1']?? null;
-    $id2 = $_GET['id2']?? null;
-    include __DIR__ . "/../php_sup/header.php"?><?php if (isset($id2) && isset($id1)): ?>
+<?php
+$id1 = $_GET["id1"] ?? null;
+$id2 = $_GET["id2"] ?? null;
+include __DIR__ . "/../php_sup/header.php";
+if (isset($id2) && isset($id1)): ?>
     <main class="empty-comparatorMain" style="display: none;"></main>
     <main class="comparatorMain">
 <?php include __DIR__ . "/../php_sup/comparator-full.php"; ?>
@@ -24,19 +25,23 @@
 <?php include __DIR__ . "/../php_sup/comparator-empty.php"; ?>
     </main>
     <main class="comparatorMain" style="display: none;"></main>
-<?php endif; ?>
-<?php include __DIR__ . "/../php_sup/footer.php"?>
+<?php endif;
+?>
+<?php include __DIR__ . "/../php_sup/footer.php"; ?>
 
 </body>
 
 
 <script src="/All_Star_Tower_Rater/assets/js/function-import-data.js"></script>
 <script src="/All_Star_Tower_Rater/assets/js/function-format.js"></script>
-<?php if (isset($id2) && isset($id1)): ?><!-- ##################SCRIPT FULL############# -->
+<?php if (
+    isset($id2) &&
+    isset($id1)
+): ?><!-- ##################SCRIPT FULL############# -->
 <script>
 document.addEventListener('DOMContentLoaded', async () => {
     
-<?php include __DIR__ . "/../js/function-calculate-macro.js"?>
+<?php include __DIR__ . "/../js/function-calculate-macro.js"; ?>
     function calculateLevelBasedDps(dps) {
     let level = settingsData[0].level;
     switch (true) {
@@ -122,8 +127,8 @@ let wt2 = document.querySelector(".wt2");
 //Fast Settings
 let gmFast = document.querySelector(".gamemodeFast span");
 let buffFast = document.querySelector(".buffFast span");
-<?php include __DIR__ . "/../js/function-add-content.js"?>
-<?php include __DIR__ . "/../js/function-add-modified-data.js";?>
+<?php include __DIR__ . "/../js/function-add-content.js"; ?>
+<?php include __DIR__ . "/../js/function-add-modified-data.js"; ?>
 //----------------------------------------------------------------------------
 // Appel de la fonction après le chargement des données
 function doubleAddContent() {

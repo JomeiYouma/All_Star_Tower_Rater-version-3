@@ -18,10 +18,10 @@
         <div class="circle"></div>
         <div class="circle"></div>
     </div>
-<?php include __DIR__ . "/../php_sup/header.php"?>
+<?php include __DIR__ . "/../php_sup/header.php"; ?>
 
  <div class="main-container">
-        <h1 class="title fade-in">All Star Tower Rater</h1>
+        <h1 class="title fade-in">All star tower rater</h1>
         <p class="subtitle fade-in delay-1"><!-- ordre pour le delay de l'animation -->
             The ultimate tool for pro All Star Tower Defense players. Rate, compare and optimize your team compositions.
             Find the best units, create powerful teams and dominate the battlefield!
@@ -39,7 +39,7 @@
             </a>
         </div>
     </div>
-<?php include __DIR__ . "/../php_sup/footer.php"?>
+<?php include __DIR__ . "/../php_sup/footer.php"; ?>
 
 
 

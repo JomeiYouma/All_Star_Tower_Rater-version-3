@@ -11,7 +11,7 @@
 </head>
 <body class="settingsBody">
     
-<?php include __DIR__ . "/../php_sup/header.php"?>
+<?php include __DIR__ . "/../php_sup/header.php"; ?>
 <main class="settingsMain">
     <div class="frame">
         <h1>Settings</h1>
@@ -384,11 +384,11 @@
     </div>
 </main>
 
-<?php include __DIR__ . "/../php_sup/footer.php";?>
+<?php include __DIR__ . "/../php_sup/footer.php"; ?>
 <!-- <script src="function-import-data-settings.js"></script> -->
 <script>
-<?php include __DIR__ . "/../js/function-visual-return.js";?>
-<?php include __DIR__ . "/../js/script_settings.js";?>
+<?php include __DIR__ . "/../js/function-visual-return.js"; ?>
+<?php include __DIR__ . "/../js/script_settings.js"; ?>
 </script>
 </body>
 </html>

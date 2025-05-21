@@ -65,7 +65,7 @@ aside li{
 </head>
 
 <body>
-<?php include __DIR__ . "/../php_sup/header.php"?>
+<?php include __DIR__ . "/../php_sup/header.php"; ?>
     <main>
     <h1>All Star Tower Rater - Glossary</h1>
       <aside>
@@ -101,16 +101,16 @@ aside li{
       </aside>
 <section class="terms" id="contenu">
 <?php
-require_once __DIR__ . '/../php_sup/pdo.php';
+require_once __DIR__ . "/../php_sup/pdo.php";
 
 // Exécute la requête et récupère les résultats triés (concaténation avec \ parce que sinon je ne m'y retrouve plus.)
 $sortie = $pdo->query("SELECT * FROM glossary ORDER BY glossary_name");
 $glossaryData = $sortie->fetchAll(PDO::FETCH_ASSOC);
 
-$currentLetter = '';
+$currentLetter = "";
 foreach ($glossaryData as $entry) {
-    $term = $entry['glossary_name'];
-    $definition = $entry['glossary_explaination'];
+    $term = $entry["glossary_name"];
+    $definition = $entry["glossary_explaination"];
     $firstLetter = strtoupper($term[0]);
 
     // Si la première lettre a changé, ajoute une ancre
@@ -129,6 +129,6 @@ foreach ($glossaryData as $entry) {
 
   </section>
 </main>
-<?php include __DIR__ . "/../php_sup/footer.php";?>
+<?php include __DIR__ . "/../php_sup/footer.php"; ?>
 </body>
 </html>

@@ -1,20 +1,20 @@
 <?php
 /* require('./db.php'); */
-require_once __DIR__ . '/../php_sup/pdo.php';
+require_once __DIR__ . "/../php_sup/pdo.php";
 
 $isLoggedIn = false;
-$loginError = '';
+$loginError = "";
 
-if (!empty($_POST['login']) && !empty($_POST['password'])) {
-    $login = $_POST['login'];
-    $password = $_POST['password'];
+if (!empty($_POST["login"]) && !empty($_POST["password"])) {
+    $login = $_POST["login"];
+    $password = $_POST["password"];
 
-    $query = $pdo->prepare('SELECT * FROM connexion WHERE login = :login');
-    $query->bindValue('login', $login);
+    $query = $pdo->prepare("SELECT * FROM connexion WHERE login = :login");
+    $query->bindValue("login", $login);
     $query->execute();
     $results = $query->fetch(PDO::FETCH_ASSOC);
 
-    if ($results && password_verify($password, $results['password'])) {
+    if ($results && password_verify($password, $results["password"])) {
         $isLoggedIn = true;
     } else {
         $loginError = "Invalid login or password.";
@@ -70,23 +70,27 @@ if (!empty($_POST['login']) && !empty($_POST['password'])) {
         <?php endif; ?>
       </form>
     </section>
-  <?php else: ?>
+  <?php
+      // Tu peux replacer ici ta requête glossary, maintenant que l’utilisateur est authentifié
+      // Tu peux replacer ici ta requête glossary, maintenant que l’utilisateur est authentifié
+      else: ?>
     <section class="terms" id="contenu">
       <?php
-        // Tu peux replacer ici ta requête glossary, maintenant que l’utilisateur est authentifié
-        $stmt = $pdo->query("SELECT * FROM premium_links ORDER BY id");
-        $linksData = $stmt->fetchAll(PDO::FETCH_ASSOC);
+      $stmt = $pdo->query("SELECT * FROM premium_links ORDER BY id");
+      $linksData = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        foreach ($linksData as $entry) {
-          $term = htmlspecialchars($entry['name']);
-          $definition = htmlspecialchars($entry['description']);
-          $link = htmlspecialchars($entry['links']);
+      foreach ($linksData as $entry) {
+          $term = htmlspecialchars($entry["name"]);
+          $definition = htmlspecialchars($entry["description"]);
+          $link = htmlspecialchars($entry["links"]);
           echo "<div class=\"term\">\n";
           echo "  <h2>$term</h2>\n";
           echo "  <p>$definition</p>\n";
-          echo " <a href=".$link." target='_blank' rel='noreferrer noopener'>-> Ouvrir le document dans un nouvel onglet</a>\n";
+          echo " <a href=" .
+              $link .
+              " target='_blank' rel='noreferrer noopener'>-> Ouvrir le document dans un nouvel onglet</a>\n";
           echo "</div>\n";
-        }
+      }
       ?>
     </section>
   <?php endif; ?>

@@ -6,7 +6,7 @@ require_once __DIR__ . "/../php_sup/pdo.php";
 $data = json_decode(file_get_contents("php://input"), true);
 if (!$data || empty($data["preset_name"])) {
     echo json_encode(["success" => false, "message" => "Preset name missing."]);
-    exit;
+    exit();
 }
 
 // Séparation des champs
@@ -18,16 +18,23 @@ $permission = $data["permission"] ?? 0;
 $exclude_keys = ["preset_name", "preset_ip", "permission", "preset_id"];
 
 // Filtrage pour comparaison
-$filtered_data = array_filter($data, function($key) use ($exclude_keys) {
-    return !in_array($key, $exclude_keys);
-}, ARRAY_FILTER_USE_KEY);
+$filtered_data = array_filter(
+    $data,
+    function ($key) use ($exclude_keys) {
+        return !in_array($key, $exclude_keys);
+    },
+    ARRAY_FILTER_USE_KEY
+);
 
 // 🔍 Vérifier si un preset avec le même nom existe
 $stmt = $pdo->prepare("SELECT * FROM presets WHERE preset_name = ?");
 $stmt->execute([$preset_name]);
 if ($stmt->rowCount() > 0) {
-    echo json_encode(["success" => false, "message" => "This name is already used"]);
-    exit;
+    echo json_encode([
+        "success" => false,
+        "message" => "This name is already used",
+    ]);
+    exit();
 }
 
 // 🔍 Vérifier si un preset avec les mêmes paramètres existe
@@ -46,15 +53,17 @@ foreach ($all_presets as $preset) {
         // Ajout de l'ID du preset existant dans le message
         echo json_encode([
             "success" => false,
-            "message" => "An identical preset already exists. ID : ".$preset["preset_id"],
-            "preset_id" => $preset["preset_id"]  // Ajouter l'ID du preset existant
+            "message" =>
+                "An identical preset already exists. ID : " .
+                $preset["preset_id"],
+            "preset_id" => $preset["preset_id"], // Ajouter l'ID du preset existant
         ]);
-        exit;
+        exit();
     }
 }
 
 // ✅ Insérer le preset
-unset($data["preset_id"]); 
+unset($data["preset_id"]);
 $columns = array_keys($data);
 $placeholders = implode(",", array_fill(0, count($columns), "?"));
 $colnames = implode(",", $columns);
@@ -65,6 +74,6 @@ header("Content-Type: application/json"); // Pour forcer le JSON sinon il capte 
 echo json_encode([
     "success" => true,
     "message" => "Added preset.",
-    "preset_id" => $pdo->lastInsertId()
+    "preset_id" => $pdo->lastInsertId(),
 ]);
 ?>
