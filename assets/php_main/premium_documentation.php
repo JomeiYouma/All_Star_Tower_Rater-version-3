@@ -10,7 +10,7 @@ if (!empty($_POST["login"]) && !empty($_POST["password"])) {
     $password = $_POST["password"];
 
     $query = $pdo->prepare("SELECT * FROM connexion WHERE login = :login");
-    $query->bindValue("login", $login);
+    $query->bindValue("login", $login); //bindValue pour associer login à une variable
     $query->execute();
     $results = $query->fetch(PDO::FETCH_ASSOC);
 

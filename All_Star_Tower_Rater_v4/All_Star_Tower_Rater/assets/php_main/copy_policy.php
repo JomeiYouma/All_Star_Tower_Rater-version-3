@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="/All_Star_Tower_Rater/assets/css/style_general.css" rel="stylesheet" />
     <link href="/All_Star_Tower_Rater/assets/css/style_policy.css" rel="stylesheet" />
-    <link rel="icon" href="/All_Star_Tower_Rater/assets/images/favicon_local.ico">
+    <link rel="icon" href="/All_Star_Tower_Rater/assets/images/favicon.ico">
     <title>Privacy Policy All Star Tower Rater</title>
     <meta name="description" content="Learn about our content reuse policy. All ASTD images belong to Top Down Games. Other content is reusable with credit to youuuma." >
     <style>

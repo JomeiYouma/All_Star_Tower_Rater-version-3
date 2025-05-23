@@ -1,9 +1,9 @@
 <?php
-header("Content-Type: application/json");
+header("Content-Type: application/json"); //Indique que la réponse HTTP sera du JSON, pas du HTML.
 
 require_once __DIR__ . "/../php_sup/pdo.php";
 
-$data = json_decode(file_get_contents("php://input"), true);
+$data = json_decode(file_get_contents("php://input"), true); //file gret contents : Lit les données brutes envoyées dans la requête HTTP
 if (!$data || empty($data["preset_name"])) {
     echo json_encode(["success" => false, "message" => "Preset name missing."]);
     exit();
@@ -29,7 +29,7 @@ $filtered_data = array_filter(
 // 🔍 Vérifier si un preset avec le même nom existe
 $stmt = $pdo->prepare("SELECT * FROM presets WHERE preset_name = ?");
 $stmt->execute([$preset_name]);
-if ($stmt->rowCount() > 0) {
+if ($stmt->rowCount() > 0) { //etourne le nombre de lignes trouvées par le SELECT précédent.
     echo json_encode([
         "success" => false,
         "message" => "This name is already used",
@@ -64,8 +64,8 @@ foreach ($all_presets as $preset) {
 
 // ✅ Insérer le preset
 unset($data["preset_id"]);
-$columns = array_keys($data);
-$placeholders = implode(",", array_fill(0, count($columns), "?"));
+$columns = array_keys($data); //récupère les noms de colonnes (array_keys) pour l’INSERT
+$placeholders = implode(",", array_fill(0, count($columns), "?")); //implode convertit un tableau en chaîne séparée par des virgules.
 $colnames = implode(",", $columns);
 
 $stmt = $pdo->prepare("INSERT INTO presets ($colnames) VALUES ($placeholders)");

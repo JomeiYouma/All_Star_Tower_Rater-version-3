@@ -2,7 +2,7 @@
 $currentPage = basename($_SERVER["PHP_SELF"]);
 function isSelected($pageName, $currentPage)
 {
-    return strpos($currentPage, $pageName) !== false ? "selected-page" : "";
+    return strpos($currentPage, $pageName) !== false ? "selected-page" : ""; //strpos retourne la position (index) de la première occurrence d’une sous-chaîne dans une autre.
 }
 ?>
 

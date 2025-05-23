@@ -22,7 +22,7 @@
         <div class="divi">
 
             <div class="param">
-                <label for="name"><img style="width: 15px;" class="engineIcon"  src="/All_Star_Tower_Rater/imagassets/imagese_file/tag.png" alt=""> Name :</label>
+                <label for="name"><img style="width: 15px;" class="engineIcon"  src="/All_Star_Tower_Rater/assets/images/tag.png" alt=""> Name :</label>
                 <input type="text" name="name" id="name">
             </div>
 
@@ -54,7 +54,7 @@
             </div>
 
             <div class="param">
-                <label for="role"><img style="width: 15px;" class="engineIcon"  src="/All_Star_Tower_Rater/assets/assets/images/role.png" alt=""> Role :</label>
+                <label for="role"><img style="width: 15px;" class="engineIcon"  src="/All_Star_Tower_Rater/assets/images/role.png" alt=""> Role :</label>
                 <select name="role" id="role">
                     <option value="">--Please choose an option--</option>
                     <option value="Executionner">Executioner</option>

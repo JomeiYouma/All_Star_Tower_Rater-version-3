@@ -7,7 +7,7 @@
     <meta name="description" content="Test and preview character detail pages for All Star Tower Defense. Review stats, designs, and performance data for ongoing development." >
     <link href="/All_Star_Tower_Rater/assets/css/style_general.css" rel="stylesheet" />
     <link href="/All_Star_Tower_Rater/assets/css/style_character_page.css" rel="stylesheet" />
-    <link rel="icon" href="/All_Star_Tower_Rater/assets/images/favicon_local.ico">
+    <link rel="icon" href="/All_Star_Tower_Rater/assets/images/favicon.ico">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body class="characterPageBody">

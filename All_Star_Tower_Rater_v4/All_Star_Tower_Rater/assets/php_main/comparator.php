@@ -7,7 +7,7 @@
     <meta name="description" content="Compare All Star Tower Defense units side by side. Analyze stats, rarity, and performance to choose the best characters for your team." >
     <link href="/All_Star_Tower_Rater/assets/css/style_general.css" rel="stylesheet" />
     <link href="/All_Star_Tower_Rater/assets/css/style_comparator.css" rel="stylesheet" />
-    <link rel="icon" href="/All_Star_Tower_Rater/assets/images/favicon_local.ico">
+    <link rel="icon" href="/All_Star_Tower_Rater/assets/images/favicon.ico">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body class="comparatorBody">
