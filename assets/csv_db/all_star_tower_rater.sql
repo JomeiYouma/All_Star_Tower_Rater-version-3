@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : jeu. 15 mai 2025 à 16:06
+-- Généré le : ven. 23 mai 2025 à 17:49
 -- Version du serveur : 10.4.32-MariaDB
 -- Version de PHP : 8.2.12
 
@@ -815,30 +815,11 @@ INSERT INTO `ability_type_attribution` (`id_ability`, `id_ability_type`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `connexion`
---
-
-CREATE TABLE `connexion` (
-  `login` varchar(40) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Déchargement des données de la table `connexion`
---
-
-INSERT INTO `connexion` (`login`, `password`, `id`) VALUES
-('trusted-player', '$2y$10$uo2k7rAnUahtifJ5UVR3kuKeISai7doQ4221uW.SPs1puaufILWVK', 1);
-
--- --------------------------------------------------------
-
---
 -- Structure de la table `glossary`
 --
 
 CREATE TABLE `glossary` (
-  `glossary_id` int(2) NOT NULL,
+  `glossary_id` int(2) DEFAULT NULL,
   `glossary_name` varchar(121) DEFAULT NULL,
   `glossary_explaination` varchar(186) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
@@ -866,7 +847,7 @@ INSERT INTO `glossary` (`glossary_id`, `glossary_name`, `glossary_explaination`)
 (16, 'Enchant (Strength & Weakness)', 'Considers how the unit’s enchantment type (e.g. Fire, Water, etc.) interacts with enemy weaknesses or resistances.'),
 (17, 'Enchant Change', 'Passive ability that allows the unit to replace enemies enchants by the weak enchant for the unit (ONLY if it already has a enchant).'),
 (18, 'Executioner', 'Role given to units that deals high damage to finish off weakened enemies efficiently. It\'s also the default role.'),
-(19, 'Farming Difficulty', 'Also known as FD. Evaluates how hard it is to obtain or evolve a unit, including materials, time, and event availability.'),
+(19, 'Also known as FD. Evaluates how hard it is to obtain or evolve a unit, including materials, time, and event availability.', 'Evaluates how hard it is to obtain or evolve a unit, including materials, time, and event availability.'),
 (20, 'Gamemode', 'Filters or adjusts stats based on the game mode (e.g., Raid, Infinite, Placement only, etc.), as some units perform better in certain modes.'),
 (21, 'Golden Stun', 'Ability that blocks the advance of mobs for a long period of time. Cannot be spammed.'),
 (22, 'Heal', 'Ability that restores life to the base/ Increases the life capacity of the base.'),
@@ -915,32 +896,11 @@ INSERT INTO `glossary` (`glossary_id`, `glossary_name`, `glossary_explaination`)
 -- --------------------------------------------------------
 
 --
--- Structure de la table `premium_links`
---
-
-CREATE TABLE `premium_links` (
-  `links` varchar(255) DEFAULT NULL,
-  `name` varchar(31) DEFAULT NULL,
-  `description` varchar(44) DEFAULT NULL,
-  `id` int(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
---
--- Déchargement des données de la table `premium_links`
---
-
-INSERT INTO `premium_links` (`links`, `name`, `description`, `id`) VALUES
-('https://docs.google.com/spreadsheets/d/1dxE1k2R1TEduOjkfdYUQBU_pJER7Zn8E3S3mF-tWaL4/edit?usp=sharing', 'Experience Farming Informations', 'Best exp farming maps (outdated)', 1),
-('https://docs.google.com/spreadsheets/d/1o-tYqwYJ06pl8wAEXsh7w53eANSDlmj6DiK3ouDWG9s/edit?usp=sharing', 'Gauntlet Farming Information', 'Time to spend in gauntlet for certain units.', 2);
-
--- --------------------------------------------------------
-
---
 -- Structure de la table `presets`
 --
 
 CREATE TABLE `presets` (
-  `preset_id` int(255) NOT NULL,
+  `preset_id` int(1) DEFAULT NULL,
   `preset_ip` int(1) DEFAULT NULL,
   `preset_name` varchar(14) DEFAULT NULL,
   `permission` varchar(5) DEFAULT NULL,
@@ -985,7 +945,7 @@ CREATE TABLE `presets` (
   `importance_range` int(2) DEFAULT NULL,
   `importance_dps` int(2) DEFAULT NULL,
   `importance_aoe` int(2) DEFAULT NULL,
-  `method` varchar(11) DEFAULT NULL,
+  `method` int(1) DEFAULT NULL,
   `ranking_percentage` int(2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
@@ -994,11 +954,12 @@ CREATE TABLE `presets` (
 --
 
 INSERT INTO `presets` (`preset_id`, `preset_ip`, `preset_name`, `permission`, `preset_gamemode`, `level`, `buff`, `rng_buff`, `stroke`, `idol`, `bloodmoon`, `fear`, `typebane`, `enchant_str`, `enchant_wkn`, `enemy_enchant`, `leader`, `leader_special`, `leader_cost`, `pa_full`, `pa_multiple`, `pa_cone_half`, `pa_cone_wide`, `pa_cone_square`, `pa_cone_pyramid`, `pa_cone`, `pa_cone_spike`, `pa_cone_narrow`, `pa_line`, `pa_circle_fat`, `pa_circle_huge`, `pa_circle_verylarge`, `pa_circle_large`, `pa_circle`, `pa_circle_medium`, `pa_circle_little`, `pa_circle_tiny`, `pa_single`, `pa_single_trap`, `pa_summon`, `pa_controllable`, `importance_aoetype`, `importance_range`, `importance_dps`, `importance_aoe`, `method`, `ranking_percentage`) VALUES
-(1, 0, 'actual preset', 'admin', 'max', 175, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'none', 0, 0, 0, 100, 95, 91, 90, 85, 70, 60, 50, 30, 10, 85, 80, 75, 70, 55, 50, 25, 20, 1, 30, 35, 60, 50, 80, 80, 45, 'logarithmic', 50),
-(2, 0, 'Neutral preset', 'admin', 'max', 175, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'none', 0, 0, 0, 100, 95, 91, 90, 85, 70, 60, 50, 30, 10, 85, 80, 75, 70, 55, 50, 25, 20, 1, 30, 35, 60, 50, 80, 80, 45, 'logarithmic', 50),
-(3, 0, 'Start preset', 'admin', 'start', 175, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'none', 0, 0, 0, 90, 95, 91, 80, 75, 60, 50, 40, 20, 10, 100, 97, 95, 90, 65, 60, 25, 20, 1, 30, 35, 60, 50, 80, 80, 45, 'logarithmic', 50),
-(4, 0, 'Raid preset', 'admin', 'raid', 175, 250, 0, 0, 0, 0, 0, 0, 1, 0, 'none', 0, 0, 0, 100, 95, 91, 90, 85, 70, 60, 50, 30, 10, 85, 80, 75, 70, 55, 50, 25, 20, 1, 30, 35, 60, 50, 80, 80, 45, 'logarithmic', 50),
-(5, 0, 'Max preset', 'admin', 'max', 175, 300, 30, 0, 0, 0, 0, 0, 0, 0, 'none', 0, 0, 0, 100, 95, 91, 90, 85, 70, 60, 50, 30, 10, 85, 80, 75, 70, 55, 50, 25, 20, 1, 30, 35, 60, 50, 80, 80, 45, 'logarithmic', 50);
+(0, 0, 'actual preset', 'admin', 'max', 175, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'none', 0, 0, 0, 100, 95, 91, 90, 85, 70, 60, 50, 30, 10, 85, 80, 75, 70, 55, 50, 25, 20, 1, 30, 35, 60, 50, 80, 80, 45, 1, 50),
+(1, 0, 'Neutral preset', 'admin', 'max', 175, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'none', 0, 0, 0, 100, 95, 91, 90, 85, 70, 60, 50, 30, 10, 85, 80, 75, 70, 55, 50, 25, 20, 1, 30, 35, 60, 50, 80, 80, 45, 1, 50),
+(2, 0, 'Start preset', 'admin', 'start', 175, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'none', 0, 0, 0, 90, 95, 91, 80, 75, 60, 50, 40, 20, 10, 100, 97, 95, 90, 65, 60, 25, 20, 1, 30, 35, 60, 50, 80, 80, 45, 1, 50),
+(3, 0, 'Raid preset', 'admin', 'raid', 175, 250, 0, 0, 0, 0, 0, 0, 1, 0, 'none', 0, 0, 0, 100, 95, 91, 90, 85, 70, 60, 50, 30, 10, 85, 80, 75, 70, 55, 50, 25, 20, 1, 30, 35, 60, 50, 80, 80, 45, 1, 50),
+(4, 0, 'Max preset', 'admin', 'max', 175, 300, 30, 0, 0, 0, 0, 0, 0, 0, 'none', 0, 0, 0, 100, 95, 91, 90, 85, 70, 60, 50, 30, 10, 85, 80, 75, 70, 55, 50, 25, 20, 1, 30, 35, 60, 50, 80, 80, 45, 1, 50),
+(NULL, 19350, 'Roy', 'user', 'max', 175, 300, 0, 0, 0, 0, 0, 0, 0, 0, 'none', 0, 30, 0, 100, 95, 91, 90, 85, 70, 60, 50, 30, 10, 85, 80, 75, 70, 55, 50, 25, 20, 1, 30, 35, 60, 50, 80, 80, 45, 1, 50);
 
 -- --------------------------------------------------------
 
@@ -1274,50 +1235,6 @@ INSERT INTO `units` (`unit_id`, `in_game_name`, `real_name`, `unit_file`, `unit_
 (159, 'Demon Of Emotion', 'Hantengu', 'Demon_Of_Emotion_29.webp', 'https://static.wikia.nocookie.net/allstartd/images/a/a1/Demon_Of_Emotion_%28Pose%29.png/revision/latest?cb=20230908061102', 1, 'Multiple', 'B', 56, 'A', 69, 'No', '', '', '', 40, '', '', 0, 1.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 500, '', '', 0.000, 167, '', 'Deployer', '', 'Ground', 'Multiple', '', '', '', 92, '', '', 9971100.00, 1.0, 2107255, 1182255, 0, 0, 0, 0, 925000, 0, 0, 0, 13972750, '', '', '', 'Mobility Control', '', 'Hybrid', 'Multiple', '', '', '', 76, '', '', 1209698, 1209698, 0, 0, 0, 0, 0, '', '', '', '253000', '', '', '', 'Deployer. Solo', '', 'Hybrid', ''),
 (174, 'Jeff (CEO)', 'Speedwagon', 'Jeff_29_29.webp', 'https://static.wikia.nocookie.net/allstartd/images/1/14/Jeff_%28CEO%29_%28Pose%29.png/revision/latest?cb=20230908033117', 1, 'None', 'C', 44, 'S++', 90, 'No', '', '', '', 0, '', '', 0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 500, '', '', 0.000, 168, '', 'Money', '', 'Ground', 'No', '', '', '', 0, '', '', 0.00, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 996870, '', '', '', 'Money', '', 'Ground', 'None', '', '', '', 0, '', '', 0, 0, 0, 0, 0, 0, 0, '', '', '', '996870', '', '', '', 'Money', '', 'Ground', ''),
 (175, 'Idol', 'Ai Hoshino', 'Idol_29.webp', 'https://static.wikia.nocookie.net/allstartd/images/f/f6/Idol_%28Pose%29.png/revision/latest?cb=20230907040836', 1, 'Water', 'C', 44, 'A+', 72, 'No', '', '', '', 60, '', '', 0, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 500, '', '', 0.000, 169, '', 'Money. Buffer', '', 'Ground', 'No', '', '', '', 90, '', '', 0.00, 0.0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5278800, '', '', '', 'Money. Buffer', '', 'Ground', 'None', '', '', '', 90, '', '', 0, 0, 0, 0, 0, 0, 0, '', '', '', '478800', '', '', '', 'Money. Buffer', '', 'Ground', '');
-
---
--- Index pour les tables déchargées
---
-
---
--- Index pour la table `connexion`
---
-ALTER TABLE `connexion`
-  ADD PRIMARY KEY (`id`);
-
---
--- Index pour la table `glossary`
---
-ALTER TABLE `glossary`
-  ADD PRIMARY KEY (`glossary_id`);
-
---
--- Index pour la table `premium_links`
---
-ALTER TABLE `premium_links`
-  ADD PRIMARY KEY (`id`);
-
---
--- Index pour la table `presets`
---
-ALTER TABLE `presets`
-  ADD PRIMARY KEY (`preset_id`);
-
---
--- AUTO_INCREMENT pour les tables déchargées
---
-
---
--- AUTO_INCREMENT pour la table `connexion`
---
-ALTER TABLE `connexion`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT pour la table `presets`
---
-ALTER TABLE `presets`
-  MODIFY `preset_id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
