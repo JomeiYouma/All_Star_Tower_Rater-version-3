@@ -10,7 +10,7 @@
     <link rel="icon" href="/All_Star_Tower_Rater/assets/images/favicon_local.ico">
 </head>
 <body>
-<?php include __DIR__ . "/../php_sup/header.php"?>
+<?php include __DIR__ . "/../php_sup/header.php"; ?> <!-- J'utilise DIR pour rendre le chemin indépendants du contexte d'exécution.  -->
 <main> 
     <!-- Background animé -->
     <div class="bg-animation">
@@ -24,6 +24,6 @@
         <p>This page doesn't exist</p>
     </div>
 </main>
-<?php include __DIR__ . "/../php_sup/footer.php"?>
+<?php include __DIR__ . "/../php_sup/footer.php"; ?>
 </body>
 </html>

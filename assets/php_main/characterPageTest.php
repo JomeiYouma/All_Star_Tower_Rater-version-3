@@ -12,7 +12,7 @@
 </head>
 <body class="characterPageBody">
     
-<?php include __DIR__ . "/../php_sup/header.php"?>
+<?php include __DIR__ . "/../php_sup/header.php"; ?>
 
 <main class="characterPageMain">
 
@@ -144,11 +144,12 @@
 </main>
 
 
-<?php include __DIR__ . "/../php_sup/footer.php"?>
+<?php include __DIR__ . "/../php_sup/footer.php"; ?> <!-- J'utilise DIR pour rendre le chemin indépendants du contexte d'exécution.  -->
 
 <script src="/All_Star_Tower_Rater/assets/js/function-import-data.js"></script>
 <script src="/All_Star_Tower_Rater/assets/js/function-format.js"></script>
-<script>
+<script> //Je laisse le script ici pour pouvoir include du php à l'intérieur
+
 document.addEventListener('DOMContentLoaded', async () => {
 await importJson(); // Attendre que les données soient chargées
     console.log("Données récupérées depuis sessionStorage:");
@@ -186,9 +187,10 @@ let capaContainer = document.querySelector(".character-abilities");
     let daElement = document.querySelector(".da");
     let coElement = document.querySelector(".co");
     let wtElement = document.querySelector(".wt");
-<?php include __DIR__ . "/../js/function-calculate-macro.js";?> //Calculs des stats qui apparaissent dans la page
-<?php include __DIR__ . "/../js/function-add-content.js";?>
-<?php include __DIR__ . "/../js/function-add-modified-data.js";?>
+<?php include __DIR__ .
+    "/../js/function-calculate-macro.js"; ?> //Calculs des stats qui apparaissent dans la page
+<?php include __DIR__ . "/../js/function-add-content.js"; ?>
+<?php include __DIR__ . "/../js/function-add-modified-data.js"; ?>
 //----------------------------------------------------------------------------
 // Appel de la fonction après le chargement des données
 addContentForUnit(unitId, {

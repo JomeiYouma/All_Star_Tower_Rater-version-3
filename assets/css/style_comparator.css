@@ -52,7 +52,7 @@
     color: var(--text-gray);
     align-items: center;
     justify-content: center;
-    background-image: url("/All_Star_Tower_Rater/image_file/blank_character.png");
+    background-image: url("/All_Star_Tower_Rater/assets/images/blank_character.png");
     background-size: cover;      
     background-position: center;  
     background-repeat: no-repeat;

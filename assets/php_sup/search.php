@@ -54,7 +54,7 @@ if ($searchValue !== "") {
                 $linkPrefix .
                 urlencode($unit["unit_id"]) .
                 "'>" .
-                htmlspecialchars($unit["in_game_name"]) .
+                htmlspecialchars($unit["in_game_name"]) .   //htmlspecialchars : <script> devient &lt;script&gt; (évite le XSS). (J'aurais dû l'utiliser plus)
                 " (" .
                 htmlspecialchars($unit["real_name"]) .
                 ")" .

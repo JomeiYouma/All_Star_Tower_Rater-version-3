@@ -1,0 +1,277 @@
+/* ---------------------- LAYOUT GÉNÉRAL ---------------------- */
+.engineMain{
+    margin-top: 0px;
+    padding-top: 0px;
+    background-color: var(--light-gray);
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+@media (min-width: 640px) {
+/*     .engineMain {
+        flex-direction: row;
+      } */
+  }
+  @media (min-width: 1730px) {
+    .engineMain {
+      flex-direction: row; 
+    }
+    .frame:not(.searchResults){ /* Demander à Gaëlle pour le clip header et le morceau du dessus qui reste blanc */
+        align-self: baseline;
+        display: flex;
+        position: sticky;
+        top: 110px;
+        height: 100vh;
+        max-height: 900px;
+        overflow-y: auto;
+    }
+  }
+.frame{
+    flex-direction: column;
+    overflow: hidden;
+    max-width: 1224px;
+    min-width: 400px;
+    background-color: var(--white);
+    margin: 40px 32px 45px 30px;
+    padding: 16px 16px 16px 16px;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: box-shadow 0.3s ease-in-out, transform 0.2s ease;
+}
+
+.section-container {
+    background-color: var(--white);
+    border-radius: 0.75rem; /* rounded-xl */
+    box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1); /* shadow-md */
+    padding: 1.5rem; /* p-6 */
+  }
+  
+  .personnages {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr); /* grid-cols-1 */
+    gap: 1.5rem; /* gap-6 */
+  }
+  
+  @media (min-width: 640px) {
+    .personnages {
+      grid-template-columns: repeat(2, 1fr); /* sm:grid-cols-2 */
+    }
+  }
+  @media (min-width: 768px) {
+    .personnages {
+      grid-template-columns: repeat(3, 1fr); /* md:grid-cols-3 */
+    }
+  }
+  @media (min-width: 1024px) {
+    .personnages {
+      grid-template-columns: repeat(4, 1fr); /* lg:grid-cols-4 */
+    }
+  }
+  @media (min-width: 1280px) {
+    .personnages {
+      grid-template-columns: repeat(5, 1fr); /* xl:grid-cols-5 */
+    }
+  }
+
+  .inline-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .inline-container h2{
+    background-color: var(--light-green);
+    color: var(--dark-green);
+    padding: 0.25rem 0.5rem;
+    border-radius: 4rem;
+  }
+
+  h1 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+  /* ------------------------- SEARCH ----------------------- */
+p {
+    color: var(--text-gray);
+    margin-bottom: 1.5rem;
+}
+
+/* Form Grid */
+.settingsForm .divi {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+    .settingsForm .divi {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.param {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-weight: 500;
+    color: var(--dark-gray);
+    font-size: 0.875rem;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+input[type="text"],
+select {
+    border: 1px solid var(--medium-gray);
+    border-radius: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+    background-color: var(--white);
+    color: var(--dark-gray);
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+select:focus {
+    border-color: var(--violet);
+    outline: none;
+}
+
+/* Buttons */
+.filter-actions {
+    grid-column: span 2;
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.filter-button {
+    text-decoration: none;
+    background-color: var(--light-red);
+    color: var(--black);
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.filter-button:hover {
+    background-color: var(--red);
+}
+
+/* Notes and info */
+.littleWarning {
+    font-size: 0.75rem;
+    color: var(--text-gray);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    grid-column: span 2;
+    margin-top: 1rem;
+}
+  /* ---------------------- CARTES UNITÉS ---------------------- */
+  .card {
+    background-color:var(--white);
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: box-shadow 0.3s ease-in-out, transform 0.2s ease;
+    cursor: pointer;
+  }
+  
+  .card:hover {
+    box-shadow: 0 6px 10px rgba(0,0,0,0.15);
+    transform: translateY(-2px);
+  }
+  
+  .card-image {
+    width: 100%;
+    height: 12rem;
+    object-fit: cover;
+  }
+  
+  .image-container {
+    position: relative;
+  }
+  
+  .icon-top-left {
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+    width: 2rem;
+    height: 2rem;
+    background-color:var(--primary-blue);
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+  }
+  
+  /* ---------------------- CONTENU DES CARTES ---------------------- */
+  .unit-card-content {
+    padding: 1rem;
+    background-color: var(--white);
+  }
+  
+  .unit-card-content h2 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--dark-gray);
+    margin-bottom: 0.25rem;
+    line-height: 1.25;
+  }
+  
+  .unit-card-content h3 {
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: var(--text-gray);
+    margin-bottom: 0.5rem;
+  }
+  
+  .unit-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.375rem;
+    margin-top: 0.5rem;
+    opacity: 0.85;
+    font-size: 0.75rem;
+    /* align-self: end; */
+  }
+  
+  /* ---------------------- BADGES ---------------------- */
+  .role-badge {
+    background-color: var(--light-violet);
+    color: var(--dark-violet);
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.375rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+  
+  .difficulty-badge {
+    background-color: var(--yellow);
+    color: var(--dark-yellow);
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.375rem;
+  }
+
+  .cost-badge{
+    background-color: var(--light-green);
+    color: var(--dark-green);
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.375rem;
+  }
+
+
+  /* code obtenu en demandant à chatGPT de me trier mon code avec le prompt : "tu me trie ça en faisant des catégories séparées par des commentaires "
