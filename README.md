@@ -51,9 +51,6 @@ $pdo = new PDO(
 );
 ```
 
-## Access the project at:
-http://localhost/All_Star_Tower_Rater/assets/php_main/index.php
-
 ## Known Issues
 Graph max values are not defined correctly.
 
