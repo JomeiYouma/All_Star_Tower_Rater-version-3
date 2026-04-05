@@ -48,7 +48,6 @@ $pdo = new PDO(
 );
 ?>
 
-8) Vous pouvez désormais accéder au site via http://localhost/All_Star_Tower_Rater/assets/php_main/index.php
 
 
 ==== Bugs actuels :
