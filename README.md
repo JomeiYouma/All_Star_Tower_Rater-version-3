@@ -58,5 +58,3 @@ Some chart values may go below 0 or above 100.
 
 ## Contact
 Discord: youuuma
-
-Phone: +33 7 83 32 25 938
