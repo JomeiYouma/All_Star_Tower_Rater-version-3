@@ -58,4 +58,3 @@ Les valeurs maximales des graphes ne sont pas bien définies, et on assiste à d
 ==== Contact :
 
 Discord : youuuma
-Téléphone : +33 7833225938
